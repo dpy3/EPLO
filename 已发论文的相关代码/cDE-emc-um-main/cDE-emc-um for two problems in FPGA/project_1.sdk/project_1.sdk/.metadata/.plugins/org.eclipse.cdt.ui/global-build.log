@@ -1,0 +1,2421 @@
+18:43:22 **** Build of project hhh_bsp ****
+make -k all 
+"Running Make include in ps7_cortexa9_0/libsrc/cde_emc_bench_v1_0/src"
+C:/D/Programs/VivadoXilinx/SDK/2017.4/gnuwin/bin/make -C ps7_cortexa9_0/libsrc/cde_emc_bench_v1_0/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -Wall -Wextra"
+"Running Make include in ps7_cortexa9_0/libsrc/coresightps_dcc_v1_4/src"
+C:/D/Programs/VivadoXilinx/SDK/2017.4/gnuwin/bin/make -C ps7_cortexa9_0/libsrc/coresightps_dcc_v1_4/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -Wall -Wextra"
+"Running Make include in ps7_cortexa9_0/libsrc/cpu_cortexa9_v2_5/src"
+C:/D/Programs/VivadoXilinx/SDK/2017.4/gnuwin/bin/make -C ps7_cortexa9_0/libsrc/cpu_cortexa9_v2_5/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -Wall -Wextra"
+"Running Make include in ps7_cortexa9_0/libsrc/ddrps_v1_0/src"
+C:/D/Programs/VivadoXilinx/SDK/2017.4/gnuwin/bin/make -C ps7_cortexa9_0/libsrc/ddrps_v1_0/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -Wall -Wextra"
+"Running Make include in ps7_cortexa9_0/libsrc/devcfg_v3_5/src"
+C:/D/Programs/VivadoXilinx/SDK/2017.4/gnuwin/bin/make -C ps7_cortexa9_0/libsrc/devcfg_v3_5/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -Wall -Wextra"
+"Running Make include in ps7_cortexa9_0/libsrc/dmaps_v2_3/src"
+C:/D/Programs/VivadoXilinx/SDK/2017.4/gnuwin/bin/make -C ps7_cortexa9_0/libsrc/dmaps_v2_3/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -Wall -Wextra"
+"Running Make include in ps7_cortexa9_0/libsrc/scugic_v3_8/src"
+C:/D/Programs/VivadoXilinx/SDK/2017.4/gnuwin/bin/make -C ps7_cortexa9_0/libsrc/scugic_v3_8/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -Wall -Wextra"
+"Running Make include in ps7_cortexa9_0/libsrc/scutimer_v2_1/src"
+C:/D/Programs/VivadoXilinx/SDK/2017.4/gnuwin/bin/make -C ps7_cortexa9_0/libsrc/scutimer_v2_1/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -Wall -Wextra"
+"Running Make include in ps7_cortexa9_0/libsrc/scuwdt_v2_1/src"
+C:/D/Programs/VivadoXilinx/SDK/2017.4/gnuwin/bin/make -C ps7_cortexa9_0/libsrc/scuwdt_v2_1/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -Wall -Wextra"
+"Running Make include in ps7_cortexa9_0/libsrc/standalone_v6_5/src"
+C:/D/Programs/VivadoXilinx/SDK/2017.4/gnuwin/bin/make -C ps7_cortexa9_0/libsrc/standalone_v6_5/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -Wall -Wextra"
+"Running Make include in ps7_cortexa9_0/libsrc/uartps_v3_5/src"
+C:/D/Programs/VivadoXilinx/SDK/2017.4/gnuwin/bin/make -C ps7_cortexa9_0/libsrc/uartps_v3_5/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -Wall -Wextra"
+"Running Make include in ps7_cortexa9_0/libsrc/xadcps_v2_2/src"
+C:/D/Programs/VivadoXilinx/SDK/2017.4/gnuwin/bin/make -C ps7_cortexa9_0/libsrc/xadcps_v2_2/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -Wall -Wextra"
+"Running Make libs in ps7_cortexa9_0/libsrc/cde_emc_bench_v1_0/src"
+C:/D/Programs/VivadoXilinx/SDK/2017.4/gnuwin/bin/make -C ps7_cortexa9_0/libsrc/cde_emc_bench_v1_0/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -Wall -Wextra"
+"Compiling cde_emc_bench"
+arm-none-eabi-ar: creating ../../../lib/libxil.a
+"Running Make libs in ps7_cortexa9_0/libsrc/coresightps_dcc_v1_4/src"
+C:/D/Programs/VivadoXilinx/SDK/2017.4/gnuwin/bin/make -C ps7_cortexa9_0/libsrc/coresightps_dcc_v1_4/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -Wall -Wextra"
+"Compiling coresightps_dcc"
+"Running Make libs in ps7_cortexa9_0/libsrc/cpu_cortexa9_v2_5/src"
+C:/D/Programs/VivadoXilinx/SDK/2017.4/gnuwin/bin/make -C ps7_cortexa9_0/libsrc/cpu_cortexa9_v2_5/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -Wall -Wextra"
+"Compiling cpu_cortexa9"
+"Running Make libs in ps7_cortexa9_0/libsrc/ddrps_v1_0/src"
+C:/D/Programs/VivadoXilinx/SDK/2017.4/gnuwin/bin/make -C ps7_cortexa9_0/libsrc/ddrps_v1_0/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -Wall -Wextra"
+"Compiling ddrps"
+"Running Make libs in ps7_cortexa9_0/libsrc/devcfg_v3_5/src"
+C:/D/Programs/VivadoXilinx/SDK/2017.4/gnuwin/bin/make -C ps7_cortexa9_0/libsrc/devcfg_v3_5/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -Wall -Wextra"
+"Compiling devcfg"
+"Running Make libs in ps7_cortexa9_0/libsrc/dmaps_v2_3/src"
+C:/D/Programs/VivadoXilinx/SDK/2017.4/gnuwin/bin/make -C ps7_cortexa9_0/libsrc/dmaps_v2_3/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -Wall -Wextra"
+"Compiling dmaps"
+"Running Make libs in ps7_cortexa9_0/libsrc/scugic_v3_8/src"
+C:/D/Programs/VivadoXilinx/SDK/2017.4/gnuwin/bin/make -C ps7_cortexa9_0/libsrc/scugic_v3_8/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -Wall -Wextra"
+"Compiling scugic"
+"Running Make libs in ps7_cortexa9_0/libsrc/scutimer_v2_1/src"
+C:/D/Programs/VivadoXilinx/SDK/2017.4/gnuwin/bin/make -C ps7_cortexa9_0/libsrc/scutimer_v2_1/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -Wall -Wextra"
+"Compiling scutimer"
+"Running Make libs in ps7_cortexa9_0/libsrc/scuwdt_v2_1/src"
+C:/D/Programs/VivadoXilinx/SDK/2017.4/gnuwin/bin/make -C ps7_cortexa9_0/libsrc/scuwdt_v2_1/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -Wall -Wextra"
+"Compiling scuwdt"
+"Running Make libs in ps7_cortexa9_0/libsrc/standalone_v6_5/src"
+C:/D/Programs/VivadoXilinx/SDK/2017.4/gnuwin/bin/make -C ps7_cortexa9_0/libsrc/standalone_v6_5/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -Wall -Wextra"
+"Compiling standalone"
+"Running Make libs in ps7_cortexa9_0/libsrc/uartps_v3_5/src"
+C:/D/Programs/VivadoXilinx/SDK/2017.4/gnuwin/bin/make -C ps7_cortexa9_0/libsrc/uartps_v3_5/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -Wall -Wextra"
+"Compiling uartps"
+"Running Make libs in ps7_cortexa9_0/libsrc/xadcps_v2_2/src"
+C:/D/Programs/VivadoXilinx/SDK/2017.4/gnuwin/bin/make -C ps7_cortexa9_0/libsrc/xadcps_v2_2/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -Wall -Wextra"
+"Compiling xadcps"
+'Finished building libraries'
+18:43:37 **** Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hhh_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+'Finished building: ../src/helloworld.c'
+' '
+'Building file: ../src/platform.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/platform.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hhh_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/platform.d" -MT"src/platform.o" -o "src/platform.o" "../src/platform.c"
+'Finished building: ../src/platform.c'
+' '
+'Building target: hhh.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../hhh_bsp/ps7_cortexa9_0/lib -o "hhh.elf"  ./src/helloworld.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: hhh.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size hhh.elf  |tee "hhh.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  19384	   1148	  22568	  43100	   a85c	hhh.elf
+'Finished building: hhh.elf.size'
+' '
+18:50:29 **** Auto Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hhh_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:66:3: warning: implicit declaration of function 'srand' [-Wimplicit-function-declaration]
+   srand((unsigned)tCurrand );
+   ^~~~~
+../src/helloworld.c:73:19: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+    A[3] = (int)(1+rand()%(10000))+100;;
+                   ^~~~
+'Finished building: ../src/helloworld.c'
+' '
+'Building target: hhh.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../hhh_bsp/ps7_cortexa9_0/lib -o "hhh.elf"  ./src/helloworld.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: hhh.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size hhh.elf  |tee "hhh.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  78272	   2592	  23344	 104208	  19710	hhh.elf
+'Finished building: hhh.elf.size'
+' '
+18:50:39 **** Auto Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hhh_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:66:3: warning: implicit declaration of function 'srand' [-Wimplicit-function-declaration]
+   srand((unsigned)tCurrand );
+   ^~~~~
+../src/helloworld.c:73:19: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+    A[3] = (int)(1+rand()%(10000))+100;;
+                   ^~~~
+'Finished building: ../src/helloworld.c'
+' '
+'Building target: hhh.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../hhh_bsp/ps7_cortexa9_0/lib -o "hhh.elf"  ./src/helloworld.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: hhh.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size hhh.elf  |tee "hhh.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  78272	   2592	  23344	 104208	  19710	hhh.elf
+'Finished building: hhh.elf.size'
+' '
+18:50:44 **** Auto Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hhh_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:66:3: warning: implicit declaration of function 'srand' [-Wimplicit-function-declaration]
+   srand((unsigned)tCurrand );
+   ^~~~~
+../src/helloworld.c:74:19: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+    A[3] = (int)(1+rand()%(10000))+100;;
+                   ^~~~
+'Finished building: ../src/helloworld.c'
+' '
+'Building target: hhh.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../hhh_bsp/ps7_cortexa9_0/lib -o "hhh.elf"  ./src/helloworld.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: hhh.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size hhh.elf  |tee "hhh.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  78272	   2592	  23344	 104208	  19710	hhh.elf
+'Finished building: hhh.elf.size'
+' '
+18:50:58 **** Auto Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hhh_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:67:3: warning: implicit declaration of function 'srand' [-Wimplicit-function-declaration]
+   srand((unsigned)tCurrand );
+   ^~~~~
+../src/helloworld.c:75:19: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+    A[3] = (int)(1+rand()%(10000))+100;;
+                   ^~~~
+'Finished building: ../src/helloworld.c'
+' '
+'Building target: hhh.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../hhh_bsp/ps7_cortexa9_0/lib -o "hhh.elf"  ./src/helloworld.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: hhh.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size hhh.elf  |tee "hhh.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  78272	   2992	  23344	 104608	  198a0	hhh.elf
+'Finished building: hhh.elf.size'
+' '
+18:51:05 **** Auto Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hhh_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:67:3: warning: implicit declaration of function 'srand' [-Wimplicit-function-declaration]
+   srand((unsigned)tCurrand );
+   ^~~~~
+../src/helloworld.c:75:19: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+    A[3] = (int)(1+rand()%(10000))+100;;
+                   ^~~~
+'Finished building: ../src/helloworld.c'
+' '
+'Building target: hhh.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../hhh_bsp/ps7_cortexa9_0/lib -o "hhh.elf"  ./src/helloworld.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: hhh.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size hhh.elf  |tee "hhh.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  78272	   2992	  23344	 104608	  198a0	hhh.elf
+'Finished building: hhh.elf.size'
+' '
+18:51:14 **** Auto Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hhh_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:67:3: warning: implicit declaration of function 'srand' [-Wimplicit-function-declaration]
+   srand((unsigned)tCurrand );
+   ^~~~~
+../src/helloworld.c:77:19: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+    A[3] = (int)(1+rand()%(10000))+100;;
+                   ^~~~
+'Finished building: ../src/helloworld.c'
+' '
+'Building target: hhh.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../hhh_bsp/ps7_cortexa9_0/lib -o "hhh.elf"  ./src/helloworld.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: hhh.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size hhh.elf  |tee "hhh.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  78272	   2992	  23344	 104608	  198a0	hhh.elf
+'Finished building: hhh.elf.size'
+' '
+18:51:43 **** Auto Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hhh_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:67:3: warning: implicit declaration of function 'srand' [-Wimplicit-function-declaration]
+   srand((unsigned)tCurrand );
+   ^~~~~
+../src/helloworld.c:77:20: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+    A[13] = (int)(1+rand()%(10000))+100;;
+                    ^~~~
+'Finished building: ../src/helloworld.c'
+' '
+'Building target: hhh.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../hhh_bsp/ps7_cortexa9_0/lib -o "hhh.elf"  ./src/helloworld.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: hhh.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size hhh.elf  |tee "hhh.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  78336	   2992	  23344	 104672	  198e0	hhh.elf
+'Finished building: hhh.elf.size'
+' '
+19:02:42 **** Auto Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hhh_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:67:3: warning: implicit declaration of function 'srand' [-Wimplicit-function-declaration]
+   srand((unsigned)tCurrand );
+   ^~~~~
+../src/helloworld.c:77:20: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+    A[13] = (int)(1+rand()%(10000))+100;;
+                    ^~~~
+'Finished building: ../src/helloworld.c'
+' '
+'Building target: hhh.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../hhh_bsp/ps7_cortexa9_0/lib -o "hhh.elf"  ./src/helloworld.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: hhh.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size hhh.elf  |tee "hhh.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  78336	   3392	  23344	 105072	  19a70	hhh.elf
+'Finished building: hhh.elf.size'
+' '
+19:10:03 **** Auto Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hhh_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:67:3: warning: implicit declaration of function 'srand' [-Wimplicit-function-declaration]
+   srand((unsigned)tCurrand );
+   ^~~~~
+../src/helloworld.c:77:23: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+    A[110-3] = (int)(1+rand()%(10000))+100;;
+                       ^~~~
+'Finished building: ../src/helloworld.c'
+' '
+'Building target: hhh.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../hhh_bsp/ps7_cortexa9_0/lib -o "hhh.elf"  ./src/helloworld.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: hhh.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size hhh.elf  |tee "hhh.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  78336	   3392	  23344	 105072	  19a70	hhh.elf
+'Finished building: hhh.elf.size'
+' '
+19:10:06 **** Auto Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hhh_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:67:3: warning: implicit declaration of function 'srand' [-Wimplicit-function-declaration]
+   srand((unsigned)tCurrand );
+   ^~~~~
+../src/helloworld.c:77:23: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+    A[110-3] = (int)(1+rand()%(10000))+100;;
+                       ^~~~
+'Finished building: ../src/helloworld.c'
+' '
+'Building target: hhh.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../hhh_bsp/ps7_cortexa9_0/lib -o "hhh.elf"  ./src/helloworld.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: hhh.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size hhh.elf  |tee "hhh.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  78336	   3392	  23344	 105072	  19a70	hhh.elf
+'Finished building: hhh.elf.size'
+' '
+19:11:04 **** Auto Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hhh_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:67:3: warning: implicit declaration of function 'srand' [-Wimplicit-function-declaration]
+   srand((unsigned)tCurrand );
+   ^~~~~
+../src/helloworld.c:78:23: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+    A[110-3] = (int)(1+rand()%(10000))+100;;
+                       ^~~~
+'Finished building: ../src/helloworld.c'
+' '
+'Building target: hhh.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../hhh_bsp/ps7_cortexa9_0/lib -o "hhh.elf"  ./src/helloworld.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: hhh.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size hhh.elf  |tee "hhh.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  78336	   3392	  23344	 105072	  19a70	hhh.elf
+'Finished building: hhh.elf.size'
+' '
+19:11:07 **** Auto Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hhh_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:67:3: warning: implicit declaration of function 'srand' [-Wimplicit-function-declaration]
+   srand((unsigned)tCurrand );
+   ^~~~~
+../src/helloworld.c:78:23: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+    A[110-3] = (int)(1+rand()%(10000))+100;;
+                       ^~~~
+'Finished building: ../src/helloworld.c'
+' '
+'Building target: hhh.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../hhh_bsp/ps7_cortexa9_0/lib -o "hhh.elf"  ./src/helloworld.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: hhh.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size hhh.elf  |tee "hhh.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  78336	   3392	  23344	 105072	  19a70	hhh.elf
+'Finished building: hhh.elf.size'
+' '
+19:13:54 **** Auto Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hhh_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:67:3: warning: implicit declaration of function 'srand' [-Wimplicit-function-declaration]
+   srand((unsigned)tCurrand );
+   ^~~~~
+../src/helloworld.c:78:23: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+    A[110-3] = (int)(1+rand()%(10000))+100;;
+                       ^~~~
+'Finished building: ../src/helloworld.c'
+' '
+'Building target: hhh.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../hhh_bsp/ps7_cortexa9_0/lib -o "hhh.elf"  ./src/helloworld.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: hhh.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size hhh.elf  |tee "hhh.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  78336	   2992	  23344	 104672	  198e0	hhh.elf
+'Finished building: hhh.elf.size'
+' '
+19:14:02 **** Auto Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hhh_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'LFSRfunc':
+../src/helloworld.c:60:9: error: 'lfsr' undeclared (first use in this function)
+         lfsr = seed; //static
+         ^~~~
+../src/helloworld.c:60:9: note: each undeclared identifier is reported only once for each function it appears in
+../src/helloworld.c: At top level:
+../src/helloworld.c:67:28: error: 'N' undeclared here (not in a function)
+ float func_unite(float pop[N]){
+                            ^
+../src/helloworld.c: In function 'func_unite':
+../src/helloworld.c:70:19: error: 'N' undeclared (first use in this function)
+     for(int i=0;i<N;i++){
+                   ^
+../src/helloworld.c:69:9: warning: unused variable 'temppi' [-Wunused-variable]
+     int temppi,popselect;
+         ^~~~~~
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:87:3: warning: implicit declaration of function 'srand' [-Wimplicit-function-declaration]
+   srand((unsigned)tCurrand );
+   ^~~~~
+../src/helloworld.c:98:23: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+    A[110-3] = (int)(1+rand()%(10000))+100;;
+                       ^~~~
+../src/helloworld.c: In function 'LFSRfunc':
+../src/helloworld.c:66:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+make: *** [src/helloworld.o] ´íÎó 1
+19:14:24 **** Auto Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hhh_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'func_unite':
+../src/helloworld.c:76:9: warning: unused variable 'temppi' [-Wunused-variable]
+     int temppi,popselect;
+         ^~~~~~
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:94:3: warning: implicit declaration of function 'srand' [-Wimplicit-function-declaration]
+   srand((unsigned)tCurrand );
+   ^~~~~
+../src/helloworld.c:105:23: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+    A[110-3] = (int)(1+rand()%(10000))+100;;
+                       ^~~~
+'Finished building: ../src/helloworld.c'
+' '
+'Building target: hhh.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../hhh_bsp/ps7_cortexa9_0/lib -o "hhh.elf"  ./src/helloworld.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: hhh.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size hhh.elf  |tee "hhh.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  78720	   2992	  23344	 105056	  19a60	hhh.elf
+'Finished building: hhh.elf.size'
+' '
+19:16:06 **** Auto Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hhh_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'func_unite':
+../src/helloworld.c:76:9: warning: unused variable 'temppi' [-Wunused-variable]
+     int temppi,popselect;
+         ^~~~~~
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:111:3: warning: implicit declaration of function 'srand' [-Wimplicit-function-declaration]
+   srand((unsigned)tCurrand );
+   ^~~~~
+../src/helloworld.c:122:23: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+    A[110-3] = (int)(1+rand()%(10000))+100;;
+                       ^~~~
+'Finished building: ../src/helloworld.c'
+' '
+'Building target: hhh.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../hhh_bsp/ps7_cortexa9_0/lib -o "hhh.elf"  ./src/helloworld.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: hhh.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size hhh.elf  |tee "hhh.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  79936	   2992	  23344	 106272	  19f20	hhh.elf
+'Finished building: hhh.elf.size'
+' '
+19:16:54 **** Auto Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hhh_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'func_unite':
+../src/helloworld.c:76:9: warning: unused variable 'temppi' [-Wunused-variable]
+     int temppi,popselect;
+         ^~~~~~
+../src/helloworld.c: In function 'bpecDEbest1bin_rand_g':
+../src/helloworld.c:116:9: warning: variable 'temp_lfsr' set but not used [-Wunused-but-set-variable]
+     int temp_lfsr;
+         ^~~~~~~~~
+../src/helloworld.c:115:21: warning: unused variable 'sigF' [-Wunused-variable]
+     float erf1,erf2,sigF;
+                     ^~~~
+../src/helloworld.c:111:22: warning: variable 'templf' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+                      ^~~~~~
+../src/helloworld.c:111:13: warning: variable 'Cr' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+             ^~
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:205:3: warning: implicit declaration of function 'srand' [-Wimplicit-function-declaration]
+   srand((unsigned)tCurrand );
+   ^~~~~
+../src/helloworld.c:216:23: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+    A[110-3] = (int)(1+rand()%(10000))+100;;
+                       ^~~~
+'Finished building: ../src/helloworld.c'
+' '
+'Building target: hhh.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../hhh_bsp/ps7_cortexa9_0/lib -o "hhh.elf"  ./src/helloworld.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+./src/helloworld.o: In function `bpecDEbest1bin_rand_g':
+C:\Users\space\Desktop\FPGA_workspace\23_cde_emc_task_01\project_1\project_1.sdk\hhh\Debug/../src/helloworld.c:189: undefined reference to `sqrt'
+collect2.exe: error: ld returned 1 exit status
+make: *** [hhh.elf] ´íÎó 1
+19:18:05 **** Clean-only build of configuration Debug for project hhh ****
+make clean 
+rm -rf  ./src/helloworld.o ./src/platform.o  ./src/helloworld.d ./src/platform.d  hhh.elf.size  hhh.elf
+' '
+19:18:05 **** Auto Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hhh_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'func_unite':
+../src/helloworld.c:76:9: warning: unused variable 'temppi' [-Wunused-variable]
+     int temppi,popselect;
+         ^~~~~~
+../src/helloworld.c: In function 'bpecDEbest1bin_rand_g':
+../src/helloworld.c:116:9: warning: variable 'temp_lfsr' set but not used [-Wunused-but-set-variable]
+     int temp_lfsr;
+         ^~~~~~~~~
+../src/helloworld.c:115:21: warning: unused variable 'sigF' [-Wunused-variable]
+     float erf1,erf2,sigF;
+                     ^~~~
+../src/helloworld.c:111:22: warning: variable 'templf' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+                      ^~~~~~
+../src/helloworld.c:111:13: warning: variable 'Cr' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+             ^~
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:205:3: warning: implicit declaration of function 'srand' [-Wimplicit-function-declaration]
+   srand((unsigned)tCurrand );
+   ^~~~~
+../src/helloworld.c:216:23: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+    A[110-3] = (int)(1+rand()%(10000))+100;;
+                       ^~~~
+'Finished building: ../src/helloworld.c'
+' '
+'Building file: ../src/platform.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/platform.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hhh_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/platform.d" -MT"src/platform.o" -o "src/platform.o" "../src/platform.c"
+'Finished building: ../src/platform.c'
+' '
+'Building target: hhh.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../hhh_bsp/ps7_cortexa9_0/lib -o "hhh.elf"  ./src/helloworld.o ./src/platform.o   -lm -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: hhh.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size hhh.elf  |tee "hhh.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  82808	   3000	  23344	 109152	  1aa60	hhh.elf
+'Finished building: hhh.elf.size'
+' '
+19:19:53 **** Auto Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hhh_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'func_unite':
+../src/helloworld.c:76:9: warning: unused variable 'temppi' [-Wunused-variable]
+     int temppi,popselect;
+         ^~~~~~
+../src/helloworld.c: In function 'bpecDEbest1bin_rand_g':
+../src/helloworld.c:116:9: warning: variable 'temp_lfsr' set but not used [-Wunused-but-set-variable]
+     int temp_lfsr;
+         ^~~~~~~~~
+../src/helloworld.c:115:21: warning: unused variable 'sigF' [-Wunused-variable]
+     float erf1,erf2,sigF;
+                     ^~~~
+../src/helloworld.c:111:22: warning: variable 'templf' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+                      ^~~~~~
+../src/helloworld.c:111:13: warning: variable 'Cr' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+             ^~
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:205:3: warning: implicit declaration of function 'srand' [-Wimplicit-function-declaration]
+   srand((unsigned)tCurrand );
+   ^~~~~
+../src/helloworld.c:216:23: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+    A[110-3] = (int)(1+rand()%(10000))+100;;
+                       ^~~~
+../src/helloworld.c:220:14: error: 'bestfit3' undeclared (first use in this function)
+              bestfit3[i]  = bpecDEbest1bin_rand_g(seed,Np,intermax);
+              ^~~~~~~~
+../src/helloworld.c:220:14: note: each undeclared identifier is reported only once for each function it appears in
+../src/helloworld.c:220:23: error: 'i' undeclared (first use in this function)
+              bestfit3[i]  = bpecDEbest1bin_rand_g(seed,Np,intermax);
+                       ^
+../src/helloworld.c:220:56: error: 'Np' undeclared (first use in this function)
+              bestfit3[i]  = bpecDEbest1bin_rand_g(seed,Np,intermax);
+                                                        ^~
+../src/helloworld.c:220:59: error: 'intermax' undeclared (first use in this function)
+              bestfit3[i]  = bpecDEbest1bin_rand_g(seed,Np,intermax);
+                                                           ^~~~~~~~
+../src/helloworld.c:222:15: error: 'meanfit3' undeclared (first use in this function)
+               meanfit3 = meanfit3 + bestfit3[i];
+               ^~~~~~~~
+../src/helloworld.c: At top level:
+../src/helloworld.c:283:11: error: expected declaration specifiers or '...' before string constant
+    printf("\nHW ALL time is %lfms\n",tallused);
+           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../src/helloworld.c:283:38: error: unknown type name 'tallused'
+    printf("\nHW ALL time is %lfms\n",tallused);
+                                      ^~~~~~~~
+../src/helloworld.c:285:6: warning: data definition has no type or storage class
+      cleanup_platform();
+      ^~~~~~~~~~~~~~~~
+../src/helloworld.c:285:6: warning: type defaults to 'int' in declaration of 'cleanup_platform' [-Wimplicit-int]
+../src/helloworld.c:285:6: error: conflicting types for 'cleanup_platform'
+In file included from ../src/helloworld.c:49:0:
+../src/platform.h:39:6: note: previous declaration of 'cleanup_platform' was here
+ void cleanup_platform();
+      ^~~~~~~~~~~~~~~~
+../src/helloworld.c:286:5: error: expected identifier or '(' before 'return'
+     return 0;
+     ^~~~~~
+../src/helloworld.c:287:1: error: expected identifier or '(' before '}' token
+ }
+ ^
+make: *** [src/helloworld.o] ´íÎó 1
+19:20:09 **** Auto Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hhh_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'func_unite':
+../src/helloworld.c:76:9: warning: unused variable 'temppi' [-Wunused-variable]
+     int temppi,popselect;
+         ^~~~~~
+../src/helloworld.c: In function 'bpecDEbest1bin_rand_g':
+../src/helloworld.c:116:9: warning: variable 'temp_lfsr' set but not used [-Wunused-but-set-variable]
+     int temp_lfsr;
+         ^~~~~~~~~
+../src/helloworld.c:115:21: warning: unused variable 'sigF' [-Wunused-variable]
+     float erf1,erf2,sigF;
+                     ^~~~
+../src/helloworld.c:111:22: warning: variable 'templf' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+                      ^~~~~~
+../src/helloworld.c:111:13: warning: variable 'Cr' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+             ^~
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:205:3: warning: implicit declaration of function 'srand' [-Wimplicit-function-declaration]
+   srand((unsigned)tCurrand );
+   ^~~~~
+../src/helloworld.c:217:21: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+      seed = (int)(1+rand()%(10000))+100;;
+                     ^~~~
+../src/helloworld.c:222:14: error: 'bestfit3' undeclared (first use in this function)
+              bestfit3[i]  = bpecDEbest1bin_rand_g(seed,Np,intermax);
+              ^~~~~~~~
+../src/helloworld.c:222:14: note: each undeclared identifier is reported only once for each function it appears in
+../src/helloworld.c:222:23: error: 'i' undeclared (first use in this function)
+              bestfit3[i]  = bpecDEbest1bin_rand_g(seed,Np,intermax);
+                       ^
+../src/helloworld.c:222:56: error: 'Np' undeclared (first use in this function)
+              bestfit3[i]  = bpecDEbest1bin_rand_g(seed,Np,intermax);
+                                                        ^~
+../src/helloworld.c:222:59: error: 'intermax' undeclared (first use in this function)
+              bestfit3[i]  = bpecDEbest1bin_rand_g(seed,Np,intermax);
+                                                           ^~~~~~~~
+../src/helloworld.c:224:15: error: 'meanfit3' undeclared (first use in this function)
+               meanfit3 = meanfit3 + bestfit3[i];
+               ^~~~~~~~
+../src/helloworld.c: At top level:
+../src/helloworld.c:285:11: error: expected declaration specifiers or '...' before string constant
+    printf("\nHW ALL time is %lfms\n",tallused);
+           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../src/helloworld.c:285:38: error: unknown type name 'tallused'
+    printf("\nHW ALL time is %lfms\n",tallused);
+                                      ^~~~~~~~
+../src/helloworld.c:287:6: warning: data definition has no type or storage class
+      cleanup_platform();
+      ^~~~~~~~~~~~~~~~
+../src/helloworld.c:287:6: warning: type defaults to 'int' in declaration of 'cleanup_platform' [-Wimplicit-int]
+../src/helloworld.c:287:6: error: conflicting types for 'cleanup_platform'
+In file included from ../src/helloworld.c:49:0:
+../src/platform.h:39:6: note: previous declaration of 'cleanup_platform' was here
+ void cleanup_platform();
+      ^~~~~~~~~~~~~~~~
+../src/helloworld.c:288:5: error: expected identifier or '(' before 'return'
+     return 0;
+     ^~~~~~
+../src/helloworld.c:289:1: error: expected identifier or '(' before '}' token
+ }
+ ^
+make: *** [src/helloworld.o] ´íÎó 1
+19:20:20 **** Auto Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hhh_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'func_unite':
+../src/helloworld.c:76:9: warning: unused variable 'temppi' [-Wunused-variable]
+     int temppi,popselect;
+         ^~~~~~
+../src/helloworld.c: In function 'bpecDEbest1bin_rand_g':
+../src/helloworld.c:116:9: warning: variable 'temp_lfsr' set but not used [-Wunused-but-set-variable]
+     int temp_lfsr;
+         ^~~~~~~~~
+../src/helloworld.c:115:21: warning: unused variable 'sigF' [-Wunused-variable]
+     float erf1,erf2,sigF;
+                     ^~~~
+../src/helloworld.c:111:22: warning: variable 'templf' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+                      ^~~~~~
+../src/helloworld.c:111:13: warning: variable 'Cr' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+             ^~
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:205:3: warning: implicit declaration of function 'srand' [-Wimplicit-function-declaration]
+   srand((unsigned)tCurrand );
+   ^~~~~
+../src/helloworld.c:217:21: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+      seed = (int)(1+rand()%(10000))+100;;
+                     ^~~~
+../src/helloworld.c:222:14: error: 'bestfit3' undeclared (first use in this function)
+              bestfit3[i]  = bpecDEbest1bin_rand_g(seed,Np,intermax);
+              ^~~~~~~~
+../src/helloworld.c:222:14: note: each undeclared identifier is reported only once for each function it appears in
+../src/helloworld.c:222:23: error: 'i' undeclared (first use in this function)
+              bestfit3[i]  = bpecDEbest1bin_rand_g(seed,Np,intermax);
+                       ^
+../src/helloworld.c:222:56: error: 'Np' undeclared (first use in this function)
+              bestfit3[i]  = bpecDEbest1bin_rand_g(seed,Np,intermax);
+                                                        ^~
+../src/helloworld.c:222:59: error: 'intermax' undeclared (first use in this function)
+              bestfit3[i]  = bpecDEbest1bin_rand_g(seed,Np,intermax);
+                                                           ^~~~~~~~
+../src/helloworld.c:224:15: error: 'meanfit3' undeclared (first use in this function)
+               meanfit3 = meanfit3 + bestfit3[i];
+               ^~~~~~~~
+make: *** [src/helloworld.o] ´íÎó 1
+19:20:31 **** Auto Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hhh_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'func_unite':
+../src/helloworld.c:76:9: warning: unused variable 'temppi' [-Wunused-variable]
+     int temppi,popselect;
+         ^~~~~~
+../src/helloworld.c: In function 'bpecDEbest1bin_rand_g':
+../src/helloworld.c:116:9: warning: variable 'temp_lfsr' set but not used [-Wunused-but-set-variable]
+     int temp_lfsr;
+         ^~~~~~~~~
+../src/helloworld.c:115:21: warning: unused variable 'sigF' [-Wunused-variable]
+     float erf1,erf2,sigF;
+                     ^~~~
+../src/helloworld.c:111:22: warning: variable 'templf' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+                      ^~~~~~
+../src/helloworld.c:111:13: warning: variable 'Cr' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+             ^~
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:205:3: warning: implicit declaration of function 'srand' [-Wimplicit-function-declaration]
+   srand((unsigned)tCurrand );
+   ^~~~~
+../src/helloworld.c:217:21: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+      seed = (int)(1+rand()%(10000))+100;;
+                     ^~~~
+../src/helloworld.c:222:14: error: 'bestfit3' undeclared (first use in this function)
+              bestfit3[i]  = bpecDEbest1bin_rand_g(seed,Np,intermax);
+              ^~~~~~~~
+../src/helloworld.c:222:14: note: each undeclared identifier is reported only once for each function it appears in
+../src/helloworld.c:222:23: error: 'i' undeclared (first use in this function)
+              bestfit3[i]  = bpecDEbest1bin_rand_g(seed,Np,intermax);
+                       ^
+../src/helloworld.c:222:56: error: 'Np' undeclared (first use in this function)
+              bestfit3[i]  = bpecDEbest1bin_rand_g(seed,Np,intermax);
+                                                        ^~
+../src/helloworld.c:222:59: error: 'intermax' undeclared (first use in this function)
+              bestfit3[i]  = bpecDEbest1bin_rand_g(seed,Np,intermax);
+                                                           ^~~~~~~~
+make: *** [src/helloworld.o] ´íÎó 1
+19:20:45 **** Auto Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hhh_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'func_unite':
+../src/helloworld.c:76:9: warning: unused variable 'temppi' [-Wunused-variable]
+     int temppi,popselect;
+         ^~~~~~
+../src/helloworld.c: In function 'bpecDEbest1bin_rand_g':
+../src/helloworld.c:116:9: warning: variable 'temp_lfsr' set but not used [-Wunused-but-set-variable]
+     int temp_lfsr;
+         ^~~~~~~~~
+../src/helloworld.c:115:21: warning: unused variable 'sigF' [-Wunused-variable]
+     float erf1,erf2,sigF;
+                     ^~~~
+../src/helloworld.c:111:22: warning: variable 'templf' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+                      ^~~~~~
+../src/helloworld.c:111:13: warning: variable 'Cr' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+             ^~
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:205:3: warning: implicit declaration of function 'srand' [-Wimplicit-function-declaration]
+   srand((unsigned)tCurrand );
+   ^~~~~
+../src/helloworld.c:217:21: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+      seed = (int)(1+rand()%(10000))+100;;
+                     ^~~~
+../src/helloworld.c:222:53: error: 'Np' undeclared (first use in this function)
+              bestfit3  = bpecDEbest1bin_rand_g(seed,Np,intermax);
+                                                     ^~
+../src/helloworld.c:222:53: note: each undeclared identifier is reported only once for each function it appears in
+../src/helloworld.c:222:56: error: 'intermax' undeclared (first use in this function)
+              bestfit3  = bpecDEbest1bin_rand_g(seed,Np,intermax);
+                                                        ^~~~~~~~
+../src/helloworld.c:223:37: error: 'i' undeclared (first use in this function)
+              printf(" %f ",bestfit3[i]);
+                                     ^
+../src/helloworld.c:199:34: warning: variable 'bestfit3' set but not used [-Wunused-but-set-variable]
+   float A[110],B[110],meanfit3=0,bestfit3;
+                                  ^~~~~~~~
+make: *** [src/helloworld.o] ´íÎó 1
+19:20:49 **** Auto Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hhh_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'func_unite':
+../src/helloworld.c:76:9: warning: unused variable 'temppi' [-Wunused-variable]
+     int temppi,popselect;
+         ^~~~~~
+../src/helloworld.c: In function 'bpecDEbest1bin_rand_g':
+../src/helloworld.c:116:9: warning: variable 'temp_lfsr' set but not used [-Wunused-but-set-variable]
+     int temp_lfsr;
+         ^~~~~~~~~
+../src/helloworld.c:115:21: warning: unused variable 'sigF' [-Wunused-variable]
+     float erf1,erf2,sigF;
+                     ^~~~
+../src/helloworld.c:111:22: warning: variable 'templf' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+                      ^~~~~~
+../src/helloworld.c:111:13: warning: variable 'Cr' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+             ^~
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:205:3: warning: implicit declaration of function 'srand' [-Wimplicit-function-declaration]
+   srand((unsigned)tCurrand );
+   ^~~~~
+../src/helloworld.c:217:21: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+      seed = (int)(1+rand()%(10000))+100;;
+                     ^~~~
+../src/helloworld.c:222:53: error: 'Np' undeclared (first use in this function)
+              bestfit3  = bpecDEbest1bin_rand_g(seed,Np,intermax);
+                                                     ^~
+../src/helloworld.c:222:53: note: each undeclared identifier is reported only once for each function it appears in
+../src/helloworld.c:222:56: error: 'intermax' undeclared (first use in this function)
+              bestfit3  = bpecDEbest1bin_rand_g(seed,Np,intermax);
+                                                        ^~~~~~~~
+../src/helloworld.c:223:37: error: 'i' undeclared (first use in this function)
+              printf(" %f ",bestfit3[i]);
+                                     ^
+make: *** [src/helloworld.o] ´íÎó 1
+19:20:51 **** Auto Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hhh_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'func_unite':
+../src/helloworld.c:76:9: warning: unused variable 'temppi' [-Wunused-variable]
+     int temppi,popselect;
+         ^~~~~~
+../src/helloworld.c: In function 'bpecDEbest1bin_rand_g':
+../src/helloworld.c:116:9: warning: variable 'temp_lfsr' set but not used [-Wunused-but-set-variable]
+     int temp_lfsr;
+         ^~~~~~~~~
+../src/helloworld.c:115:21: warning: unused variable 'sigF' [-Wunused-variable]
+     float erf1,erf2,sigF;
+                     ^~~~
+../src/helloworld.c:111:22: warning: variable 'templf' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+                      ^~~~~~
+../src/helloworld.c:111:13: warning: variable 'Cr' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+             ^~
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:205:3: warning: implicit declaration of function 'srand' [-Wimplicit-function-declaration]
+   srand((unsigned)tCurrand );
+   ^~~~~
+../src/helloworld.c:217:21: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+      seed = (int)(1+rand()%(10000))+100;;
+                     ^~~~
+../src/helloworld.c:222:53: error: 'Np' undeclared (first use in this function)
+              bestfit3  = bpecDEbest1bin_rand_g(seed,Np,intermax);
+                                                     ^~
+../src/helloworld.c:222:53: note: each undeclared identifier is reported only once for each function it appears in
+../src/helloworld.c:222:56: error: 'intermax' undeclared (first use in this function)
+              bestfit3  = bpecDEbest1bin_rand_g(seed,Np,intermax);
+                                                        ^~~~~~~~
+make: *** [src/helloworld.o] ´íÎó 1
+19:21:16 **** Auto Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hhh_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'func_unite':
+../src/helloworld.c:76:9: warning: unused variable 'temppi' [-Wunused-variable]
+     int temppi,popselect;
+         ^~~~~~
+../src/helloworld.c: In function 'bpecDEbest1bin_rand_g':
+../src/helloworld.c:116:9: warning: variable 'temp_lfsr' set but not used [-Wunused-but-set-variable]
+     int temp_lfsr;
+         ^~~~~~~~~
+../src/helloworld.c:115:21: warning: unused variable 'sigF' [-Wunused-variable]
+     float erf1,erf2,sigF;
+                     ^~~~
+../src/helloworld.c:111:22: warning: variable 'templf' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+                      ^~~~~~
+../src/helloworld.c:111:13: warning: variable 'Cr' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+             ^~
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:205:3: warning: implicit declaration of function 'srand' [-Wimplicit-function-declaration]
+   srand((unsigned)tCurrand );
+   ^~~~~
+../src/helloworld.c:218:21: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+      seed = (int)(1+rand()%(10000))+100;;
+                     ^~~~
+'Finished building: ../src/helloworld.c'
+' '
+'Building target: hhh.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../hhh_bsp/ps7_cortexa9_0/lib -o "hhh.elf"  ./src/helloworld.o ./src/platform.o   -lm -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: hhh.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size hhh.elf  |tee "hhh.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  82872	   3000	  23344	 109216	  1aaa0	hhh.elf
+'Finished building: hhh.elf.size'
+' '
+19:21:23 **** Auto Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hhh_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'func_unite':
+../src/helloworld.c:76:9: warning: unused variable 'temppi' [-Wunused-variable]
+     int temppi,popselect;
+         ^~~~~~
+../src/helloworld.c: In function 'bpecDEbest1bin_rand_g':
+../src/helloworld.c:116:9: warning: variable 'temp_lfsr' set but not used [-Wunused-but-set-variable]
+     int temp_lfsr;
+         ^~~~~~~~~
+../src/helloworld.c:115:21: warning: unused variable 'sigF' [-Wunused-variable]
+     float erf1,erf2,sigF;
+                     ^~~~
+../src/helloworld.c:111:22: warning: variable 'templf' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+                      ^~~~~~
+../src/helloworld.c:111:13: warning: variable 'Cr' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+             ^~
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:205:3: warning: implicit declaration of function 'srand' [-Wimplicit-function-declaration]
+   srand((unsigned)tCurrand );
+   ^~~~~
+../src/helloworld.c:218:21: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+      seed = (int)(1+rand()%(10000))+100;;
+                     ^~~~
+'Finished building: ../src/helloworld.c'
+' '
+'Building target: hhh.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../hhh_bsp/ps7_cortexa9_0/lib -o "hhh.elf"  ./src/helloworld.o ./src/platform.o   -lm -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: hhh.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size hhh.elf  |tee "hhh.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  82872	   3000	  23344	 109216	  1aaa0	hhh.elf
+'Finished building: hhh.elf.size'
+' '
+19:22:01 **** Auto Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hhh_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'func_unite':
+../src/helloworld.c:76:9: warning: unused variable 'temppi' [-Wunused-variable]
+     int temppi,popselect;
+         ^~~~~~
+../src/helloworld.c: In function 'bpecDEbest1bin_rand_g':
+../src/helloworld.c:116:9: warning: variable 'temp_lfsr' set but not used [-Wunused-but-set-variable]
+     int temp_lfsr;
+         ^~~~~~~~~
+../src/helloworld.c:115:21: warning: unused variable 'sigF' [-Wunused-variable]
+     float erf1,erf2,sigF;
+                     ^~~~
+../src/helloworld.c:111:22: warning: variable 'templf' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+                      ^~~~~~
+../src/helloworld.c:111:13: warning: variable 'Cr' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+             ^~
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:205:3: warning: implicit declaration of function 'srand' [-Wimplicit-function-declaration]
+   srand((unsigned)tCurrand );
+   ^~~~~
+../src/helloworld.c:218:21: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+      seed = (int)(1+rand()%(10000))+100;;
+                     ^~~~
+'Finished building: ../src/helloworld.c'
+' '
+'Building target: hhh.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../hhh_bsp/ps7_cortexa9_0/lib -o "hhh.elf"  ./src/helloworld.o ./src/platform.o   -lm -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: hhh.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size hhh.elf  |tee "hhh.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  82872	   3000	  23344	 109216	  1aaa0	hhh.elf
+'Finished building: hhh.elf.size'
+' '
+19:22:14 **** Auto Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hhh_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'func_unite':
+../src/helloworld.c:76:9: warning: unused variable 'temppi' [-Wunused-variable]
+     int temppi,popselect;
+         ^~~~~~
+../src/helloworld.c: In function 'bpecDEbest1bin_rand_g':
+../src/helloworld.c:116:9: warning: variable 'temp_lfsr' set but not used [-Wunused-but-set-variable]
+     int temp_lfsr;
+         ^~~~~~~~~
+../src/helloworld.c:115:21: warning: unused variable 'sigF' [-Wunused-variable]
+     float erf1,erf2,sigF;
+                     ^~~~
+../src/helloworld.c:111:22: warning: variable 'templf' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+                      ^~~~~~
+../src/helloworld.c:111:13: warning: variable 'Cr' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+             ^~
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:205:3: warning: implicit declaration of function 'srand' [-Wimplicit-function-declaration]
+   srand((unsigned)tCurrand );
+   ^~~~~
+../src/helloworld.c:218:21: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+      seed = (int)(1+rand()%(10000))+100;;
+                     ^~~~
+../src/helloworld.c:200:26: warning: unused variable 'tallusedarm' [-Wunused-variable]
+   float tUsed,tallused=0,tallusedarm=0;
+                          ^~~~~~~~~~~
+'Finished building: ../src/helloworld.c'
+' '
+'Building target: hhh.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../hhh_bsp/ps7_cortexa9_0/lib -o "hhh.elf"  ./src/helloworld.o ./src/platform.o   -lm -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: hhh.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size hhh.elf  |tee "hhh.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  82872	   3000	  23344	 109216	  1aaa0	hhh.elf
+'Finished building: hhh.elf.size'
+' '
+19:22:23 **** Auto Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hhh_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'func_unite':
+../src/helloworld.c:76:9: warning: unused variable 'temppi' [-Wunused-variable]
+     int temppi,popselect;
+         ^~~~~~
+../src/helloworld.c: In function 'bpecDEbest1bin_rand_g':
+../src/helloworld.c:116:9: warning: variable 'temp_lfsr' set but not used [-Wunused-but-set-variable]
+     int temp_lfsr;
+         ^~~~~~~~~
+../src/helloworld.c:115:21: warning: unused variable 'sigF' [-Wunused-variable]
+     float erf1,erf2,sigF;
+                     ^~~~
+../src/helloworld.c:111:22: warning: variable 'templf' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+                      ^~~~~~
+../src/helloworld.c:111:13: warning: variable 'Cr' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+             ^~
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:205:3: warning: implicit declaration of function 'srand' [-Wimplicit-function-declaration]
+   srand((unsigned)tCurrand );
+   ^~~~~
+../src/helloworld.c:218:21: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+      seed = (int)(1+rand()%(10000))+100;;
+                     ^~~~
+../src/helloworld.c:200:35: warning: unused variable 'tallusedarm' [-Wunused-variable]
+   float tUsed,tUsedarm,tallused=0,tallusedarm=0;
+                                   ^~~~~~~~~~~
+../src/helloworld.c:200:15: warning: unused variable 'tUsedarm' [-Wunused-variable]
+   float tUsed,tUsedarm,tallused=0,tallusedarm=0;
+               ^~~~~~~~
+'Finished building: ../src/helloworld.c'
+' '
+'Building target: hhh.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../hhh_bsp/ps7_cortexa9_0/lib -o "hhh.elf"  ./src/helloworld.o ./src/platform.o   -lm -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: hhh.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size hhh.elf  |tee "hhh.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  82872	   3000	  23344	 109216	  1aaa0	hhh.elf
+'Finished building: hhh.elf.size'
+' '
+19:22:59 **** Auto Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hhh_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'func_unite':
+../src/helloworld.c:76:9: warning: unused variable 'temppi' [-Wunused-variable]
+     int temppi,popselect;
+         ^~~~~~
+../src/helloworld.c: In function 'bpecDEbest1bin_rand_g':
+../src/helloworld.c:116:9: warning: variable 'temp_lfsr' set but not used [-Wunused-but-set-variable]
+     int temp_lfsr;
+         ^~~~~~~~~
+../src/helloworld.c:115:21: warning: unused variable 'sigF' [-Wunused-variable]
+     float erf1,erf2,sigF;
+                     ^~~~
+../src/helloworld.c:111:22: warning: variable 'templf' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+                      ^~~~~~
+../src/helloworld.c:111:13: warning: variable 'Cr' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+             ^~
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:205:3: warning: implicit declaration of function 'srand' [-Wimplicit-function-declaration]
+   srand((unsigned)tCurrand );
+   ^~~~~
+../src/helloworld.c:218:21: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+      seed = (int)(1+rand()%(10000))+100;;
+                     ^~~~
+../src/helloworld.c:200:35: warning: unused variable 'tallusedarm' [-Wunused-variable]
+   float tUsed,tUsedarm,tallused=0,tallusedarm=0;
+                                   ^~~~~~~~~~~
+../src/helloworld.c:200:15: warning: unused variable 'tUsedarm' [-Wunused-variable]
+   float tUsed,tUsedarm,tallused=0,tallusedarm=0;
+               ^~~~~~~~
+'Finished building: ../src/helloworld.c'
+' '
+'Building target: hhh.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../hhh_bsp/ps7_cortexa9_0/lib -o "hhh.elf"  ./src/helloworld.o ./src/platform.o   -lm -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: hhh.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size hhh.elf  |tee "hhh.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  82936	   3000	  23344	 109280	  1aae0	hhh.elf
+'Finished building: hhh.elf.size'
+' '
+19:23:21 **** Auto Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hhh_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'func_unite':
+../src/helloworld.c:76:9: warning: unused variable 'temppi' [-Wunused-variable]
+     int temppi,popselect;
+         ^~~~~~
+../src/helloworld.c: In function 'bpecDEbest1bin_rand_g':
+../src/helloworld.c:116:9: warning: variable 'temp_lfsr' set but not used [-Wunused-but-set-variable]
+     int temp_lfsr;
+         ^~~~~~~~~
+../src/helloworld.c:115:21: warning: unused variable 'sigF' [-Wunused-variable]
+     float erf1,erf2,sigF;
+                     ^~~~
+../src/helloworld.c:111:22: warning: variable 'templf' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+                      ^~~~~~
+../src/helloworld.c:111:13: warning: variable 'Cr' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+             ^~
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:205:3: warning: implicit declaration of function 'srand' [-Wimplicit-function-declaration]
+   srand((unsigned)tCurrand );
+   ^~~~~
+../src/helloworld.c:218:21: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+      seed = (int)(1+rand()%(10000))+100;;
+                     ^~~~
+'Finished building: ../src/helloworld.c'
+' '
+'Building target: hhh.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../hhh_bsp/ps7_cortexa9_0/lib -o "hhh.elf"  ./src/helloworld.o ./src/platform.o   -lm -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: hhh.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size hhh.elf  |tee "hhh.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  83128	   3000	  23344	 109472	  1aba0	hhh.elf
+'Finished building: hhh.elf.size'
+' '
+19:23:38 **** Auto Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hhh_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'func_unite':
+../src/helloworld.c:76:9: warning: unused variable 'temppi' [-Wunused-variable]
+     int temppi,popselect;
+         ^~~~~~
+../src/helloworld.c: In function 'bpecDEbest1bin_rand_g':
+../src/helloworld.c:116:9: warning: variable 'temp_lfsr' set but not used [-Wunused-but-set-variable]
+     int temp_lfsr;
+         ^~~~~~~~~
+../src/helloworld.c:115:21: warning: unused variable 'sigF' [-Wunused-variable]
+     float erf1,erf2,sigF;
+                     ^~~~
+../src/helloworld.c:111:22: warning: variable 'templf' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+                      ^~~~~~
+../src/helloworld.c:111:13: warning: variable 'Cr' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+             ^~
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:205:3: warning: implicit declaration of function 'srand' [-Wimplicit-function-declaration]
+   srand((unsigned)tCurrand );
+   ^~~~~
+../src/helloworld.c:218:21: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+      seed = (int)(1+rand()%(10000))+100;;
+                     ^~~~
+'Finished building: ../src/helloworld.c'
+' '
+'Building target: hhh.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../hhh_bsp/ps7_cortexa9_0/lib -o "hhh.elf"  ./src/helloworld.o ./src/platform.o   -lm -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: hhh.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size hhh.elf  |tee "hhh.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  83128	   3000	  23344	 109472	  1aba0	hhh.elf
+'Finished building: hhh.elf.size'
+' '
+19:24:07 **** Auto Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hhh_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'func_unite':
+../src/helloworld.c:76:9: warning: unused variable 'temppi' [-Wunused-variable]
+     int temppi,popselect;
+         ^~~~~~
+../src/helloworld.c: In function 'bpecDEbest1bin_rand_g':
+../src/helloworld.c:116:9: warning: variable 'temp_lfsr' set but not used [-Wunused-but-set-variable]
+     int temp_lfsr;
+         ^~~~~~~~~
+../src/helloworld.c:115:21: warning: unused variable 'sigF' [-Wunused-variable]
+     float erf1,erf2,sigF;
+                     ^~~~
+../src/helloworld.c:111:22: warning: variable 'templf' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+                      ^~~~~~
+../src/helloworld.c:111:13: warning: variable 'Cr' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+             ^~
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:205:3: warning: implicit declaration of function 'srand' [-Wimplicit-function-declaration]
+   srand((unsigned)tCurrand );
+   ^~~~~
+../src/helloworld.c:218:21: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+      seed = (int)(1+rand()%(10000))+100;;
+                     ^~~~
+'Finished building: ../src/helloworld.c'
+' '
+'Building target: hhh.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../hhh_bsp/ps7_cortexa9_0/lib -o "hhh.elf"  ./src/helloworld.o ./src/platform.o   -lm -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: hhh.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size hhh.elf  |tee "hhh.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  83264	   3000	  23344	 109608	  1ac28	hhh.elf
+'Finished building: hhh.elf.size'
+' '
+19:24:13 **** Auto Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hhh_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'func_unite':
+../src/helloworld.c:76:9: warning: unused variable 'temppi' [-Wunused-variable]
+     int temppi,popselect;
+         ^~~~~~
+../src/helloworld.c: In function 'bpecDEbest1bin_rand_g':
+../src/helloworld.c:116:9: warning: variable 'temp_lfsr' set but not used [-Wunused-but-set-variable]
+     int temp_lfsr;
+         ^~~~~~~~~
+../src/helloworld.c:115:21: warning: unused variable 'sigF' [-Wunused-variable]
+     float erf1,erf2,sigF;
+                     ^~~~
+../src/helloworld.c:111:22: warning: variable 'templf' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+                      ^~~~~~
+../src/helloworld.c:111:13: warning: variable 'Cr' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+             ^~
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:205:3: warning: implicit declaration of function 'srand' [-Wimplicit-function-declaration]
+   srand((unsigned)tCurrand );
+   ^~~~~
+../src/helloworld.c:218:21: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+      seed = (int)(1+rand()%(10000))+100;;
+                     ^~~~
+'Finished building: ../src/helloworld.c'
+' '
+'Building target: hhh.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../hhh_bsp/ps7_cortexa9_0/lib -o "hhh.elf"  ./src/helloworld.o ./src/platform.o   -lm -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: hhh.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size hhh.elf  |tee "hhh.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  83264	   3000	  23344	 109608	  1ac28	hhh.elf
+'Finished building: hhh.elf.size'
+' '
+19:24:19 **** Auto Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hhh_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'func_unite':
+../src/helloworld.c:76:9: warning: unused variable 'temppi' [-Wunused-variable]
+     int temppi,popselect;
+         ^~~~~~
+../src/helloworld.c: In function 'bpecDEbest1bin_rand_g':
+../src/helloworld.c:116:9: warning: variable 'temp_lfsr' set but not used [-Wunused-but-set-variable]
+     int temp_lfsr;
+         ^~~~~~~~~
+../src/helloworld.c:115:21: warning: unused variable 'sigF' [-Wunused-variable]
+     float erf1,erf2,sigF;
+                     ^~~~
+../src/helloworld.c:111:22: warning: variable 'templf' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+                      ^~~~~~
+../src/helloworld.c:111:13: warning: variable 'Cr' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+             ^~
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:205:3: warning: implicit declaration of function 'srand' [-Wimplicit-function-declaration]
+   srand((unsigned)tCurrand );
+   ^~~~~
+../src/helloworld.c:218:21: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+      seed = (int)(1+rand()%(10000))+100;;
+                     ^~~~
+'Finished building: ../src/helloworld.c'
+' '
+'Building target: hhh.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../hhh_bsp/ps7_cortexa9_0/lib -o "hhh.elf"  ./src/helloworld.o ./src/platform.o   -lm -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: hhh.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size hhh.elf  |tee "hhh.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  83264	   3000	  23344	 109608	  1ac28	hhh.elf
+'Finished building: hhh.elf.size'
+' '
+19:24:24 **** Auto Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hhh_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'func_unite':
+../src/helloworld.c:76:9: warning: unused variable 'temppi' [-Wunused-variable]
+     int temppi,popselect;
+         ^~~~~~
+../src/helloworld.c: In function 'bpecDEbest1bin_rand_g':
+../src/helloworld.c:116:9: warning: variable 'temp_lfsr' set but not used [-Wunused-but-set-variable]
+     int temp_lfsr;
+         ^~~~~~~~~
+../src/helloworld.c:115:21: warning: unused variable 'sigF' [-Wunused-variable]
+     float erf1,erf2,sigF;
+                     ^~~~
+../src/helloworld.c:111:22: warning: variable 'templf' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+                      ^~~~~~
+../src/helloworld.c:111:13: warning: variable 'Cr' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+             ^~
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:205:3: warning: implicit declaration of function 'srand' [-Wimplicit-function-declaration]
+   srand((unsigned)tCurrand );
+   ^~~~~
+../src/helloworld.c:218:21: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+      seed = (int)(1+rand()%(10000))+100;;
+                     ^~~~
+'Finished building: ../src/helloworld.c'
+' '
+'Building target: hhh.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../hhh_bsp/ps7_cortexa9_0/lib -o "hhh.elf"  ./src/helloworld.o ./src/platform.o   -lm -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: hhh.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size hhh.elf  |tee "hhh.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  83264	   3000	  23344	 109608	  1ac28	hhh.elf
+'Finished building: hhh.elf.size'
+' '
+19:24:34 **** Auto Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hhh_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'func_unite':
+../src/helloworld.c:76:9: warning: unused variable 'temppi' [-Wunused-variable]
+     int temppi,popselect;
+         ^~~~~~
+../src/helloworld.c: In function 'bpecDEbest1bin_rand_g':
+../src/helloworld.c:116:9: warning: variable 'temp_lfsr' set but not used [-Wunused-but-set-variable]
+     int temp_lfsr;
+         ^~~~~~~~~
+../src/helloworld.c:115:21: warning: unused variable 'sigF' [-Wunused-variable]
+     float erf1,erf2,sigF;
+                     ^~~~
+../src/helloworld.c:111:22: warning: variable 'templf' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+                      ^~~~~~
+../src/helloworld.c:111:13: warning: variable 'Cr' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+             ^~
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:205:3: warning: implicit declaration of function 'srand' [-Wimplicit-function-declaration]
+   srand((unsigned)tCurrand );
+   ^~~~~
+../src/helloworld.c:218:21: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+      seed = (int)(1+rand()%(10000))+100;;
+                     ^~~~
+'Finished building: ../src/helloworld.c'
+' '
+'Building target: hhh.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../hhh_bsp/ps7_cortexa9_0/lib -o "hhh.elf"  ./src/helloworld.o ./src/platform.o   -lm -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: hhh.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size hhh.elf  |tee "hhh.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  83264	   3000	  23344	 109608	  1ac28	hhh.elf
+'Finished building: hhh.elf.size'
+' '
+19:26:09 **** Auto Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hhh_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'func_unite':
+../src/helloworld.c:76:9: warning: unused variable 'temppi' [-Wunused-variable]
+     int temppi,popselect;
+         ^~~~~~
+../src/helloworld.c: In function 'bpecDEbest1bin_rand_g':
+../src/helloworld.c:116:9: warning: variable 'temp_lfsr' set but not used [-Wunused-but-set-variable]
+     int temp_lfsr;
+         ^~~~~~~~~
+../src/helloworld.c:115:21: warning: unused variable 'sigF' [-Wunused-variable]
+     float erf1,erf2,sigF;
+                     ^~~~
+../src/helloworld.c:111:22: warning: variable 'templf' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+                      ^~~~~~
+../src/helloworld.c:111:13: warning: variable 'Cr' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+             ^~
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:205:3: warning: implicit declaration of function 'srand' [-Wimplicit-function-declaration]
+   srand((unsigned)tCurrand );
+   ^~~~~
+../src/helloworld.c:220:21: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+      seed = (int)(1+rand()%(10000))+100;;
+                     ^~~~
+../src/helloworld.c:213:12: warning: 'seed' is used uninitialized in this function [-Wuninitialized]
+   A[110-3] =seed;
+   ~~~~~~~~~^~~~~
+../src/helloworld.c:214:12: warning: 'intermax' is used uninitialized in this function [-Wuninitialized]
+   A[110-4] = intermax;
+   ~~~~~~~~~^~~~~~~~~~
+'Finished building: ../src/helloworld.c'
+' '
+'Building target: hhh.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../hhh_bsp/ps7_cortexa9_0/lib -o "hhh.elf"  ./src/helloworld.o ./src/platform.o   -lm -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: hhh.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size hhh.elf  |tee "hhh.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  83264	   3000	  23344	 109608	  1ac28	hhh.elf
+'Finished building: hhh.elf.size'
+' '
+19:26:20 **** Auto Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hhh_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'func_unite':
+../src/helloworld.c:76:9: warning: unused variable 'temppi' [-Wunused-variable]
+     int temppi,popselect;
+         ^~~~~~
+../src/helloworld.c: In function 'bpecDEbest1bin_rand_g':
+../src/helloworld.c:116:9: warning: variable 'temp_lfsr' set but not used [-Wunused-but-set-variable]
+     int temp_lfsr;
+         ^~~~~~~~~
+../src/helloworld.c:115:21: warning: unused variable 'sigF' [-Wunused-variable]
+     float erf1,erf2,sigF;
+                     ^~~~
+../src/helloworld.c:111:22: warning: variable 'templf' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+                      ^~~~~~
+../src/helloworld.c:111:13: warning: variable 'Cr' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+             ^~
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:205:3: warning: implicit declaration of function 'srand' [-Wimplicit-function-declaration]
+   srand((unsigned)tCurrand );
+   ^~~~~
+../src/helloworld.c:220:21: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+      seed = (int)(1+rand()%(10000))+100;;
+                     ^~~~
+../src/helloworld.c:213:12: warning: 'seed' is used uninitialized in this function [-Wuninitialized]
+   A[110-3] =seed;
+   ~~~~~~~~~^~~~~
+../src/helloworld.c:214:12: warning: 'intermax' is used uninitialized in this function [-Wuninitialized]
+   A[110-4] = intermax;
+   ~~~~~~~~~^~~~~~~~~~
+'Finished building: ../src/helloworld.c'
+' '
+'Building target: hhh.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../hhh_bsp/ps7_cortexa9_0/lib -o "hhh.elf"  ./src/helloworld.o ./src/platform.o   -lm -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: hhh.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size hhh.elf  |tee "hhh.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  83264	   3000	  23344	 109608	  1ac28	hhh.elf
+'Finished building: hhh.elf.size'
+' '
+19:26:33 **** Auto Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hhh_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'func_unite':
+../src/helloworld.c:76:9: warning: unused variable 'temppi' [-Wunused-variable]
+     int temppi,popselect;
+         ^~~~~~
+../src/helloworld.c: In function 'bpecDEbest1bin_rand_g':
+../src/helloworld.c:116:9: warning: variable 'temp_lfsr' set but not used [-Wunused-but-set-variable]
+     int temp_lfsr;
+         ^~~~~~~~~
+../src/helloworld.c:115:21: warning: unused variable 'sigF' [-Wunused-variable]
+     float erf1,erf2,sigF;
+                     ^~~~
+../src/helloworld.c:111:22: warning: variable 'templf' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+                      ^~~~~~
+../src/helloworld.c:111:13: warning: variable 'Cr' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+             ^~
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:205:3: warning: implicit declaration of function 'srand' [-Wimplicit-function-declaration]
+   srand((unsigned)tCurrand );
+   ^~~~~
+../src/helloworld.c:218:19: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+    seed = (int)(1+rand()%(10000))+100;;
+                   ^~~~
+../src/helloworld.c:213:12: warning: 'seed' is used uninitialized in this function [-Wuninitialized]
+   A[110-3] =seed;
+   ~~~~~~~~~^~~~~
+../src/helloworld.c:214:12: warning: 'intermax' is used uninitialized in this function [-Wuninitialized]
+   A[110-4] = intermax;
+   ~~~~~~~~~^~~~~~~~~~
+'Finished building: ../src/helloworld.c'
+' '
+'Building target: hhh.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../hhh_bsp/ps7_cortexa9_0/lib -o "hhh.elf"  ./src/helloworld.o ./src/platform.o   -lm -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: hhh.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size hhh.elf  |tee "hhh.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  83264	   3000	  23344	 109608	  1ac28	hhh.elf
+'Finished building: hhh.elf.size'
+' '
+19:32:03 **** Auto Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hhh_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'func_unite':
+../src/helloworld.c:76:9: warning: unused variable 'temppi' [-Wunused-variable]
+     int temppi,popselect;
+         ^~~~~~
+../src/helloworld.c: In function 'bpecDEbest1bin_rand_g':
+../src/helloworld.c:116:9: warning: variable 'temp_lfsr' set but not used [-Wunused-but-set-variable]
+     int temp_lfsr;
+         ^~~~~~~~~
+../src/helloworld.c:115:21: warning: unused variable 'sigF' [-Wunused-variable]
+     float erf1,erf2,sigF;
+                     ^~~~
+../src/helloworld.c:111:22: warning: variable 'templf' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+                      ^~~~~~
+../src/helloworld.c:111:13: warning: variable 'Cr' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+             ^~
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:205:3: warning: implicit declaration of function 'srand' [-Wimplicit-function-declaration]
+   srand((unsigned)tCurrand );
+   ^~~~~
+../src/helloworld.c:218:19: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+    seed = (int)(1+rand()%(10000))+100;;
+                   ^~~~
+../src/helloworld.c:226:37: error: 'i' undeclared (first use in this function)
+              printf(" %f ",bestfit3[i]);
+                                     ^
+../src/helloworld.c:226:37: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [src/helloworld.o] ´íÎó 1
+19:32:08 **** Auto Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hhh_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'func_unite':
+../src/helloworld.c:76:9: warning: unused variable 'temppi' [-Wunused-variable]
+     int temppi,popselect;
+         ^~~~~~
+../src/helloworld.c: In function 'bpecDEbest1bin_rand_g':
+../src/helloworld.c:116:9: warning: variable 'temp_lfsr' set but not used [-Wunused-but-set-variable]
+     int temp_lfsr;
+         ^~~~~~~~~
+../src/helloworld.c:115:21: warning: unused variable 'sigF' [-Wunused-variable]
+     float erf1,erf2,sigF;
+                     ^~~~
+../src/helloworld.c:111:22: warning: variable 'templf' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+                      ^~~~~~
+../src/helloworld.c:111:13: warning: variable 'Cr' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+             ^~
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:205:3: warning: implicit declaration of function 'srand' [-Wimplicit-function-declaration]
+   srand((unsigned)tCurrand );
+   ^~~~~
+../src/helloworld.c:218:19: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+    seed = (int)(1+rand()%(10000))+100;;
+                   ^~~~
+../src/helloworld.c:213:12: warning: 'seed' is used uninitialized in this function [-Wuninitialized]
+   A[110-3] =seed;
+   ~~~~~~~~~^~~~~
+../src/helloworld.c:214:12: warning: 'intermax' is used uninitialized in this function [-Wuninitialized]
+   A[110-4] = intermax;
+   ~~~~~~~~~^~~~~~~~~~
+'Finished building: ../src/helloworld.c'
+' '
+'Building target: hhh.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../hhh_bsp/ps7_cortexa9_0/lib -o "hhh.elf"  ./src/helloworld.o ./src/platform.o   -lm -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: hhh.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size hhh.elf  |tee "hhh.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  83264	   3000	  23344	 109608	  1ac28	hhh.elf
+'Finished building: hhh.elf.size'
+' '
+19:32:13 **** Incremental Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+make: Nothing to be done for `main-build'.
+19:32:42 **** Incremental Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+make: Nothing to be done for `main-build'.
+19:33:18 **** Incremental Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+make: Nothing to be done for `main-build'.
+19:33:35 **** Auto Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hhh_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'func_unite':
+../src/helloworld.c:76:9: warning: unused variable 'temppi' [-Wunused-variable]
+     int temppi,popselect;
+         ^~~~~~
+../src/helloworld.c: In function 'bpecDEbest1bin_rand_g':
+../src/helloworld.c:116:9: warning: variable 'temp_lfsr' set but not used [-Wunused-but-set-variable]
+     int temp_lfsr;
+         ^~~~~~~~~
+../src/helloworld.c:115:21: warning: unused variable 'sigF' [-Wunused-variable]
+     float erf1,erf2,sigF;
+                     ^~~~
+../src/helloworld.c:111:22: warning: variable 'templf' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+                      ^~~~~~
+../src/helloworld.c:111:13: warning: variable 'Cr' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+             ^~
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:205:3: warning: implicit declaration of function 'srand' [-Wimplicit-function-declaration]
+   srand((unsigned)tCurrand );
+   ^~~~~
+../src/helloworld.c:218:19: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+    seed = (int)(1+rand()%(10000))+100;;
+                   ^~~~
+../src/helloworld.c:213:12: warning: 'seed' is used uninitialized in this function [-Wuninitialized]
+   A[110-3] =seed;
+   ~~~~~~~~~^~~~~
+../src/helloworld.c:214:12: warning: 'intermax' is used uninitialized in this function [-Wuninitialized]
+   A[110-4] = intermax;
+   ~~~~~~~~~^~~~~~~~~~
+'Finished building: ../src/helloworld.c'
+' '
+'Building target: hhh.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../hhh_bsp/ps7_cortexa9_0/lib -o "hhh.elf"  ./src/helloworld.o ./src/platform.o   -lm -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: hhh.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size hhh.elf  |tee "hhh.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  83264	   3000	  23344	 109608	  1ac28	hhh.elf
+'Finished building: hhh.elf.size'
+' '
+19:33:49 **** Incremental Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+make: Nothing to be done for `main-build'.
+19:35:00 **** Auto Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hhh_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'func_unite':
+../src/helloworld.c:76:9: warning: unused variable 'temppi' [-Wunused-variable]
+     int temppi,popselect;
+         ^~~~~~
+../src/helloworld.c: In function 'bpecDEbest1bin_rand_g':
+../src/helloworld.c:116:9: warning: variable 'temp_lfsr' set but not used [-Wunused-but-set-variable]
+     int temp_lfsr;
+         ^~~~~~~~~
+../src/helloworld.c:115:21: warning: unused variable 'sigF' [-Wunused-variable]
+     float erf1,erf2,sigF;
+                     ^~~~
+../src/helloworld.c:111:22: warning: variable 'templf' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+                      ^~~~~~
+../src/helloworld.c:111:13: warning: variable 'Cr' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+             ^~
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:205:3: warning: implicit declaration of function 'srand' [-Wimplicit-function-declaration]
+   srand((unsigned)tCurrand );
+   ^~~~~
+../src/helloworld.c:217:19: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+    seed = (int)(1+rand()%(10000))+100;
+                   ^~~~
+'Finished building: ../src/helloworld.c'
+' '
+'Building target: hhh.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../hhh_bsp/ps7_cortexa9_0/lib -o "hhh.elf"  ./src/helloworld.o ./src/platform.o   -lm -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: hhh.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size hhh.elf  |tee "hhh.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  83264	   3000	  23344	 109608	  1ac28	hhh.elf
+'Finished building: hhh.elf.size'
+' '
+19:35:03 **** Auto Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hhh_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'func_unite':
+../src/helloworld.c:76:9: warning: unused variable 'temppi' [-Wunused-variable]
+     int temppi,popselect;
+         ^~~~~~
+../src/helloworld.c: In function 'bpecDEbest1bin_rand_g':
+../src/helloworld.c:116:9: warning: variable 'temp_lfsr' set but not used [-Wunused-but-set-variable]
+     int temp_lfsr;
+         ^~~~~~~~~
+../src/helloworld.c:115:21: warning: unused variable 'sigF' [-Wunused-variable]
+     float erf1,erf2,sigF;
+                     ^~~~
+../src/helloworld.c:111:22: warning: variable 'templf' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+                      ^~~~~~
+../src/helloworld.c:111:13: warning: variable 'Cr' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+             ^~
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:205:3: warning: implicit declaration of function 'srand' [-Wimplicit-function-declaration]
+   srand((unsigned)tCurrand );
+   ^~~~~
+../src/helloworld.c:217:19: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+    seed = (int)(1+rand()%(10000))+100;
+                   ^~~~
+'Finished building: ../src/helloworld.c'
+' '
+'Building target: hhh.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../hhh_bsp/ps7_cortexa9_0/lib -o "hhh.elf"  ./src/helloworld.o ./src/platform.o   -lm -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: hhh.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size hhh.elf  |tee "hhh.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  83264	   3000	  23344	 109608	  1ac28	hhh.elf
+'Finished building: hhh.elf.size'
+' '
+19:35:06 **** Incremental Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+make: Nothing to be done for `main-build'.
+19:35:17 **** Incremental Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+make: Nothing to be done for `main-build'.
+19:36:07 **** Auto Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hhh_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'func_unite':
+../src/helloworld.c:76:9: warning: unused variable 'temppi' [-Wunused-variable]
+     int temppi,popselect;
+         ^~~~~~
+../src/helloworld.c: In function 'bpecDEbest1bin_rand_g':
+../src/helloworld.c:116:9: warning: variable 'temp_lfsr' set but not used [-Wunused-but-set-variable]
+     int temp_lfsr;
+         ^~~~~~~~~
+../src/helloworld.c:115:21: warning: unused variable 'sigF' [-Wunused-variable]
+     float erf1,erf2,sigF;
+                     ^~~~
+../src/helloworld.c:111:22: warning: variable 'templf' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+                      ^~~~~~
+../src/helloworld.c:111:13: warning: variable 'Cr' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+             ^~
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:205:3: warning: implicit declaration of function 'srand' [-Wimplicit-function-declaration]
+   srand((unsigned)tCurrand );
+   ^~~~~
+../src/helloworld.c:217:19: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+    seed = (int)(1+rand()%(10000))+100;
+                   ^~~~
+'Finished building: ../src/helloworld.c'
+' '
+'Building target: hhh.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../hhh_bsp/ps7_cortexa9_0/lib -o "hhh.elf"  ./src/helloworld.o ./src/platform.o   -lm -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: hhh.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size hhh.elf  |tee "hhh.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  83264	   3000	  23344	 109608	  1ac28	hhh.elf
+'Finished building: hhh.elf.size'
+' '
+19:36:11 **** Incremental Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+make: Nothing to be done for `main-build'.
+19:36:23 **** Auto Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hhh_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'func_unite':
+../src/helloworld.c:76:9: warning: unused variable 'temppi' [-Wunused-variable]
+     int temppi,popselect;
+         ^~~~~~
+../src/helloworld.c: In function 'bpecDEbest1bin_rand_g':
+../src/helloworld.c:116:9: warning: variable 'temp_lfsr' set but not used [-Wunused-but-set-variable]
+     int temp_lfsr;
+         ^~~~~~~~~
+../src/helloworld.c:115:21: warning: unused variable 'sigF' [-Wunused-variable]
+     float erf1,erf2,sigF;
+                     ^~~~
+../src/helloworld.c:111:22: warning: variable 'templf' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+                      ^~~~~~
+../src/helloworld.c:111:13: warning: variable 'Cr' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+             ^~
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:205:3: warning: implicit declaration of function 'srand' [-Wimplicit-function-declaration]
+   srand((unsigned)tCurrand );
+   ^~~~~
+../src/helloworld.c:217:19: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+    seed = (int)(1+rand()%(10000))+100;
+                   ^~~~
+'Finished building: ../src/helloworld.c'
+' '
+'Building target: hhh.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../hhh_bsp/ps7_cortexa9_0/lib -o "hhh.elf"  ./src/helloworld.o ./src/platform.o   -lm -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: hhh.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size hhh.elf  |tee "hhh.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  83264	   3000	  23344	 109608	  1ac28	hhh.elf
+'Finished building: hhh.elf.size'
+' '
+19:36:26 **** Incremental Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+make: Nothing to be done for `main-build'.
+19:36:47 **** Auto Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hhh_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'func_unite':
+../src/helloworld.c:76:9: warning: unused variable 'temppi' [-Wunused-variable]
+     int temppi,popselect;
+         ^~~~~~
+../src/helloworld.c: In function 'bpecDEbest1bin_rand_g':
+../src/helloworld.c:116:9: warning: variable 'temp_lfsr' set but not used [-Wunused-but-set-variable]
+     int temp_lfsr;
+         ^~~~~~~~~
+../src/helloworld.c:115:21: warning: unused variable 'sigF' [-Wunused-variable]
+     float erf1,erf2,sigF;
+                     ^~~~
+../src/helloworld.c:111:22: warning: variable 'templf' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+                      ^~~~~~
+../src/helloworld.c:111:13: warning: variable 'Cr' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+             ^~
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:205:3: warning: implicit declaration of function 'srand' [-Wimplicit-function-declaration]
+   srand((unsigned)tCurrand );
+   ^~~~~
+../src/helloworld.c:217:19: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+    seed = (int)(1+rand()%(10000))+100;
+                   ^~~~
+'Finished building: ../src/helloworld.c'
+' '
+'Building target: hhh.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../hhh_bsp/ps7_cortexa9_0/lib -o "hhh.elf"  ./src/helloworld.o ./src/platform.o   -lm -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: hhh.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size hhh.elf  |tee "hhh.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  83264	   3000	  23344	 109608	  1ac28	hhh.elf
+'Finished building: hhh.elf.size'
+' '
+19:37:07 **** Incremental Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+make: Nothing to be done for `main-build'.
+19:38:11 **** Auto Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hhh_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'func_unite':
+../src/helloworld.c:76:9: warning: unused variable 'temppi' [-Wunused-variable]
+     int temppi,popselect;
+         ^~~~~~
+../src/helloworld.c: In function 'bpecDEbest1bin_rand_g':
+../src/helloworld.c:116:9: warning: variable 'temp_lfsr' set but not used [-Wunused-but-set-variable]
+     int temp_lfsr;
+         ^~~~~~~~~
+../src/helloworld.c:115:21: warning: unused variable 'sigF' [-Wunused-variable]
+     float erf1,erf2,sigF;
+                     ^~~~
+../src/helloworld.c:111:22: warning: variable 'templf' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+                      ^~~~~~
+../src/helloworld.c:111:13: warning: variable 'Cr' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+             ^~
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:205:3: warning: implicit declaration of function 'srand' [-Wimplicit-function-declaration]
+   srand((unsigned)tCurrand );
+   ^~~~~
+../src/helloworld.c:217:19: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+    seed = (int)(1+rand()%(10000))+100;
+                   ^~~~
+'Finished building: ../src/helloworld.c'
+' '
+'Building target: hhh.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../hhh_bsp/ps7_cortexa9_0/lib -o "hhh.elf"  ./src/helloworld.o ./src/platform.o   -lm -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: hhh.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size hhh.elf  |tee "hhh.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  83264	   3000	  23344	 109608	  1ac28	hhh.elf
+'Finished building: hhh.elf.size'
+' '
+19:38:14 **** Incremental Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+make: Nothing to be done for `main-build'.
+19:39:01 **** Auto Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hhh_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'func_unite':
+../src/helloworld.c:76:9: warning: unused variable 'temppi' [-Wunused-variable]
+     int temppi,popselect;
+         ^~~~~~
+../src/helloworld.c: In function 'bpecDEbest1bin_rand_g':
+../src/helloworld.c:116:9: warning: variable 'temp_lfsr' set but not used [-Wunused-but-set-variable]
+     int temp_lfsr;
+         ^~~~~~~~~
+../src/helloworld.c:115:21: warning: unused variable 'sigF' [-Wunused-variable]
+     float erf1,erf2,sigF;
+                     ^~~~
+../src/helloworld.c:111:22: warning: variable 'templf' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+                      ^~~~~~
+../src/helloworld.c:111:13: warning: variable 'Cr' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+             ^~
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:205:3: warning: implicit declaration of function 'srand' [-Wimplicit-function-declaration]
+   srand((unsigned)tCurrand );
+   ^~~~~
+../src/helloworld.c:217:19: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+    seed = (int)(1+rand()%(10000))+100;
+                   ^~~~
+'Finished building: ../src/helloworld.c'
+' '
+'Building target: hhh.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../hhh_bsp/ps7_cortexa9_0/lib -o "hhh.elf"  ./src/helloworld.o ./src/platform.o   -lm -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: hhh.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size hhh.elf  |tee "hhh.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  83264	   3000	  23344	 109608	  1ac28	hhh.elf
+'Finished building: hhh.elf.size'
+' '
+19:39:04 **** Incremental Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+make: Nothing to be done for `main-build'.
+19:39:43 **** Auto Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hhh_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'func_unite':
+../src/helloworld.c:76:9: warning: unused variable 'temppi' [-Wunused-variable]
+     int temppi,popselect;
+         ^~~~~~
+../src/helloworld.c: In function 'bpecDEbest1bin_rand_g':
+../src/helloworld.c:116:9: warning: variable 'temp_lfsr' set but not used [-Wunused-but-set-variable]
+     int temp_lfsr;
+         ^~~~~~~~~
+../src/helloworld.c:115:21: warning: unused variable 'sigF' [-Wunused-variable]
+     float erf1,erf2,sigF;
+                     ^~~~
+../src/helloworld.c:111:22: warning: variable 'templf' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+                      ^~~~~~
+../src/helloworld.c:111:13: warning: variable 'Cr' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+             ^~
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:205:3: warning: implicit declaration of function 'srand' [-Wimplicit-function-declaration]
+   srand((unsigned)tCurrand );
+   ^~~~~
+../src/helloworld.c:217:19: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+    seed = (int)(1+rand()%(10000))+100;
+                   ^~~~
+'Finished building: ../src/helloworld.c'
+' '
+'Building target: hhh.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../hhh_bsp/ps7_cortexa9_0/lib -o "hhh.elf"  ./src/helloworld.o ./src/platform.o   -lm -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: hhh.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size hhh.elf  |tee "hhh.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  83264	   3000	  23344	 109608	  1ac28	hhh.elf
+'Finished building: hhh.elf.size'
+' '
+19:39:48 **** Incremental Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+make: Nothing to be done for `main-build'.
+19:41:38 **** Auto Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hhh_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'func_unite':
+../src/helloworld.c:76:9: warning: unused variable 'temppi' [-Wunused-variable]
+     int temppi,popselect;
+         ^~~~~~
+../src/helloworld.c: In function 'bpecDEbest1bin_rand_g':
+../src/helloworld.c:116:9: warning: variable 'temp_lfsr' set but not used [-Wunused-but-set-variable]
+     int temp_lfsr;
+         ^~~~~~~~~
+../src/helloworld.c:115:21: warning: unused variable 'sigF' [-Wunused-variable]
+     float erf1,erf2,sigF;
+                     ^~~~
+../src/helloworld.c:111:22: warning: variable 'templf' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+                      ^~~~~~
+../src/helloworld.c:111:13: warning: variable 'Cr' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+             ^~
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:205:3: warning: implicit declaration of function 'srand' [-Wimplicit-function-declaration]
+   srand((unsigned)tCurrand );
+   ^~~~~
+../src/helloworld.c:217:19: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+    seed = (int)(1+rand()%(10000))+100;
+                   ^~~~
+'Finished building: ../src/helloworld.c'
+' '
+'Building target: hhh.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../hhh_bsp/ps7_cortexa9_0/lib -o "hhh.elf"  ./src/helloworld.o ./src/platform.o   -lm -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: hhh.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size hhh.elf  |tee "hhh.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  83264	   3000	  23344	 109608	  1ac28	hhh.elf
+'Finished building: hhh.elf.size'
+' '
+19:41:44 **** Incremental Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+make: Nothing to be done for `main-build'.
+19:43:09 **** Auto Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hhh_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'func_unite':
+../src/helloworld.c:76:9: warning: unused variable 'temppi' [-Wunused-variable]
+     int temppi,popselect;
+         ^~~~~~
+../src/helloworld.c: In function 'bpecDEbest1bin_rand_g':
+../src/helloworld.c:116:9: warning: variable 'temp_lfsr' set but not used [-Wunused-but-set-variable]
+     int temp_lfsr;
+         ^~~~~~~~~
+../src/helloworld.c:115:21: warning: unused variable 'sigF' [-Wunused-variable]
+     float erf1,erf2,sigF;
+                     ^~~~
+../src/helloworld.c:111:22: warning: variable 'templf' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+                      ^~~~~~
+../src/helloworld.c:111:13: warning: variable 'Cr' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+             ^~
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:205:3: warning: implicit declaration of function 'srand' [-Wimplicit-function-declaration]
+   srand((unsigned)tCurrand );
+   ^~~~~
+../src/helloworld.c:217:19: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+    seed = (int)(1+rand()%(10000))+100;
+                   ^~~~
+'Finished building: ../src/helloworld.c'
+' '
+'Building target: hhh.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../hhh_bsp/ps7_cortexa9_0/lib -o "hhh.elf"  ./src/helloworld.o ./src/platform.o   -lm -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: hhh.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size hhh.elf  |tee "hhh.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  83264	   3000	  23344	 109608	  1ac28	hhh.elf
+'Finished building: hhh.elf.size'
+' '
+19:43:13 **** Incremental Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+make: Nothing to be done for `main-build'.
+19:44:01 **** Auto Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hhh_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'func_unite':
+../src/helloworld.c:76:9: warning: unused variable 'temppi' [-Wunused-variable]
+     int temppi,popselect;
+         ^~~~~~
+../src/helloworld.c: In function 'bpecDEbest1bin_rand_g':
+../src/helloworld.c:116:9: warning: variable 'temp_lfsr' set but not used [-Wunused-but-set-variable]
+     int temp_lfsr;
+         ^~~~~~~~~
+../src/helloworld.c:115:21: warning: unused variable 'sigF' [-Wunused-variable]
+     float erf1,erf2,sigF;
+                     ^~~~
+../src/helloworld.c:111:22: warning: variable 'templf' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+                      ^~~~~~
+../src/helloworld.c:111:13: warning: variable 'Cr' set but not used [-Wunused-but-set-variable]
+     float F,Cr,tempF,templf;
+             ^~
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:205:3: warning: implicit declaration of function 'srand' [-Wimplicit-function-declaration]
+   srand((unsigned)tCurrand );
+   ^~~~~
+../src/helloworld.c:217:19: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+    seed = (int)(1+rand()%(10000))+100;
+                   ^~~~
+'Finished building: ../src/helloworld.c'
+' '
+'Building target: hhh.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../hhh_bsp/ps7_cortexa9_0/lib -o "hhh.elf"  ./src/helloworld.o ./src/platform.o   -lm -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: hhh.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size hhh.elf  |tee "hhh.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  83264	   3000	  23344	 109608	  1ac28	hhh.elf
+'Finished building: hhh.elf.size'
+' '
+19:44:05 **** Incremental Build of configuration Debug for project hhh ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+make: Nothing to be done for `main-build'.

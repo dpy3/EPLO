@@ -1,0 +1,336 @@
+function run_type9()
+% run_type9 - Multiple-disk clutch brake problem (type = 9)
+% Output a summary list:
+% Algorithm, x_1 (inner radius ri, mm), x_2 (outer radius ro, mm),
+% x_3 (thickness t, mm), x_4 (applied force F, N), x_5 (number of friction surfaces Z, integer),
+% Optimal cost (composite), Rank
+%
+% NOTE: OptimalCost now is a composite score (lower is better) combining:
+%   - mean final fitness (weight 0.6)
+%   - std final fitness  (weight 0.3)
+%   - average convergence AUC (weight 0.1)
+% This increases discriminability between algorithms.
+
+    clc; clear; close all;
+
+    %% Problem definition (type = 9)
+    lb_raw = [60 90 1 600 2];
+    ub_raw = [80 110 3 1000 9];
+    dim = length(lb_raw);        % dimensionality (5)
+    fobj = @Multiple_disk;
+
+    % normalize bounds to row vectors (support scalar or full-vector)
+    if iscolumn(lb_raw), lb_raw = lb_raw'; end
+    if iscolumn(ub_raw), ub_raw = ub_raw'; end
+
+    if isscalar(lb_raw), lb = repmat(lb_raw,1,dim); else lb = lb_raw; end
+    if isscalar(ub_raw), ub = repmat(ub_raw,1,dim); else ub = ub_raw; end
+
+    if length(lb) ~= dim || length(ub) ~= dim
+        error('Bounds LB/UB must be scalar or vectors of length %d (dim).', dim);
+    end
+
+    %% Algorithm / run parameters
+    nPop = 50; Max_iter = 500; n_runs = 30;
+    algorithms = {'BKA','WOA','DBO','DO','SCA','FOX','PLO','EPLO','ALO','BA','GSA','HHO','MFO'};
+    numAlgos = length(algorithms);
+
+    % user-provided colors (may have fewer rows than numAlgos) - safe handling below
+    algorithm_colors = [0,0,1; 0.85,0.10,0.30; 0.50,0,0.50; 0.90,0.20,0.70; 0.95,0.90,0.25; 0.70,0.35,0.00; 0.40,0.40,0.40; 0.60,0.80,0.20; 0,0,0; 0,0.80,0.80; 0.50,0.10,0.80];
+
+    %% Storage
+    final_fitness = NaN(n_runs, numAlgos);                   % final fitness per run x algo
+    best_solutions = NaN(n_runs, numAlgos, dim);             % store best solution vector returned by each algorithm for each run
+    all_convergence = cell(numAlgos, 1);
+    for j = 1:numAlgos
+        all_convergence{j} = NaN(n_runs, Max_iter);
+    end
+
+    %% Main optimization loop
+    fprintf('Running engineering problem (type = 9) ...\n');
+    for run = 1:n_runs
+        fprintf('Run %d/%d...\n', run, n_runs);
+        for alg_idx = 1:numAlgos
+            alg_name = algorithms{alg_idx};
+            try
+                % Expect algorithm functions to return [best_solution, best_fitness_history, convergence_curve]
+                [best_sol, best_fit_hist, conv_curve] = feval(alg_name, nPop, Max_iter, lb, ub, dim, fobj);
+
+                % normalize conv_curve length to Max_iter
+                if isempty(conv_curve)
+                    conv_curve = NaN(1, Max_iter);
+                else
+                    conv_curve = conv_curve(:)'; % row
+                    if length(conv_curve) < Max_iter
+                        conv_curve = [conv_curve, repmat(conv_curve(end), 1, Max_iter - length(conv_curve))];
+                    elseif length(conv_curve) > Max_iter
+                        conv_curve = conv_curve(1:Max_iter);
+                    end
+                end
+
+                % normalize best_sol shape
+                if isempty(best_sol)
+                    best_sol = NaN(1, dim);
+                else
+                    best_sol = best_sol(:)'; % row
+                    if length(best_sol) < dim
+                        best_sol = [best_sol, NaN(1, dim - length(best_sol))];
+                    elseif length(best_sol) > dim
+                        best_sol = best_sol(1:dim);
+                    end
+                end
+
+                % best_fit_hist expectation: if algorithm returns history use last element, else NaN
+                if isempty(best_fit_hist)
+                    lastFit = conv_curve(end);
+                else
+                    best_fit_hist = best_fit_hist(:)';
+                    lastFit = best_fit_hist(end);
+                end
+
+                % store results
+                best_solutions(run, alg_idx, :) = best_sol;
+                final_fitness(run, alg_idx) = lastFit;
+                all_convergence{alg_idx}(run, :) = conv_curve;
+
+            catch ME
+                fprintf('  Algorithm %s failed on run %d: %s\n', alg_name, run, ME.message);
+                final_fitness(run, alg_idx) = NaN;
+                best_solutions(run, alg_idx, :) = NaN(1, dim);
+                all_convergence{alg_idx}(run, :) = NaN(1, Max_iter);
+            end
+        end
+    end
+
+    %% Compute average convergence (per algorithm) - needed for composite metric
+    avg_convergence = NaN(numAlgos, Max_iter);
+    for j = 1:numAlgos
+        rows = all_convergence{j};
+        valid_rows = ~any(isnan(rows), 2);
+        if any(valid_rows)
+            avg_convergence(j,:) = mean(rows(valid_rows, :), 1);
+        else
+            avg_convergence(j,:) = NaN(1, Max_iter);
+        end
+    end
+
+    %% Compute summary statistics (mean/std) - optional but kept
+    summaryTable = NaN(numAlgos, 2);
+    for j = 1:numAlgos
+        validIdx = ~isnan(final_fitness(:, j));
+        if any(validIdx)
+            summaryTable(j, 1) = mean(final_fitness(validIdx, j));
+            summaryTable(j, 2) = std(final_fitness(validIdx, j));
+        else
+            summaryTable(j, :) = [NaN NaN];
+        end
+    end
+
+    %% Determine best solution (across runs) per algorithm (for display) 
+    best_solution_per_algo = NaN(numAlgos, dim);
+    best_cost_per_algo = NaN(numAlgos, 1); % *not used as final metric but keep for reference*
+    for j = 1:numAlgos
+        validIdx = ~isnan(final_fitness(:, j));
+        if any(validIdx)
+            [best_cost, rel_idx] = min(final_fitness(validIdx, j));
+            valid_runs = find(validIdx);
+            best_run_idx = valid_runs(rel_idx);
+            best_solution_per_algo(j, :) = squeeze(best_solutions(best_run_idx, j, :))';
+            best_cost_per_algo(j) = best_cost;
+        else
+            best_solution_per_algo(j, :) = NaN(1, dim);
+            best_cost_per_algo(j) = NaN;
+        end
+    end
+
+    %% ----------------------
+    %% NEW: Compute composite OptimalCost (make algorithms more distinguishable)
+    % For each algorithm compute:
+    %  - mean_final (lower better)
+    %  - std_final  (lower better)
+    %  - auc_mean   (area under avg_convergence curve, lower better)
+    %
+    % then min-max normalize each metric across algorithms and combine:
+    % composite = 0.6 * norm_mean + 0.3 * norm_std + 0.1 * norm_auc
+    % Finally add tiny tie-break epsilon based on alg index to make values unique.
+    %
+    mean_final = NaN(numAlgos,1);
+    std_final = NaN(numAlgos,1);
+    auc_mean = NaN(numAlgos,1);
+
+    for j = 1:numAlgos
+        finals = final_fitness(:, j);
+        valIdx = ~isnan(finals);
+        if any(valIdx)
+            finals_v = finals(valIdx);
+            mean_final(j) = mean(finals_v);
+            std_final(j) = std(finals_v);
+        else
+            % very bad placeholders if no valid runs
+            mean_final(j) = realmax * 1e-3;
+            std_final(j) = realmax * 1e-3;
+        end
+
+        % compute AUC (trapz over avg_convergence row) if available
+        row = avg_convergence(j, :);
+        if all(isnan(row))
+            auc_mean(j) = realmax * 1e-3;
+        else
+            % make sure row is finite
+            row(~isfinite(row)) = max(row(isfinite(row))),;
+            auc_mean(j) = trapz(1:Max_iter, row) / Max_iter; % normalized by iterations
+        end
+    end
+
+    % Now min-max normalize each metric (lower better)
+    epsn = eps;
+    % For each metric, compute min and max across algorithms handling Inf
+    function normv = minmax_norm(v)
+        finiteV = v(isfinite(v));
+        if isempty(finiteV)
+            normv = ones(size(v)); return;
+        end
+        vmin = min(finiteV);
+        vmax = max(finiteV);
+        denom = (vmax - vmin) + epsn;
+        normv = (v - vmin) ./ denom;
+        % If all equal, will be zeros; that's fine
+        % NaN or Inf become large 1
+        normv(~isfinite(normv)) = 1;
+    end
+
+    norm_mean = minmax_norm(mean_final);
+    norm_std  = minmax_norm(std_final);
+    norm_auc  = minmax_norm(auc_mean);
+
+    % weights
+    w_mean = 0.60; w_std = 0.30; w_auc = 0.10;
+    composite = w_mean * norm_mean + w_std * norm_std + w_auc * norm_auc;
+
+    % tiny tie-break to make values distinct (does not change order for meaningful differences)
+    composite = composite + ( (1:numAlgos)' * 1e-12 );
+
+    % Set OptimalCost to composite (lower is better)
+    OptimalCost = composite;
+
+    %% Compute Rank based on composite (1 = best/smallest)
+    Rank = NaN(numAlgos,1);
+    validIdxs = find(~isnan(OptimalCost));
+    if ~isempty(validIdxs)
+        [~, order] = sort(OptimalCost(validIdxs));
+        Rank(validIdxs(order)) = 1:length(validIdxs);
+    end
+
+    %% Prepare display table with specified column descriptions
+    x1 = best_solution_per_algo(:,1); % inner radius ri (mm)
+    x2 = best_solution_per_algo(:,2); % outer radius ro (mm)
+    x3 = best_solution_per_algo(:,3); % thickness t (mm)
+    x4 = best_solution_per_algo(:,4); % applied force F (N)
+    x5 = best_solution_per_algo(:,5); % number of friction surfaces Z (integer)
+    x5_rounded = round(x5);
+
+    Algorithm = algorithms(:);
+    Ri_mm = x1;
+    Ro_mm = x2;
+    Thickness_mm = x3;
+    Force_N = x4;
+    Z_integer = x5_rounded;
+
+    % Construct MATLAB table for nicer display and file write
+    ResultsTable = table(Algorithm, Ri_mm, Ro_mm, Thickness_mm, Force_N, Z_integer, OptimalCost, Rank);
+    ResultsTable.Properties.VariableNames = {'Algorithm', ...
+                                             'x_1_inner_radius_ri_mm', ...
+                                             'x_2_outer_radius_ro_mm', ...
+                                             'x_3_thickness_t_mm', ...
+                                             'x_4_force_F_N', ...
+                                             'x_5_num_surfaces_Z', ...
+                                             'OptimalCost_composite', ...
+                                             'Rank'};
+
+    % Print summary header and the description line
+    fprintf('\nOutput format:\nAlgorithm ,  x_1 corresponds to the inner radius ri (mm), x_2 represents the outer radius ro (mm), x_3 indicates the thickness of the disk t (mm), x_4 denotes the applied force F (N),  x_5 signifies the number of friction surfaces Z (integer),  Optimal cost (composite),  Rank\n\n');
+
+    % Display table (compact)
+    disp(ResultsTable);
+
+    % Save results to Excel and MAT file
+    try
+        writetable(ResultsTable, 'Results_Type9_summary_composite.xlsx', 'WriteRowNames', false);
+        fprintf('Saved summary to "Results_Type9_summary_composite.xlsx".\n');
+    catch ME
+        warning('Could not write Excel file: %s', ME.message);
+    end
+
+    save('optimization_stats_type9_composite.mat','final_fitness','best_solution_per_algo','best_cost_per_algo','ResultsTable','summaryTable','all_convergence','algorithms','mean_final','std_final','auc_mean','OptimalCost');
+
+    %% Average convergence plotting (square figure, thick lines) - robust color handling
+    % Prepare color matrix: if provided colors fewer than algorithms, expand using lines()
+    if isempty(algorithm_colors)
+        algorithm_colors = lines(numAlgos);
+    else
+        if size(algorithm_colors,1) < numAlgos
+            extra = lines(numAlgos - size(algorithm_colors,1));
+            algorithm_colors = [algorithm_colors; extra];
+        elseif size(algorithm_colors,1) > numAlgos
+            algorithm_colors = algorithm_colors(1:numAlgos, :);
+        end
+    end
+    nColors = size(algorithm_colors,1);
+
+    figure('Units','normalized','OuterPosition',[0 0 0.6 0.6],'Color','w'); hold on; grid on;
+    set(gca,'YScale','log');
+    for j = 1:numAlgos
+        row = avg_convergence(j,:);
+        if all(isnan(row))
+            warning('Avg convergence for algorithm %s is all NaN - skipping plot.', algorithms{j});
+            continue;
+        end
+        colorIdx = mod(j-1, nColors) + 1;
+        col = algorithm_colors(colorIdx, :);
+        lenToPlot = min(Max_iter, length(row));
+        semilogy(1:lenToPlot, row(1:lenToPlot), 'Color', col, 'LineWidth', 2.5, 'DisplayName', algorithms{j});
+    end
+    axis square;
+    title(sprintf('Average Convergence (type 9) (%d runs) - Composite metric', n_runs), 'FontSize', 14, 'FontWeight', 'bold');
+    xlabel('Iteration','FontSize',12); ylabel('Best Fitness','FontSize',12);
+    legend('Location','eastoutside','FontSize',9,'NumColumns',2);
+    xlim([1, Max_iter]);
+    hold off;
+
+    %% (Optional) show original result image if exists
+    try
+        img = imread('result_image.png');
+        figure; imshow(img); title('Result Image');
+    catch
+        % silently continue if image not present
+    end
+end
+
+%% -------------------------
+%% Subfunction: Multiple_disk (objective)
+function fitness = Multiple_disk(x)
+    % Objective and penalties for multiple-disk clutch brake problem
+    penalty_factor = 1e10;
+    x = round(x);  % the original code rounded the design vector
+    % parameters
+    Mf = 3; Ms = 40; Iz = 55; n = 250; Tmax = 15; s = 1.5; delta = 0.5;
+    Vsrmax = 10; rho = 0.0000078; pmax = 1; mu = 0.5; Lmax = 30; delR = 20;
+    % derived quantities
+    Mh = 2/3*mu*x(4)*x(5)*(x(2)^3 - x(1)^3)/(x(2)^2 - x(1)^2);
+    Prz = x(4)/(pi*(x(2)^2 - x(1)^2));
+    Vsr = (2*pi*n/90) * (x(2)^3 - x(1)^3)/(x(2)^2 - x(1)^2);
+    T   = (Iz*pi*n/30) / (Mh + Mf);
+    % constraints
+    g1 = -x(2) + x(1) + delR;
+    g2 = (x(5) + 1)*(x(3) + delta) - Lmax;
+    g3 = Prz - pmax;
+    g4 = Prz * Vsr - pmax * Vsrmax;
+    g5 = Vsr - Vsrmax;
+    g6 = T - Tmax;
+    g7 = s * Ms - Mh;
+    g8 = -T;
+    g = [g1 g2 g3 g4 g5 g6 g7 g8];
+    penalty = penalty_factor * sum(g(g > 0).^2);
+    f = pi * (x(2)^2 - x(1)^2) * x(3) * (x(5) + 1) * rho;
+    fitness = f + penalty;
+end

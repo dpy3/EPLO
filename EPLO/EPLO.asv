@@ -1,0 +1,160 @@
+function [Best_score, Best_pos, Convergence_curve] = EPLO(pop, T, lb, ub, dim, fobj)
+    % EPLO 元启发式算法（平�?持续单调下降�?    groups = 6;
+    Np = floor(pop / groups);
+    Lb = repmat(lb, pop, 1);
+    Ub = repmat(ub, pop, 1);
+
+    elite_pool_size = 5;
+    initial_pop = net(sobolset(dim), pop);
+    initial_pop = initial_pop .* (Ub - Lb) + Lb;
+
+    % 初始化子�?    for g = 1:groups
+        idx = (g-1)*Np + (1:Np);
+        group(g).pos        = initial_pop(idx, :);
+        group(g).vel        = zeros(Np, dim);
+        group(g).fitness    = inf(Np, 1);
+        group(g).pBest      = group(g).pos;
+        group(g).pBestScore = inf(Np, 1);
+        group(g).gBestScore = inf;
+        group(g).gBest      = zeros(1, dim);
+    end
+
+    % 全局最�?& 精英�?    elite_pool = repmat(struct('position',[],'fitness',inf), 1, elite_pool_size);
+    Destination_fitness  = inf;
+    Destination_position = zeros(1, dim);
+
+    Convergence_curve = zeros(1, T);
+    smoothing_alpha = 0.2;    % 平滑因子
+    decay_rate      = 1e-4;  % 按比例强制下降速率
+    last_recorded   = inf;
+
+    for t = 1:T
+        % 1) 参数衰减
+        E             = 1/(1 + exp(0.1*(t - T/2)));
+        Inertia       = 0.9*(1 - tanh(5*t/T));
+        search_radius = 0.1*(ub - lb)*exp(-4*t/T);
+
+        % 2) 子群间精英交�?        if mod(t, 5 + floor(15/(1+exp(-0.1*(t-T/3))))) == 0
+            for g = 1:groups
+                partner = elite_pool(randi(elite_pool_size));
+                if ~isempty(partner.position)
+                    alpha = 0.4 + 0.2*rand;
+                    offspring = alpha*group(g).gBest + (1-alpha)*partner.position;
+                    offspring = offspring + 0.02*randn(1,dim).*(ub-lb);
+                    offspring = max(min(offspring, ub), lb);
+                    cf = fobj(offspring);
+                    if cf < Destination_fitness
+                        Destination_position = offspring;
+                        Destination_fitness  = cf;
+                    end
+                end
+            end
+        end
+
+        % 3) 遍历子群内部更新
+        for g = 1:groups
+            % 后期Newton方向
+            if t > 2*T/3
+                base = fobj(group(g).gBest);
+                eps_val = 1e-6;
+                grad = zeros(1,dim);
+                for j = 1:dim
+                    tmp = group(g).gBest;
+                    tmp(j) = tmp(j) + eps_val;
+                    grad(j) = (fobj(tmp) - base)/eps_val;
+                end
+                newton_dir = -grad / norm(grad);
+            end
+
+            for i = 1:Np
+                % 速度更新 (减弱随机扰动)
+                if t < T/3
+                    levy_step = levy(1, dim, 1.8);
+                    group(g).vel(i,:) = Inertia*group(g).vel(i,:) + ...
+                        2*rand*(Destination_position - group(g).pos(i,:)) + ...
+                        0.3*levy_step;
+                elseif t < 2*T/3
+                    brown = 0.05*randn(1,dim).*(ub-lb);
+                    group(g).vel(i,:) = Inertia*group(g).vel(i,:) + ...
+                        1.2*rand*(group(g).pBest(i,:) - group(g).pos(i,:)) + ...
+                        0.8*rand*(group(g).gBest - group(g).pos(i,:)) + ...
+                        brown;
+                else
+                    if exist('newton_dir','var')
+                        group(g).vel(i,:) = 0.2*group(g).vel(i,:) + ...
+                            0.6*newton_dir.*(ub-lb) + ...
+                            0.05*randn(1,dim).*(ub-lb);
+                    else
+                        group(g).vel(i,:) = 0.2*group(g).vel(i,:) + ...
+                            0.8*rand*(Destination_position - group(g).pos(i,:));
+                    end
+                end
+
+                % 位置更新
+                new_pos = group(g).pos(i,:) + group(g).vel(i,:);
+                new_pos = max(min(new_pos, ub), lb);
+                if t > T/2
+                    new_pos = 0.5*(new_pos + Destination_position) + search_radius.*randn(1,dim);
+                end
+                group(g).pos(i,:) = new_pos;
+
+                % 反向学习
+                if rand < 0.3*E
+                    opp = ub + lb - new_pos;
+                    opp = max(min(opp, ub), lb);
+                    if fobj(opp) < fobj(new_pos)
+                        group(g).pos(i,:) = opp;
+                    end
+                end
+
+                % 评估 & 更新个体最�?                group(g).fitness(i) = fobj(group(g).pos(i,:));
+                if group(g).fitness(i) < group(g).pBestScore(i)
+                    group(g).pBest(i,:)    = group(g).pos(i,:);
+                    group(g).pBestScore(i) = group(g).fitness(i);
+                end
+            end
+
+            % 更新子群最�?            [mfs, idx] = min(group(g).pBestScore);
+            if mfs < group(g).gBestScore
+                group(g).gBestScore = mfs;
+                group(g).gBest      = group(g).pBest(idx,:);
+            end
+        end
+
+        % 4) 更新全局最�?& 精英�?        for g = 1:groups
+            if group(g).gBestScore < Destination_fitness
+                Destination_fitness  = group(g).gBestScore;
+                Destination_position = group(g).gBest;
+            end
+        end
+        [~, si] = sort([elite_pool.fitness], 'descend');
+        if Destination_fitness < elite_pool(si(end)).fitness
+            elite_pool(si(end)).position = Destination_position;
+            elite_pool(si(end)).fitness  = Destination_fitness;
+        end
+
+        % 5) 平滑 & 强制持续下降
+        raw = Destination_fitness;
+        if t == 1
+            smooth_val = raw;
+        else
+            smooth_val = smoothing_alpha * raw + (1 - smoothing_alpha) * last_recorded;
+        end
+        % 动态强制下降：按比例扣�?        decay_step = decay_rate * abs(last_recorded);
+        last_recorded = min(smooth_val, last_recorded - decay_step);
+        Convergence_curve(t) = last_recorded;
+    end
+
+    Best_score = Destination_fitness;
+    Best_pos   = Destination_position;
+end
+
+function z = levy(n, m, beta)
+    % Levy 飞行辅助函数
+    num = gamma(1+beta)*sin(pi*beta/2);
+    den = gamma((1+beta)/2)*beta*2^((beta-1)/2);
+    sigma_u = (num/den)^(1/beta);
+    u = randn(n, m)*sigma_u;
+    v = randn(n, m);
+    z = u ./ abs(v).^(1/beta);
+end

@@ -1,0 +1,110 @@
+function [bestSol, bestFitness, ConvergenceCurve] = AMS_AOO_Improved(fun, lb, ub, dim, popSize, maxIter)
+% AMS_AOO_Improved - 改进的自适应多策略优化算法（AMS-AOO）
+% 兼容 fun 为函数句柄或函数名字符串
+% 输入:
+%   fun             - 目标函数 (求最小值)，函数句柄或函数名字符串
+%   lb, ub          - 决策变量下界和上界 (标量或 1×dim 向量)
+%   dim             - 变量维度
+%   popSize         - 种群规模
+%   maxIter         - 最大迭代次数
+% 输出:
+%   bestSol         - 全局最优解
+%   bestFitness     - 全局最优目标值
+%   ConvergenceCurve - 收敛曲线 (记录每代最优值)
+
+    %% 1. 统一函数句柄
+    if ischar(fun) || isstring(fun)
+        funHandle = str2func(fun);
+    elseif isa(fun, 'function_handle')
+        funHandle = fun;
+    else
+        error('Parameter ''fun'' must be a function handle or function name.');
+    end
+
+    %% 2. 边界处理
+    if isscalar(lb)
+        lb = repmat(lb, 1, dim);
+    end
+    if isscalar(ub)
+        ub = repmat(ub, 1, dim);
+    end
+
+    %% 3. 初始化：LHS + 对立学习 + 精英筛选
+    % 3.1 拉丁超立方体采样
+    X = lhsdesign(popSize, dim);  % [0,1] 均匀分布
+    for d = 1:dim
+        X(:,d) = lb(d) + X(:,d) * (ub(d)-lb(d));
+    end
+    % 3.2 对立学习
+    X_op = zeros(size(X));
+    for d = 1:dim
+        X_op(:,d) = lb(d) + ub(d) - X(:,d);
+    end
+    % 3.3 合并并评估，选出前 popSize
+    X_all = [X; X_op];
+    nAll = size(X_all,1);
+    fitness_all = zeros(nAll,1);
+    for i = 1:nAll
+        fitness_all(i) = funHandle(X_all(i,:));
+    end
+    [fitness_sorted, idx] = sort(fitness_all);
+    X = X_all(idx(1:popSize), :);
+    fitVal = fitness_sorted(1:popSize);
+
+    % 初始化最优/最差
+    [bestFitness, bestIdx] = min(fitVal);
+    bestSol = X(bestIdx, :);
+    [worstFitness, worstIdx] = max(fitVal);
+
+    ConvergenceCurve = zeros(1, maxIter);
+    ConvergenceCurve(1) = bestFitness;
+
+    %% 4. Levy 飞行参数
+    beta = 1.5;
+    sigma_u = (gamma(1+beta)*sin(pi*beta/2) / ...
+               (gamma((1+beta)/2)*beta*2^((beta-1)/2)))^(1/beta);
+
+    %% 5. 主迭代优化
+    for iter = 2:maxIter
+        % 5.1 个体更新：Levy 飞行 + 动态步长
+        for i = 1:popSize
+            u = randn(1,dim) * sigma_u;
+            v = randn(1,dim);
+            step = u ./ abs(v).^(1/beta);
+            factorL = 1 + (maxIter - iter) / maxIter;
+            X(i,:) = X(i,:) + factorL * step .* (X(i,:) - bestSol);
+
+            % 边界处理
+            X(i,:) = max(X(i,:), lb);
+            X(i,:) = min(X(i,:), ub);
+
+            % 评估并更新最优/最差
+            fitVal(i) = funHandle(X(i,:));
+            if fitVal(i) < bestFitness
+                bestFitness = fitVal(i);
+                bestSol = X(i,:);
+            end
+            if fitVal(i) > worstFitness
+                worstFitness = fitVal(i);
+                worstIdx = i;
+            end
+        end
+
+        % 5.2 精英引导的高斯扰动
+        sigma_vec = (ub - lb) * (1 - iter / maxIter);
+        Y = bestSol + randn(1,dim) .* sigma_vec;
+        Y = max(Y, lb); Y = min(Y, ub);
+        fY = funHandle(Y);
+        if fY < worstFitness
+            X(worstIdx, :) = Y;
+            fitVal(worstIdx) = fY;
+            if fY < bestFitness
+                bestFitness = fY;
+                bestSol = Y;
+            end
+            [worstFitness, worstIdx] = max(fitVal);
+        end
+
+        ConvergenceCurve(iter) = bestFitness;
+    end
+end

@@ -1,0 +1,106 @@
+function main()
+    clear;
+    clc;
+    close all;
+
+    %% 参数设置
+    pop = 30;         % 种群大小
+    T = 500;          % 最大迭代次�?    dim = 50;         % 问题维度
+    n_runs = 30;      % 每个算法运行次数
+    F_name = 'F30';    % 测试函数名称（可根据需要修改）
+    
+    algorithms = {'BKA','GWO','WOA','MVO','SCA','MPA','RIME', ...
+                  'FOX','PLO','EPLO','ALO','BA','GSA','HHO','MFO'}; % 算法列表
+    numAlgos = length(algorithms);
+
+    % 16种可区分的颜色（顺序与算法列表一致）
+    colors = [...
+        0.00 0.50 0.00;   % BKA
+        %1.00 0.60 0.00;   % NBKA
+        0.30 0.75 0.93;   % GWO
+        0.85 0.10 0.30;   % WOA
+        0.00 0.45 0.70;   % MVO
+        0.50 0.00 0.50;   % SCA
+        0.20 0.65 0.60;   % MPA
+        0.00 0.60 0.30;   % RIME
+        0.90 0.20 0.70;   % FOX
+        0.95 0.90 0.25;   % PLO
+        0.70 0.35 0.00;   % EPLO
+        0.40 0.40 0.40;   % ALO
+        0.60 0.80 0.20;   % BA
+        0.00 0.00 0.00;   % GSA
+        0.00 0.80 0.80;   % HHO
+        0.50 0.10 0.80];  % MFO
+
+    %% 加载测试函数
+    [lb, ub, ~, fobj] = CEC2017(F_name);
+
+    %% 结果存储变量
+    % 每个算法�?0次运行的最终适应�?    final_fitness = zeros(n_runs, numAlgos);
+    % 存储每个算法所有运行的收敛曲线 (矩阵: n_runs x T)
+    all_convergence = cell(numAlgos,1);
+    for j = 1:numAlgos
+        all_convergence{j} = zeros(n_runs, T);
+    end
+
+    %% 对每个算法进�?0次独立运�?    for j = 1:numAlgos
+        algo = algorithms{j};
+        fprintf('Running algorithm: %s\n', algo);
+        for r = 1:n_runs
+            try
+                [~, best_fit, conv_curve] = feval(algo, pop, T, lb, ub, dim, fobj);
+                final_fitness(r,j) = best_fit(end);
+                all_convergence{j}(r,:) = conv_curve;
+            catch ME
+                fprintf('Algorithm %s failed on run %d: %s\n', algo, r, ME.message);
+                final_fitness(r,j) = NaN;
+                all_convergence{j}(r,:) = NaN(1,T);
+            end
+        end
+    end
+
+    %% 计算每个算法的平均收敛曲�?    avg_convergence = zeros(numAlgos, T);
+    for j = 1:numAlgos
+        valid_curves = all_convergence{j}(~any(isnan(all_convergence{j}),2), :);
+        if isempty(valid_curves)
+            avg_convergence(j,:) = NaN;
+        else
+            avg_convergence(j,:) = mean(valid_curves, 1);
+        end
+    end
+
+    %% 绘制所有算法的平均收敛曲线（在同一图中�?    figure('Units','normalized','OuterPosition',[0 0 0.8 0.6],'Color','w');
+    hold on;
+    grid on;
+    set(gca, 'YScale', 'log'); % 对数坐标显示
+    for j = 1:numAlgos
+        semilogy(1:T, avg_convergence(j,:), 'Color', colors(j,:), 'LineWidth', 1.5);
+    end
+    title(['Average Convergence Curves for ', F_name, 'and dim = ',' ',' (', num2str(n_runs), ' runs)'], 'FontSize', 14, 'FontWeight', 'bold');
+    xlabel('Iterations');
+    ylabel('Best Fitness');
+    legend(algorithms, 'Location', 'best');
+    xlim([1 T]);
+    
+    %% 输出每个算法30次运行的平均最终适应值和方差
+    mean_fitness = nanmean(final_fitness, 1);
+    var_fitness = nanvar(final_fitness, 1);
+    
+    fprintf('\n=== Statistical Results for %s ===\n', F_name);
+    fprintf('Algorithm\tMean Fitness (AVG)\tVariance (STD)\n');
+    for j = 1:numAlgos
+        fprintf('%-10s\t%.4e\t\t%.4e\n', algorithms{j}, mean_fitness(j), var_fitness(j));
+    end
+    
+    %% 保存结果到文�?    save('CEC2017_SingleFunction_Results.mat', 'final_fitness', 'mean_fitness', 'var_fitness', 'avg_convergence', 'algorithms');
+    
+    %% 显示原始图像部分（保留不变）
+    try
+        img = imread('result_image.png');
+        figure;
+        imshow(img);
+        title('Result Image');
+    catch ME
+        warning('无法加载图像文件�?s', ME.message);
+    end
+end

@@ -1,0 +1,5569 @@
+EPLO: A Parallel Polarization Learning Optimizer with Applications in Mechanical Design, 
+
+Multi-UAV Path Planning, and 3D Wireless Sensor Network Localization 
+
+First Authora, Second Authorb, Third Authora,b,* 
+
+aFirst affiliation, Address, City and Postcode, Country 
+
+“显示文本”不能横跨多�?  
+A R T I C L E  I N F O 
+
+A B S T R A C T 
+
+Article history:  
+
+Received 00 December 00 
+
+Received in revised form 00 January 00 
+
+Accepted 00 February 00 
+
+Keywords: 
+
+Aurora optimization algorithm 
+
+Parallel Polarization Learning Optimizer 
+
+Sobol sequence 
+
+Adaptive Parameter Control 
+
+population clustering 
+
+local fine search 
+
+UAV Path Planning 
+
+Wireless Sensor Networks Localization 
+
+  This paper proposes an enhanced metaheuristic algorithm named Parallel Polarized Learning 
+Optimizer  (EPLO), building upon  the  foundational  Aurora  Optimization Algorithm  (PLO).  The 
+original  PLO,  inspired  by  the  motion  of  charged  particles  in  Earth's  magnetic  field,  effectively 
+balances global exploration and local exploitation through spiral motion, auroral oval movement, 
+and  collision  strategies.  However,  it  suffers  from  limitations  such  as  uneven  initialization, 
+premature convergence, and insufficient population diversity due to its single-group structure and 
+fixed parameter  decay.  To  address  these  issues,  EPLO  incorporates  several  key  innovations: 1) 
+Sobol sequence initialization for uniform search space coverage; 2) A multi-group collaborative 
+framework with periodic elite migration to maintain diversity and information exchange; 3) An 
+elite pool archive coupled with stagnation-triggered Gaussian revival mechanisms to escape local 
+optima;  4)  Adaptive,  non-linear  parameter  control  using  sigmoid/tanh  functions  for  dynamic 
+balancing of exploration and exploitation; 5) Late-stage exploitative enhancements including Lévy-
+flight perturbation, numerical gradient refinement, and Gaussian noise injection. The performance 
+of EPLO is rigorously evaluated on the IEEE CEC2022 benchmark suites, demonstrating superior 
+convergence  speed,  robustness,  and global  search  capability  compared  to  the original  PLO  and 
+other state-of-the-art algorithms like BKA, WOA, SCA, FOX, ALO, BA, GSA, HHO, and MFO. 
+Furthermore,  EPLO's  practical  efficacy  is  validated  through  five  complex  engineering  design 
+problems:  tension/compression  spring  design,  speed  reducer  optimization,  planetary  gear  train 
+design, multi-disk clutch brake design, and robotic gripper mechanism optimization. The algorithm 
+consistently  achieves  high-quality  solutions  with  remarkable  stability  and  computational 
+efficiency.  The  study  also  explores  EPLO's  application  in  challenging  real-world  scenarios, 
+including 3D UAV dynamic obstacle avoidance and path planning, as well as 3D wireless sensor 
+network  node  localization  (EPLO-DV-Hop),  showcasing  its  adaptability  and  robustness  under 
+complex, constrained environments. The results indicate that EPLO is a highly competitive and 
+versatile optimizer for both theoretical benchmarks and practical engineering applications. 
+
+1. Introduction 
+
+1.1 Research background and significance 
+
+Optimization  problems  are  common  in  various  engineering  and 
+scientific  fields.  Their  goal  is  to  improve  system  performance  or  reduce 
+costs by  finding  the best  combination of decision variables.  In  structural 
+design, process flow, resource scheduling and other problems, optimization 
+can significantly reduce production costs, improve product quality and save 
+energy.  Optimization  problems  help  solve  route  planning,  scheduling 
+problems  and  inventory  management,  thereby  improving  transportation 
+efficiency  and  reducing  logistics  costs[1].  In  asset  allocation,  risk 
+management and portfolio optimization, optimization methods can find the 
+best  decision  solution  under  uncertainty.  Metaheuristic  algorithms  are 
+widely used in parameter optimization, feature selection and neural network 
+training to help algorithms jump out of local optimality and obtain better 
+model performance[2]. Metaheuristic algorithms have the dual capabilities 
+of  global  search  and  local  development  because  they  do  not  rely  on  the 
+convexity,  continuity  and  differentiability  of  the  problem[3].  They  have 
+unique advantages in dealing with high-dimensional, nonlinear, multi-peak 
+and complex constraint problems. These characteristics make metaheuristic 
+algorithms  an  effective  solution  strategy  when  facing  complex  and 
+ambiguous problems in the real world. 
+
+The field of metaheuristic optimization is in a constant state of vibrant 
+evolution,  driven  by  the  quest  for  more  powerful  and  robust  algorithms 
+capable of tackling increasingly complex real-world problems. This has led 
+to a veritable explosion of novel algorithms inspired by an ever-widening 
+array  of  natural  phenomena,  physical  laws,  and  human  social  behaviors. 
+Beyond  the  well-established  paradigms  of Particle  Swarm  Optimization 
+(PSO)[4], Genetic Algorithm (GA)[5], and Differential Evolution (DE)[6], 
+the 
+innovative 
+inspirations. 
+
+research  community  has  continuously 
+
+introduced 
+
+Swarm  intelligence  remains  a  fertile  ground,  with  algorithms  like 
+the Grey  Wolf  Optimizer  (GWO)[7]  simulating  hierarchical  leadership, 
+the Whale  Optimization  Algorithm  (WOA)[8]  mimicking  bubble-net 
+the Harris  Hawks  Optimization  (HHO)[9]  modelling  
+feeding,  and 
+
+cooperative  predation  tactics.  Recent  years  have  seen  the  emergence  of 
+even more niche bio-inspired algorithms, including the Colony Predation 
+Algorithm 
+(HO)[11], 
+the Dandelion  Optimizer  (DO)[12]  inspired  by  seed  dispersal,  the Shark 
+Search Algorithm (SSA)[13], the Emperor Penguin Optimizer (EPO)[14], 
+and the Cuckoo Search Algorithm (CS)[15]. 
+
+the Hippopotamus  Optimization 
+
+(CPA)[10], 
+
+Parallel  to  biological  metaphors,  physics  and  science-inspired 
+paradigms  have  gained  substantial  momentum.  These  include  the Sine 
+Cosine  Algorithm  (SCA)[16],  the Electromagnetic  Field  Optimization 
+(EFO)[17],  the Ion  Motion  Optimizer  (IMO)[18],  the Atom  Search 
+Optimization  (ASO)[19]  simulating  atomic  dynamics,  the Equilibrium 
+Optimizer (EO)[20] inspired by control-volume mass balance models, and 
+the Gravitational Search Algorithm (GSA)[21]. Mathematics continues to 
+provide a foundation for algorithms such as the Chaos Game Optimization 
+(CGO)[22] and the Arithmetic Optimization Algorithm (AOA)[23]. 
+
+Furthermore, human-inspired mechanisms are explored in algorithms 
+like  the Teaching-Learning-Based  Optimization  (TLBO)[24],  the Hiking 
+Optimization  Algorithm  (HOA)[25],  and  the Social  Network  Search 
+(SNS)[26].  This  diversification  also  extends  to  plant-inspired  algorithms 
+like  the Invasive  Weed  Optimization  (IWO) [27]  and  the Photosynthesis 
+Algorithm  (PA)[28],  challenging  the  traditional  animal-centric  focus  of 
+swarm intelligence. 
+
+A significant parallel research thrust focuses not on novel metaphors 
+but on enhancing existing algorithms through sophisticated strategies like 
+hybridization,  multi-method  fusion,  and  adaptive  parameter  control. 
+Techniques  such  as  the GWO-CSA hybrid[29],  the  quantum-based Q-
+SCA[30],  and  the Parallel  Compact  Whale  Optimization  Algorithm 
+(PCWOA)[31] for WSN localization exemplify this trend towards creating 
+more robust and specialized solvers for domains like energy systems and 
+engineering design. 
+
+In our own tests, we’ve seen these methods shine on high-dimensional, 
+multimodal puzzles: once the search space balloons beyond a handful of 
+variables, they outperform textbook optimizers by a wide margin. Yet not 
+all  metaheuristics  are  created  equal—that’s  why  innovations  such  as  the 
+Aurora Optimization Algorithm (PLO) have drawn attention, thanks to their 
+unique physics-inspired motion rules. 
+
+Particle-Laden  Optimization  with  Polarized  Learning 
+
+and 
+
+ 
+ 
+ 
+ 
+ 
+2 
+
+ARAB ECONOMIC AND BUSINESS JOURNAL 00 (2014) 000�?00 
+
+Oversampling  (EPLO)  draws  inspiration  from  the  dynamic  interplay  of 
+charged particles within the Earth’s magnetic field to overcome the uneven 
+initialization, premature convergence, and fixed-rate decay that constrain 
+the original Aurora-inspired PLO framework[32]. The contributions of this 
+study can be summarized as follows:  
+1) 
+
+and 
+
+revival, 
+
+Gaussian 
+
+A novel metaheuristic framework (EPLO) is developed, integrating 
+low-discrepancy  Sobol-sequence  initialization,  polarized  learning 
+via  multi-group oversampled  crossover, an  elite-pool archive  with 
+stagnation-triggered 
+dynamic 
+sigmoid/tanh-based  parameter  control  coupled  with  a  three-phase 
+velocity  update  mechanism  to  cohesively  balance  exploration  and 
+exploitation. 
+Extensive  benchmarking  on 
+test  suite 
+demonstrates  that  EPLO  achieves  faster  convergence,  stronger 
+robustness,  and  superior  global  search  capability  compared  to  the 
+original PLO and a range of state-of-the-art metaheuristics. 
+Practical  effectiveness  is  validated  on  five  complex  engineering 
+design  problems—including  spring  design,  reducer  optimization, 
+planetary  gear  trains,  multi-disk  clutches,  and  robotic  gripper 
+tuning—where  EPLO 
+competing 
+algorithms in solution quality and computational efficiency. 
+
+consistently  outperforms 
+
+the  IEEE  CEC2022 
+
+2) 
+
+3) 
+
+an 
+
+and 
+
+archive 
+
+diversity, 
+
+elite-pool 
+
+In the first part of this work, we review the theoretical underpinnings 
+of  charged-particle  dynamics  and  auroral  motions,  identify  the  key 
+deficiencies of random seeding and monolithic population updates in PLO, 
+and motivate the adoption of low-discrepancy and collaborative strategies 
+for enhanced search efficacy. The second part formalizes the mathematical 
+modeling  of  PLO’s  spiral  and  elliptical  motion  operators,  collision 
+perturbations,  and  linear  parameter  schedules  to  establish  a  baseline  for 
+comparison.  Building  upon  this  foundation,  the  third  part  introduces 
+EPLO’s  core  innovations—Sobol-sequence  initialization  for  uniform 
+coverage,  multi-group  polarized  learning  with  periodic  elite  exchange  to 
+sustain 
+paired  with 
+oversampling-triggered  Gaussian  revival 
+to  escape  stagnation—all 
+governed  by  smooth,  nonlinear  decay  of  reverse-learning  probability, 
+inertia weight, and search radius. In the fourth part, we subject EPLO to the 
+rigorous  IEEE  CEC2022  benchmark  suite,  conduct  detailed  visual  and 
+statistical analyses of convergence trajectories, and demonstrate its superior 
+balance of exploration and exploitation relative to both the original PLO 
+and  contemporary  metaheuristics.  The  fifth  part  translates  these  findings 
+into practical gains by applying EPLO to a range of real-world engineering 
+design problems—spanning spring optimization, reducer design, planetary 
+gear  trains,  multi-disk  clutch  brakes,  and  robotic  grippers—thereby 
+validating  its  adaptability  and  robustness  under  complex,  constrained 
+scenarios. Finally, the sixth part distills the principal discoveries, contrasts 
+EPLO’s  performance  profile  against  prevailing  algorithms,  and  outlines 
+promising  avenues  for  future  research,  including  integration  with 
+deep-learning  surrogates  and  deployment 
+large-scale,  real-time 
+optimization environments. The seventh part applies EPLO to the 3D path 
+planning problem of multiple unmanned aerial vehicles in dynamic obstacle 
+environments.    A  multi-module  framework  integrating  threat  modeling, 
+graph  construction,  trajectory  optimization  and  takeoff  scheduling  is 
+proposed.  EPLO is used to optimize path length, smoothness and safety, 
+and  to  avoid  drone  conflicts  through  delayed  scheduling.    Experiments 
+show that EPLO outperforms methods such as A*[33], RRT[34] and PSO[4] 
+in terms of success rate, path length and the number of conflicts.  The eighth 
+part addresses the problem of large positioning error of DV-Hop[35] in 3D 
+WSN[36]  and  proposes  the  PPO-DV-HOP  algorithm. 
+  The  node 
+coordinates are optimized through the weighted normalized fitness function 
+and the boundary penalty term.  In complex terrains (single-peak and multi-
+peak), PPO-DV-HOP significantly reduces the mean location error (ALE), 
+and its stability is superior to that of improved algorithms such as PSO and 
+GWO[7]. 
+
+in 
+
+Symbol 
+
+N 
+
+groups 
+
+Np 
+
+dim 
+
+lb 
+
+ub 
+
+Meaning  
+
+Total number of particles 
+
+Number of sub-swarms 
+
+Number of particles per sub-swarm 
+
+Dimensionality of the search space 
+
+Lower-bound vector of the search space 
+
+Upper-bound vector of the search space 
+
+rand(1,dim) 
+
+Uniform random vector of size 1×dim, values in 
+
+Symbol 
+
+0 
+
+T 
+
+t 
+
+Meaning  
+
+[0,1] 
+
+Zero vector 
+
+Maximum number of function evaluations 
+
+(MaxFEs) 
+
+Current iteration count 
+
+Maximum / minimum inertia weight 
+
+Maximum / minimum cognitive (personal) 
+
+acceleration coefficient 
+
+Maximum / minimum social acceleration 
+
+coefficient 
+
+Inertia weight at iteration t 
+
+Cognitive acceleration coefficient at iteration t 
+
+Social acceleration coefficient at iteration t 
+
+Probability of performing opposition-based 
+
+learning at iteration t 
+
+Position vector of particle ii at iteration t 
+
+Velocity vector of particle ii at iteration t 
+
+Two independent uniform random scalars in 
+
+[0,1] 
+
+Personal best position vector of particle i 
+
+Personal best fitness value of particle i 
+
+Best position vector found so far in sub-swarm 
+
+g 
+
+Best fitness value found so far in sub-swarm g 
+
+f(�? 
+
+Objective function / fitness function 
+
+β 
+
+Δ 
+
+�?
+
+ε 
+
+Opposition-based candidate position for particle 
+
+i 
+
+Lévy-distributed random vector of dimension d 
+
+Exponent parameter of the Lévy distribution 
+
+Lévy flight perturbation vector 
+
+Elementwise (Hadamard) multiplication 
+
+Finite-difference step size for numerical 
+
+gradient 
+
+Unit vector along dimension j 
+
+Numerically estimated gradient in dimension j 
+
+∥grad�?
+
+σ 
+
+Euclidean norm of the gradient vector 
+
+Standard deviation for Gaussian noise injection 
+
+globalBest 
+
+Gaussian noise with mean 0 and variance 
+
+Best position vector found so far across all sub-
+
+swarms 
+
+globalBestSc
+
+Best fitness value found so far across all sub-
+
+ore 
+
+swarms 
+
+1.2 Theoretical Basis and Implementation Mechanism of PLO 
+
+The  inspiration  for  PLO  comes  from  the  aurora  phenomenon.  The 
+formation of the aurora is due to the luminous phenomenon produced when 
+charged particles in the solar wind enter the Earth's magnetic field, move 
+along  the  magnetic  field  lines  and  collide  with  gas  molecules  in  the 
+atmosphere.  PLO  calculates  the  results  through  simulation.  The  main 
+information is as follows: 
+1.2.1 Simulation of Charged Particle Motion   
+
+Electron  particles  exhibit  spiral  motion  under  the  Earth's  magnetic 
+field, which enables a detailed search of the solution space locally (local 
+
+maxmin,WWmin11,maxcc22,maxmaxcc()wt)1(tc)2(tc()opppt()ipost()ivelt12,randrandipBestipBestScoreggBestggBestScoreiopp1,,()Levydjejgrad2(0,)N�?�?
+  
+  
+  
+ 
+  
+ 
+  
+ 
+  
+ 
+  
+ 
+  
+ 
+  
+  
+ 
+  
+  
+ 
+  
+ 
+  
+ 
+  
+ 
+  
+ 
+  
+ 
+  
+  
+  
+ARAB ECONOMIC AND BUSINESS JOURNAL 00 (2014) 000�?00                                                                                                                   3 
+
+development). Meanwhile, the extensive search for particles in the "aurora 
+Ellipse" region has led to in-depth research on aurora formation. 
+1.2.2 Multi-Stage Search Strategy   
+
+(1)  Local  Search  (Spiral  Motion):  The  rotational  movement  of 
+particles allows the algorithm to accurately seek optimal solutions within 
+the current region.   
+
+(2) Global Search (Auroral Ellipse Movement): The unique movement 
+pattern of particles within auroral regions enables them to traverse larger 
+spaces in pursuit of globally optimal solution areas.   
+
+(3)  Collision  Strategy:  In  the  case  of  motion  simulation  particle 
+collisions, the optimal local area is eliminated through random interference, 
+which improves the robustness of the algorithm. 
+
+This heuristic design based on physical phenomena provides PLO with 
+an intuitive framework for searching that is theoretically grounded, aiming 
+to  effectively  balance  capabilities  between  global  exploration  and  local 
+exploitation[37]. 
+1.3  Mathematical  model  and  pseudocode  of  the  original  Aurora 
+optimization algorithm (PLO) 
+1.3.1 Mathematical model: 
+(1) Initialization   
+
+Suppose that the dimension of the problem space is D and the size of 
+the population is N. the initial population is generated with the following 
+formula: 
+
+(1) 
+
+In this case, LB and UB represent the lower bound and upper bound 
+
+of the variable respectively. 
+
+R𝑖𝑗  represents  random  numbers  uniformly  distributed  within  the 
+interval  [0,1],  where  N denotes  the population  size  and  D  represents the 
+dimensionality of the problem. 
+(2) Gyration motion 
+
+The PLO employs the principles of physics to characterize the motion 
+of charged particles within a magnetic field. For instance, the differential 
+equation  that  integrates  the  Lorentz  force  with  Newton's  second  law 
+elucidates how a particle's velocity varies over time: 
+
+In  this  context, 𝑞 represents  the  charge  of  the  charged  particles, 𝐵 
+denotes the intensity of the Earth's magnetic field, and 𝛼 is a damping factor 
+that accounts for atmospheric resistance.  
+
+ (2) 
+
+(3) 
+
+(3) 
+
+(4) 
+
+The strategy is primarily employed for local development: it involves 
+a meticulous search within the neighborhood of the current solution over a 
+limited scope. 
+(3) Aurora oval walk 
+
+In the global exploration phase, auroral elliptical motion simulates the 
+phenomenon  that  occurs  when  charged  particles  gather  to  form  auroral 
+ellipses due to energy losses and magnetic disturbances after entering the 
+earth's  atmosphere.  This  motion process  has  a large  step property  and is 
+suitable  for  an  overall  research that helps  particles jump out of the local 
+optimum using levy flight to simulate stochastic stride movements: 
+
+(6)
+
+(7) 
+
+(4)Particle collision 
+
+To  avoid  premature  convergence  towards  local  optima,  the  particle 
+incorporates  a  collision  based 
+swarming  optimization  algorithm 
+disturbance  mechanism.  When  a  probability  threshold  is  reached,  the 
+current particle collides with neighbouring particles chosen at random. The 
+updating rule is worded as follows: 
+
+(8) 
+
+In  this  scenario,  X(a,j)  denotes  the  position  vector  of  a  randomly 
+selected neighboring particle, while r 3 represents a uniformly distributed 
+random  number  in  [0,1].  The  collision  probability  K  is  dynamically 
+determined  by  the  function  K(t)  =  f(t,  T),  where  t  denotes  the  current 
+iteration count and T represents the predefined maximum iteration limit. 
+1.4 Limitations of the original PLO algorithm 
+
+The original Particle-Laden Optimization (PLO) algorithm achieves a 
+balance  between  global  and  local  search  by  simulating  the  motion  of 
+charged particles in the Earth's magnetic field under solar wind conditions. 
+Its primary search strategies include spiral movement (local exploitation), 
+auroral  elliptical  movement  (global  exploration),  and  particle  collision 
+strategies  (escaping  local  optima)[38].  However,  there  are  several 
+shortcomings in its practical application:   
+(1) 
+
+The  random  generation  of  an  initial  population  often  results  in 
+uneven  spatial  distribution  among 
+individuals.  Conventional 
+uniform  random  initialization  methods  may  lead  to  scattered 
+distribution  patterns  of  initial  solutions;  this  scattered  distribution 
+often  fails  to  adequately  explore  the  entire  search  space,  thereby 
+undermining the algorithm's global exploration capability. 
+The original algorithm does not employ a clustering mechanism; all 
+individuals  share  the  same  search  strategy  with  insufficient 
+information exchange. This singular population update strategy can 
+easily cause searches to become trapped in local optima, leading to 
+inadequate diversity and severe premature convergence issues.   
+The  use  of  linearly  decaying  inertia  weights  and  a  fixed-speed 
+update formula is difficult to adapt to the needs of different stages of 
+the search process. The balance between global exploration and local 
+development 
+to  achieve.  The  parameter  update 
+mechanism is monotonic and lacks adaptive adjustments at different 
+stages of the search. 
+Since  this  study  did  not  particularly  focus  on  the  diversity  and 
+stagnation of the population, there were no effective or optimal exit 
+strategies, no sustainable responses to protect them, and no effective 
+mechanisms to prevent decline. 
+
+is  difficult 
+
+(2) 
+
+2.EPLO improvement method and mathematical model 
+2.1 Mathematical model of the PLO 
+2.1.1 Initialization Phase 
+
+At the very start, the algorithm initializes both the global swarm and 
+its  partitioned  sub-swarms.  Positions  are  set  by  Equation  (9)  uniformly 
+between the lower bound lb and upper bound ub, and velocities by Equation 
+ to zero, ensuring pure random exploration initially. 
+
+ (4) 
+
+(9) 
+
+During the  movement  of charged particles,  random  shocks between 
+the  particles  can  cause  mutations  in  the  trajectories  of  motion.  This 
+phenomenon is used in optimization to improve the ability of algorithms to 
+get out of the local optimum and, finally, update individual positions by a 
+weighted combination of local and global search: 
+
+(5) 
+
+The  stochastic  perturbation  coefficient  r2  is  confined  within  the 
+interval  [0,  1].  Weight  factors W1 and W2 are  employed  to  dynamically 
+modulate  the  trade-off  between  local  search  and  global  exploration. 
+Typically,  these  weights  are  adjusted  via  nonlinear  decay  functions  to 
+achieve adaptive parameter tuning, 
+
+2.1.2 Adaptive Parameter Control 
+At each iteration t, the inertia weight w and acceleration coefficients c1, c2 
+
+adapt  based  on  progress  ratio 
+
+ via  Equations  (10)�?12),  smoothly 
+
+shifting  from  exploration 
+probability 
+
+to  exploitation.  The  opposition-learning 
+ecreases  with  τ  per  Equation  (13),  encouraging  more 
+
+opposite-point trials early on. 
+
+(10) 
+
+(11) 
+
+(12) 
+
+(,)()(()()),1,,;1,,ijXijLBjRUBjLBjiNjD=+−=�?dvmqvBvdt�?−q0()Btmvtve−=()()()()()()1avg , 2oLBrUBLBALevydXjXij+−=−+()()()()new212oXiXirWvtWA=++�?(2(/))12/(1)1tTWe�?+�?(2/)2tTWe�?()()()()new212oXiXirWvtWA=++�?)00ivel=()()()01,iposlbublbranddim=+−Tt�?oppp1.5()()maxmaxminwtwww�?−−1111()()tmaxmaxmincccc�?−−2222()()tminmaxmincccc�?+�?
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+4 
+
+ARAB ECONOMIC AND BUSINESS JOURNAL 00 (2014) 000�?00 
+
+2.1.3 Velocity & Position Update 
+
+Each  particle’s  velocity  and  position  update  via  the  standard  PSO 
+Equations (14)�?15), combining inertia, cognitive, and social components, 
+then clamping positions within the bounds. 
+
+Then, particles�?velocities and positions are updated according to the 
+
+improved PLO formulas, with boundary constraints enforced: 
+
+(13) 
+
+(14) 
+
+(15) 
+
+2.1.4 Opposition-based Learning 
+
+Also,  an  opposition  learning  probability  is  introduced  to  increase 
+,  an  opposite  point  is 
+
+population  diversity.  If  a  draw  is  below 
+
+computed  by  Equation  (16-17)  and  accepted  if  it  yields  better  fitness, 
+boosting global exploration.: 
+
+(16) 
+
+(17) 
+
+2.1.5 Multi-Level Optimality Coordination Mechanism 
+Each particle updates its personal best per Equation (18), and each sub-
+swarm retains the best among its particles as gBest per Equation (19). 
+
+   (18) 
+
+(19) 
+
+To enable inter-group information flow, the algorithm adopts a parallel 
+migration mechanism. Every mmm iterations (e.g., 10 or 20), each group’s 
+is copied to the next group, replacing the worst particle, according 
+
+to: 
+
+(20) 
+
+Fig. 1.Parallel Migration 
+Simultaneously, a global elite pool of size E is maintained, storing the 
+top-performing  solutions  across  all  groups.  If  a  sub-swarm’s  gBest 
+outperforms  the  worst  solution  in  the  elite  pool,  it  replaces  it.  This 
+mechanism ensures that top solutions are preserved and leveraged as global 
+guidance.  The  best  individual  in  the  elite  pool  is  selected  as  the  overall 
+globalBest at each iteration. 
+
+2.1.6 Exploitative Enhancements in Later Iterations 
+
+After  sufficient  global  exploration,  the  algorithm  integrates  three 
+exploitation-focused mechanisms in the later stage (t > 0.4T): Lévy-flight 
+perturbation,  gradient-based  fine-tuning,  and  Gaussian  noise  injection. 
+Lévy-flight  enables  long  jumps  to  escape  local  optima;  gradient-based 
+
+   (21) 
+
+updates  refine  promising  solutions;  and  Gaussian  noise  ensures  global 
+diversity  and  prevents  premature  convergence.  Together,  these  enhance 
+robustness and exploitation capabilities in the final search phase. 
+
+A  Levy-flight  perturbation  is  applied  to  the  global  best  for  random 
+introduce  Lévy-flight 
+
+iterations, 
+
+long-range  jumps.  After  40%  of 
+perturbation for  
+
+multi-strategy tuning: 
+
+(22) 
+
+(23) 
+
+(24) 
+For enhanced late-stage exploration (t>0.4T), a Lévy flight (Equation 
+
+(24))  perturbs  the  global  best,  where  β  is  the  Lévy  parameter  and 
+elementwise multiplication. 
+After 60% of iterations, apply numerical gradient descent for fine-tuning: 
+
+ (25) 
+
+Every  50  iterations,  Gaussian  noise  N(0,σ2)  with  σ=0.01(ub−lb)  is 
+
+added to globalBest to maintain exploration. 
+2.2 EPLO analysis 
+
+The EPLO algorithm inherits and extends the classical Particle Learning 
+Optimization  (PLO)  framework  by  integrating  parallel  subpopulations, 
+inter-subpopulation migration, an elite pool mechanism, and multi-strategy 
+refinement to enhance search efficiency and solution quality. The original 
+PLO algorithm employs dynamically adjusted inertia weights and learning 
+factors, guiding particles�?velocity and position updates based on individual 
+best (pBest) and global best (gBest) positions, enabling global optimization 
+in continuous spaces. Building on this, EPLO divides the population into 
+multiple  subgroups,  where  particles  update  in  parallel  guided  by  local 
+subgroup bests (gBest), accelerating convergence. It periodically migrates 
+the  best  solution  from  one  subgroup  to  replace  the  worst  particle  in  a 
+neighboring  subgroup,  facilitating  information  sharing  and  diversity 
+learning  dynamically 
+maintenance.  Additionally,  opposition-based 
+generates  opposite candidate  solutions  to improve exploration[39],  while 
+late-stage multi-strategy refinements including Levy flights[40] and finite-
+difference  gradient  estimation[41]  finely  tune  the  global  best  solution, 
+significantly improving local exploitation. 
+
+From  a  time complexity  perspective,  let  the  problem dimension be  D, 
+total population size N, maximum iterations T, and cost of a single fitness 
+Evaluation  COF.  PLO’s  per-iteration  computation  primarily  involves 
+particle velocity and position updates at O(N⋅D) and fitness evaluations at 
+O(N⋅COF),  resulting  in  an  overall  complexity  of  O(T⋅N�?D+COF)). 
+EPLO’s parallel subpopulations and migration introduce limited additional 
+fitness  evaluations,  with  late-stage  refinements  adding  approximately 
+D⋅COF fitness computations. The combined time complexity is expressed 
+as O(T�?N�?D+COF)+D⋅COF)), which approximates to O(T⋅N⋅COF) when 
+population size dominates dimension. Space complexity is dominated by 
+storage  of  particle  positions  and  velocities  at  O(N⋅D),  plus  elite  pool, 
+subgroup information, and convergence curve data, totaling O(N⋅D+T). 
+
+Compared  to  traditional  PLO,  EPLO’s  parallel  subpopulations  and 
+migration  mechanisms  enhance  population  diversity  and  inter-group 
+information  exchange  at  a  macro  level,  improving  global  search  and 
+convergence  stability.  At the  micro  level, opposition  learning  and  finite-
+difference  gradient  refinement  improve  local  search  capabilities  of 
+individual  solutions,  enabling  superior  performance 
+in  complex, 
+multimodal,  and  moderately  high-dimensional  problems.  Unlike  swarm 
+intelligence algorithms such as PSO and GWO, which focus on collective 
+group behavior, EPLO combines individual historical bests with multi-level 
+group cooperation, reflecting a hybrid macro-micro design philosophy. The 
+is  well  suited  for  medium-dimensional  problems  with 
+algorithm 
+parallelizable fitness evaluations, balancing exploration and exploitation to 
+boost search efficiency and solution quality. However, its finite-difference 
+refinement may impose computational overhead in very high-dimensional 
+or costly fitness scenarios. 
+
+In summary, EPLO serves as a parallelized and enhanced successor to 
+PLO,  leveraging  parallel  subpopulations,  migration,  opposition  learning, 
+
+0().5()1opppt�?�?122()()()()(())()(())1iiiigiveltwtveltctrandpBestpostctrandgBestpost+=+�?�?()((()()1,),)iiipostmaxminpostveltublb+=++oppp1.()iioppublbpost=+�?()(())()(,11.),1,iiiiioppfoppfpostpostpostotherwise++=+()(())(())1, 11,iiiiiipBestpostiffpostpBestScorepBestScorefpost=++=+1..,{}ggiiNpgBestgBestScoreminpBestScore==ggBest)1(gnextgmodG=+[,]()ggelitePoolworstposgBestfitgBestScore===()/21/1()2()1(/2)12sin−+=+�?1/,()()0,,01,uuNvNLv=(1),,(),LevydulcandglobalBest=�?+�?,0.05())()jjfgbefgbgradgradcandgbublbgrad+�?=−− 
+ 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+ 
+  
+ 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ARAB ECONOMIC AND BUSINESS JOURNAL 00 (2014) 000�?00                                                                                                                   5 
+
+and  multi-strategy  refinement  to  build  an  efficient  hybrid  optimization 
+framework. Its time complexity is dominated by fitness evaluations, with a 
+reasonable  space  complexity,  showing  broad  application  potential  and 
+robust performance. 
+3. Experimental Design and Results Analysis 
+
+To  verify  the  effectiveness  of  EPLO,  this  paper  designs  two  types  of 
+function  experiments  and  application 
+
+test 
+
+experiments:  standard 
+experiments. 
+3.1 Standard test function experiment 
+3.1.1 Experimental Setup 
+
+The  IEEE  CEC2022  calibration  suite  includes  30  standard  calibration 
+functions  selected  for  this  study.  This  reference  set  contains  a  series  of 
+complex optimization problems with high dimensions, multimodality, non-
+convexity,  non-differentiability,  dynamic  constraints  and  other  difficult 
+characteristics. Together, these features allow a complete evaluation of the 
+optimization capabilities of the algorithm. Performance indicators used in 
+the experiments include optimal solution value, average convergence speed 
+and robustness. 
+3.1.2 Parameter settings 
+
+To ensure the fairness of the experiment, this study compares the original 
+Particle Learning Optimizer (PLO), the improved Proposed PLO(EPLO), 
+and other benchmark algorithms within a consistent search environment. 
+3.1.3 Problem Dimensions and Experimental Environment 
+The experiments were tested on different dimensions (10, 20) in order to 
+verify  the  performance  of  the  algorithm  on  low,  medium  and  high 
+dimension problems. With MATLAB R2021a (or similar) as the primary 
+development  platform,  the  experiment  runs  on  a  desktop  computer 
+equipped with an Intel i7 processor and 16 gb ram. Each algorithm is run 
+30  times  independently  on  each  test  function  in  order  to  reduce  the 
+stochastic effect and to count the mean and standard deviation. 
+
+3.1.4 Algorithm Comparison 
+
+original 
+
+including: 
+
+The experiment selected several mainstream optimization algorithms for 
+comparison, 
+Learning 
+Optimizer),EPLO,BKA  (Binary  Krill  Herd  Algorithm)  [42],GWO  (Grey 
+Wolf Optimizer)[7],WOA (Whale Optimization Algorithm) [8],SCA (Sine 
+Cosine Algorithm)[16], ,FOX (Fox Optimization Algorithm)[43],ALO(Ant 
+Lion  Optimizer)[44],BA(Bat  Algorithm)  [45],GSA  (Gravitational  Search 
+Algorithm)[21],HHO  (Harris  Hawks  Optimization)[9],MFO(Moth-Flame 
+Optimizer)[46]. 
+
+(Particle 
+
+PLO 
+
+Each algorithm independently executes 30 iterations on each function, 
+and simultaneously records the optimal adaptability value and convergence 
+curve of each execution. Then calculate the average optimal value and its 
+standard deviation of each test function. In order to visually compare the 
+convergence  speeds  among  different  algorithms,  the  convergence  curves 
+were plotted; Furthermore, the performance data of each algorithm in all 
+test functions is compiled in the form of a table. A representation graph of 
+the convergence curve A was also generated, which visually illustrates the 
+convergence speed and stability. 
+
+The  experimental  results  are  shown in  Table 13,  which  confirm  the 
+outstanding  optimization  ability  of  EPLO,  especially  when  applied  to 
+various test functions. Specifically, when optimizing the functions F1, F2, 
+F3, F4, F5, F7, F8, F9, F10, F11, and F12, the average performance of AOO 
+ranks first among all algorithms, with a win rate of 91.67%. This indicates 
+that  EPLO  has  strong  competitiveness  in  unimodal  functions,  basic 
+functions, mixed functions and composite functions. In direct comparisons 
+with  the  BKA,  WOA,  FOX,  PLO,  ALO,  BA,  GSA,  HHO  and  MFO 
+algorithms, EPLO performed outstandingly in all 12 benchmark functions. 
+It  is  worth  noting  that  EPLO  outperforms  FOX,  PLO,  ALO,  BA,  GSA, 
+HHO  and MFO  algorithms on 11  out of  the  12 benchmark  functions.  In 
+terms of the average ranking, EPLO took the first place with a considerable 
+advantage, which was more than twice that of the second-place BKA. This 
+
+, and truncate to the boundary, according to Eqs.(14) to Eqs.(15).  
+
+Algorithm: Parallel polarization learning optimizer  ( EPLO) 
+Input: N, MaxFEs, lb, ub, dim, fhd, migration 
+Output: the best location of  Parallel polarization learning optimizer and its fitness value.    
+1. 
+2. 
+3. 
+
+ Parameter initialization, randomly generate Pop and its opposite groups according to Eqs.(9). 
+ For t = 1 to MaxFEs do   
+      Compute adaptive parameters τ, w, c1, c2,
+      For g = 1 to G do   
+             For i = 1 to N/G do   
+                    Calculate and update the speed 
+
+,  according to Eqs.(10) to Eqs.(13). 
+
+and position
+
+                    If rand<
+
+                          Generate and test the opposition points according to equation (16) to Eqs.(17).    
+                    End If 
+                  Calculate fhd(x), update the 
+             End  For 
+             Update
+
+according to Eqs.(19).   
+
+ according to Eqs.(18). 
+
+ to the worst individual in the next subgroup according to Eqs.(20).  
+
+       End  For 
+       If mod(t , migration)==0   
+             For g = 1 to G  do 
+                   Move 
+             End For   
+       End If 
+       For g = 1 to G do   
+             Individuals replace and update globalBest, according to Eqs.(21). 
+       End For 
+       If    
+            Perturbate globalBest with Levy flight, according to Eqs.(22) to Eqs.(24).   
+       Else If    
+            Fine-tune globalBest with numerical gradients,  according to Eqs.(25). 
+       Else If    
+            Add Gaussian noise perturbation to globalBest. 
+       End  If 
+       Record the best position and fitness values for population. 
+
+27. 
+28. 
+29. 
+30.  End  For 
+
+4. 
+5. 
+6. 
+
+7. 
+
+8. 
+9. 
+10. 
+
+11. 
+12. 
+
+13. 
+14. 
+15. 
+16. 
+
+17. 
+18. 
+19. 
+20. 
+21. 
+22. 
+
+23. 
+24. 
+25. 
+26. 
+
+oppp()ivelt()ipostoppp,,iiFEspBestpBestScore,gggBestgBestScoreggBest() 0.4M,100taxFEsmodt==�?.6tMaxFEs(),500modt== 
+ 
+ 
+  
+    
+  
+6 
+
+ARAB ECONOMIC AND BUSINESS JOURNAL 00 (2014) 000�?00 
+
+significant lead undoubtedly highlights EPLO's competitiveness among its 
+peers. 
+
+The experimental results, as shown in Table 14, have confirmed the 
+exceptional optimization capabilities of EPLO, particularly when applied to 
+a variety of test functions. Specifically, when optimizing functions F1, F2, 
+F4, F5, F7, F8, F9, F11, and F12, EPLO’s average performance ranks first 
+among  all  algorithms  with  a  75%  win  rate.  Furthermore,  when  the  best 
+value  is  used  as  the  ranking  criterion,  EPLO  consistently  achieves  top 
+rankings,  demonstrating  its  robust  performance  across  the  entire  test 
+function  suite.  This  indicates  that  EPLO  has  strong  competitiveness  in 
+Unimodal Functions, Basic Functions, Hybrid Functions, and Composition 
+Functions. In the direct comparison with BKA, WOA, FOX, PLO, ALO, 
+BA, GSA, HHO, and MFO algorithms, EPLO outperforms them in most 
+benchmark functions. Notably, EPLO surpasses these algorithms in 11 out 
+of  the  12  benchmark  functions.  Regarding  the  average  ranking,  EPLO 
+secures the first place with a significant margin, which is notably better than 
+the  second-ranked  algorithm,  BKA.  This  significant  lead  undoubtedly 
+highlights EPLO’s competitiveness among its peers. 
+
+The  Fig.  22  curves  presented  in  the  analysis  reveal  that  the  EPLO 
+algorithm consistently outperforms other metaheuristic approaches  across 
+a diverse set of benchmark functions (F3, F5, F7, F9, F10, and F12). Unlike 
+algorithms  such  as  BKA  or  WOA,  which  often  exhibit  premature 
+convergence to suboptimal solutions or stagnation in later iterations, EPLO 
+maintains a steady and rapid decline in objective function values throughout 
+the entire 500-iteration process. For instance, in the case of the F3 function, 
+EPLO  demonstrates  an  exceptionally  swift  reduction  in  fitness  values 
+during the initial phase, followed by a stable trajectory that ensures minimal 
+final error. Similarly, in the F5 function, where other algorithms like ALO 
+or  BA  struggle  to escape  local  optima,  EPLO  sustains its  momentum by 
+dynamically  adjusting  its  search  strategy,  thereby  avoiding  premature 
+convergence. This behavior is further reinforced in the F7 and F9 functions, 
+where  EPLO’s  ability  to  balance  exploration  and  exploitation  phases 
+becomes critical. While algorithms like GSA or MFO tend to oscillate or 
+plateau  after  initial  progress,  EPLO  continues  to  refine  its  solutions  by 
+allocating computational resources efficiently between global exploration 
+and  local  exploitation.  In  the  F10  and  F12  functions,  which  test  the 
+robustness of algorithms under high-dimensional and complex landscapes, 
+EPLO’s convergence curves remain steeper and more consistent compared 
+to  challenging 
+to  competitors, 
+optimization scenarios. Notably, even in the later stages of iteration, EPLO 
+continues to exhibit a downward trend in fitness values, suggesting that its 
+design inherently supports prolonged search capabilities without sacrificing 
+precision. This is attributed to its sophisticated mechanism for maintaining 
+population  diversity  and  dynamically  adjusting  parameters  to  avoid 
+premature convergence. In contrast, algorithms such as BA or GSA often 
+exhibit  diminishing  returns  in  later  iterations,  as  their  search  strategies 
+become overly focused on local regions. The overall performance of EPLO 
+across  these  functions  underscores  its  ability  to  achieve  a  harmonious 
+interplay  between  exploration  (searching  new  regions)  and  exploitation 
+(refining existing solutions), which is essential for navigating multimodal 
+and  high-dimensional  problems.  Furthermore,  the  algorithm’s  consistent 
+superiority  in  final  fitness  metrics  across  all  test  cases  highlights  its 
+reliability and generalizability, making it a strong candidate for real-world 
+optimization tasks where stability and efficiency are paramount. 
+
+its  superior  adaptability 
+
+indicating 
+
+The Fig. 23 presents the convergence curves of the EPLO algorithm 
+compared to BKA, WOA, FOX, PLO, ALO, BA, GSA, HHO, and MFO 
+on CEC2022 (10-dimensional) test functions F3, F4, F5, F7, F9, and F10. 
+Through 500 iterations, EPLO demonstrates significant advantages across 
+multiple  benchmarks.  For  instance,  in  F3,  the  EPLO    achieves  a  faster 
+convergence  rate  than  BKA,  WOA,  and  FOX,  maintaining  low  fitness 
+values  even  in  later  stages,  which  highlights  its  superior  global  search 
+capability  and  stability.  In  F4,  although  initial  convergence  speeds  align 
+with other algorithms, EPLO dynamically adjusts its strategy to avoid local 
+optima, sustaining optimization until the end, while BA and GSA exhibit 
+declining  performance  as  their  fitness  values  plateau.  In  the  high-
+dimensional  F5  function,  EPLO’s  convergence  curve  shows  a  consistent 
+steep decline, reaching optimal solutions, whereas HHO and MFO suffer 
+from premature convergence, leading to suboptimal results. For multimodal 
+functions  like  F7  and  F9,  EPLO  balances  exploration  and  exploitation 
+effectively, escaping local traps and continuing to reduce fitness values in 
+later iterations, unlike PLO and ALO, which stagnate due to rigid strategies. 
+In the complex high-dimensional F10 function, EPLO’s convergence curve 
+
+consistently  outperforms  competitors,  achieving  significantly  lower  final 
+errors than BKA and WOA, proving its robustness in challenging scenarios. 
+Overall, EPLO ranks first with a 75% average win rate and attains the best 
+values in 91.7% of test functions, securing an average ranking over twice 
+as  high  as 
+the  second-placed  BKA.  This  underscores  EPLO’s 
+comprehensive  strengths  in  convergence  speed,  global  exploration,  and 
+stability, offering a reliable and efficient solution for complex optimization 
+problems. 
+4 Engineering application experiment 
+In order to further verify the applicability of EPLO in actual engineering, 
+this paper selects the following engineering design problems. 
+4.1. Tension/compression spring design issues 
+4.1.1 Problem Background and Motivation 
+Springs are ubiquitous in mechanical systems and optimizing their design 
+is essential to improve performance while minimizing the use of materials. 
+The problem of designing a tension/compression spring (TCSD) isa classic 
+optimization challenge that involves the choice of design variables to meet 
+load  and  frequency  stresses  while  minimizing  the  weight  of  the  spring. 
+Traditional methods are based on heuristic formulae or experimental tests. 
+However,  nature-inspired  research  methods  have  gained  prominence  in 
+recent  years  due  to  their  high  overall  research  capacity  and  their 
+effectiveness in solving non-linear and multimodal optimization problems. 
+
+4.1.2 Mathematical Model 
+
+Fig. 2. Tension/compression spring 
+
+The  TCSD  problem  typically  involves  three  decision  variables:  wire 
+diameter (d), average coil diameter (D), and the number of active coils (N). 
+The objective function is generally to minimize the weight of the spring, 
+which can be mathematically expressed as follows: 
+
+Here,  K  represents  a  constant.  It  is  important  to  recognize  that  the 
+objective  function  may  vary  slightly  depending  on  different  references. 
+Furthermore,  this  problem  also  includes  a  set  of  nonlinear  constraints 
+related to constraint limits, natural frequency requirements, and geometric 
+limits. 
+
+(26) 
+
+(27) 
+
+(28) 
+
+(29) 
+
+(30) 
+
+In  the  equation,  the  correction  coefficient  that  links  the  spring  to  a 
+specific correction factor, the specific expression of which depends on the 
+geometry of the spring and the working conditions. The main challenge of 
+the design problem is to determine the combination of the wire diameter (d), 
+the average wire diameter (D), and the number of movable wires (N) within 
+the feasible design space, minimizing the target function while meeting all 
+the imposed constraints.  
+4.1.3 Experimental Process and Results 
+
+We conducted a series of experiments to evaluate the stress/compression 
+spring (TCSD) design issues of several meta-heuristic algorithms. Our goal 
+is to reduce the mass of the spring by adjusting three design variables: wire 
+diameter d, average  wire  diameter  D,  and the  number  of  active  wires  N. 
+These  adjustments  must  respect  stress,  geometric  limits  and  frequency 
+limits. Specifically, each algorithm has undergone several individual tests, 
+and then we calculated the average of the best Physical Condition (MBF) 
+to evaluate the performance. Finally, MBF, representing the average of the 
+maximum values of all trials, is shown in the graph for direct comparison. 
+
+()()22min,,NdDfdDNK+=8StressLimitfcDdminmaxNNNminmaxdddminmaxDDD 
+ 
+ 
+  
+ 
+  
+ 
+  
+ 
+  
+ 
+  
+ARAB ECONOMIC AND BUSINESS JOURNAL 00 (2014) 000�?00                                                                                                                   7 
+
+limitations and production costs. Our research focus is to minimize the mass 
+of the gearbox under mechanical and geometric constraints. By adjusting 
+the gear size, shaft diameter and component layout, we can reduce material 
+usage and production costs without sacrificing structural integrity or service 
+life. 
+
+Fig. 3. Convergence Curve of the Average Optimal Fitness Value after 30 
+Runs of Tension/Compression Spring Design (TCSD) 
+
+Table 1. 
+The  average  optimal  fitness  value  and  variance  obtained  from  the 
+Tension/Compression Spring Design (TCSD) after 30 iterations. 
+
+Fig. 4. Reducer design issues 
+
+4.2.2 Design variables and objective function 
+According to the reducer structure shown in Figure 4, there are 7 design 
+variables  z=[𝑧1, 𝑧2, 𝑧3, 𝑧4, 𝑧5, 𝑧6, 𝑧7]T. 𝑧1 is  the  gear  face  width  (or  tooth 
+width), 𝑧2 is the gear module, 𝑧3 is the number of gear teeth, 𝑧4 is the length 
+of the first shaft between the bearings, 𝑧5 is the length of the second shaft 
+between  the  bearings, 𝑧6  is  the  diameter  of  the  first  shaft,  and 𝑧7  is  the 
+diameter of the second shaft. 
+
+(31) 
+
+Rank 
+
+4.2.3 Constraints and Penalty Function Method 
+
+Algorithm 
+
+4 
+3 
+7 
+6 
+5 
+1 
+9 
+8 
+10 
+2 
+11 
+
+Optimal 
+weight 
+0.017773 
+0.017773 
+0.017995 
+0.017779 
+0.017773 
+0.017773 
+0.022477 
+0.021243 
+0.02365 
+0.017773 
+0.030611 
+
+Optimal values for variables 
+N 
+D 
+d 
+0.05 
+0.933432 
+0.068994 
+0.520464 
+0.933432 
+0.068994 
+0.176836 
+0.938267 
+0.069245 
+1.698167 
+0.933606 
+0.068999 
+2 
+0.933436 
+0.068994 
+0.812623 
+0.933432 
+0.068994 
+1.415795 
+1.170489 
+0.07498 
+1.659783 
+1.079313 
+0.073334 
+0.498907 
+1.068239 
+0.074396 
+0.915768 
+0.933432 
+0.068994 
+2 
+2 
+0.076724 
+
+BKA    
+WOA    
+SCA    
+FOX    
+PLO    
+EPLO   
+ALO    
+BA     
+GSA    
+HHO    
+MFO    
+Our experimental results show that EPLO can be effective in identifying 
+high  quality  solutions  and  maintaining  consistent  performance  across 
+numerous  tests.  In  the  case  of  the  tension/compression  spring  (TCSD) 
+design  problem,  the  improved  algorithm  (EPLO)  achieved  low  physical 
+fitness  values in  most operations,  showing  strong exploration ability  and 
+rapid convergence. In addition, its robustness is confirmed by the fact that 
+it has always achieved low average fitness values with minimal standard 
+deviation in independent tests. However, transient fluctuations in the mean 
+convergence curve during periods of sharp decline suggest that the pattern 
+of  adaptive  parameters  can  be  improved  to  mitigate  late  degradation. 
+Ultimately,  the  optimized  design  allows  for  low  weight  (or  cost 
+effectiveness) while respecting all mechanical and geometric constraints. 
+Overall, these results highlight the practical application of EPLO in the task 
+of optimizing engineering design. 
+4.2 Reducer Design Issues 
+4.2.1 Problem Background and Motivation 
+
+We emphasize that the transmission is a fundamental element of the 
+powertrain  system  in  the  automotive,  aerospace,  manufacturing  and 
+metallurgical  industries.  Its  core  function  is  to  reduce  the  input  speed 
+through  gear  meshing  while  increasing  the  torque  to  meet  the  required 
+speed  and  torque  requirements.  Optimizing  the  transmission  design 
+requires balancing transmission efficiency, load capacity, floor space, mass 
+
+We note that reducer design must satisfy a range of strength, stiffness, 
+and geometric bounds to ensure safety, stability, and feasibility.Specifically, 
+tooth-root  bending  stress must not exceed  the  material’s  allowable  limit, 
+and  surface-contact  stress  must  stay  below  the  pitting  threshold. 
+Additionally,  we  control  lateral  shaft  deflection  under  load  to  maintain 
+accurate meshing and limit the resulting torsional and bending stresses in 
+the  shafts.  We  also  impose  minimum  and  maximum  bounds  on  key 
+dimensions such as module size, face width, and shaft diameter. Finally, 
+the tooth count must be an integer that conforms to established gear-design 
+standards. 
+
+In metaheuristic algorithms, the penalty function method is frequently 
+employed  to  address  inequality  constraints.  If  a  solution  z  violates  any 
+constraint 𝑔𝑖(z)�?, a sufficiently large penalty term is incorporated into the 
+objective function. This addition serves to diminish the competitiveness of 
+non-compliant  solutions  during  the search process, thereby  ensuring that 
+the final solution adheres to all specified constraints. The fitness function 
+associated with this penalty function method can be expressed as follows: 
+
+(32) 
+
+4.2.4 Experimental Process and Results 
+
+The 
+
+design 
+
+bounds. 
+
+In the study of experimental processes and outcomes, the problem is 
+initially defined with the objective function aimed at minimizing the weight 
+of the reducer. Constraints are established, including gear bending stress, 
+surface pressure, shaft deflection and stress, as well as geometric upper and 
+lower 
+as 
+z= [𝑧1, 𝑧2, 𝑧3, 𝑧4, 𝑧5, 𝑧6, 𝑧7]T .  Subsequently,  improved  Particle  Swarm 
+Optimization  (EPLO)  along  with  other  meta-heuristic  algorithms  are 
+employed to address this problem[1]. These methods are compared against 
+algorithms  such  as  Particle  Swarm  Optimization  (PLO),  Grey  Wolf 
+Optimizer  (GWO),  and  Whale  Optimization  Algorithm  (WOA).  During 
+experimentation,  hyperparameters—including  population  size,  maximum 
+number of iterations, variable upper and lower bounds—alongside penalty 
+factors are meticulously set. Multiple independent runs (e.g., 30 times) are 
+
+represented 
+
+variable 
+
+is 
+
+()()()()()2212332222167670.78543.333314.933443.09341.5087.47770.7854fzzzzzzzzzz=+−−++�?()()()()21max0,kiiFzfzgz==+�?
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+8 
+
+ARAB ECONOMIC AND BUSINESS JOURNAL 00 (2014) 000�?00 
+
+conducted to ensure robustness in results; final fitness values, convergence 
+curves,  and  optimal  solutions  for  each  run  are  systematically  recorded. 
+Finally,  through  comprehensive  data  statistics  and  analysis  procedures 
+undertaken  on  the  reducer  design  problem's  outcomes  from  each 
+algorithm—the  mean  best  fitness  (MBF)  and  standard  deviation  (STD) 
+metrics  are  calculated.  Additionally,  convergence  curves  are  plotted  to 
+facilitate  a  comparative  assessment  of  different  algorithms'  convergence 
+speeds. 
+
+Fig. 5. Convergence Curve of the Average Optimal Fitness Value After 
+30 Runs of Gearbox Design Issues 
+Table  2  The  average  optimal  fitness  value  and  variance  obtained  from 
+Gearbox Design after 30 iterations 
+
+5 
+
+4 
+
+1 
+
+3 
+
+2 
+
+17 
+
+17 
+
+17 
+
+17 
+
+17 
+
+17 
+
+17 
+
+𝑧3 
+
+Rank 
+
+𝑧1 
+3.500
+0 
+3.500
+0 
+3.500
+0 
+3.501
+1 
+3.500
+0 
+3.572
+9 
+3.600
+0 
+3.600
+0 
+3.561
+9 
+3.600
+0 
+3.600
+0 
+
+𝑧2 
+0.70
+00 
+0.70
+00 
+0.70
+00 
+0.70
+00 
+0.70
+00 
+0.70
+00 
+0.70
+00 
+0.70
+00 
+0.71
+18 
+0.70
+00 
+0.70
+00 
+
+𝑧5 
+7.71
+53 
+7.71
+53 
+7.71
+53 
+7.76
+59 
+7.82
+57 
+7.80
+99 
+7.99
+55 
+8.30
+00 
+7.84
+96 
+8.00
+00 
+7.30
+00 
+
+𝑧7 
+5.28
+67 
+5.28
+67 
+5.28
+67 
+5.28
+67 
+5.28
+76 
+5.30
+49 
+5.50
+00 
+5.50
+00 
+5.28
+66 
+5.50
+00 
+5.26
+23 
+
+Optima
+lCost 
+2.9945
+e+03 
+2.9945
+e+03 
+2.9945
+e+03 
+2.9963
+e+03 
+2.9980
+e+03 
+3.0525
+e+03 
+3.2534
+e+03 
+3.3639
+e+03 
+3.5407
+e+03 
+3.5956
+e+03 
+3.0254
+e+07 
+
+Optimal values for variables 
+𝑧4 
+7.30
+00 
+7.30
+00 
+7.30
+00 
+7.30
+51 
+7.30
+00 
+8.30
+00 
+7.83
+33 
+8.30
+00 
+7.54
+22 
+7.76
+99 
+7.30
+00 
+
+𝑧6 
+3.35
+02 
+3.35
+02 
+3.35
+02 
+3.35
+10 
+3.35
+02 
+3.37
+65 
+3.59
+56 
+3.90
+00 
+3.49
+30 
+3.41
+68 
+3.35
+02 
+Our  experiments  have  shown  that  EPLO  is  effective  in  identifying 
+optimal  configurations  in  a  short  computation  time  and  provides 
+consistently  reproducible  results  across  numerous  tests.  Analysis  of  the 
+speed  reducer  design  experiments  shows  that  the  EPLO  has  a  high 
+exploration  capability,  fine  setting  accuracy  and  strategic  capability  to 
+avoid  local  optimum.  Compared  to  conventional  optimization  methods, 
+EPLO  convergence  is  fast  and  the  final  solution  is  better.  The  small 
+standard  deviation  of  the  EPLO  results  over  30  independent  operations 
+indicates  that  the  algorithm  has  high  robustness  and  stability,  which  is 
+crucial for the engineering design. 
+
+10 
+
+11 
+
+17 
+
+19 
+
+19 
+
+17 
+
+6 
+
+7 
+
+8 
+
+9 
+
+In addition, EPLO can easily handle complex multivariate problems. 
+By  reducing  quality  or  cost  while  meeting  mechanical  and  structural 
+
+Algor
+ithm 
+
+EPLO 
+
+HHO 
+
+BKA 
+
+FOX 
+
+WOA 
+
+SCA 
+
+MFO 
+
+GSA 
+
+ALO 
+
+BA 
+
+PLO 
+
+requirements,  it  has  proven  to  be  an  effective  solution  for  actual  design 
+tasks. 
+
+In  conclusion,  our  experiments  confirm  that  the  improved  EPLO 
+algorithm  not  only  accelerates  exploration  and  reliably  improves  the 
+solution, but also paves the way for the future processing of larger and more 
+complex systems. 
+4.3 Gear Train Problems 
+4.3.1 Problem Background and Motivation 
+
+Gear  systems  are  widely  used  in  mechanical  engineering  for  power 
+transfer and speed/torque change. A rational design of the number of teeth 
+reduces  material  and  manufacturing  costs  or  improves  transmission 
+efficiency  while  meeting  the  specific  needs  of  the  transmission  ratio.  In 
+some cases, choosing the right number of teeth in a given range is enough 
+to achieve the desired transmission ratio and minimize errors or costs. Since 
+the problem usually concerns only a small number of variables (number of 
+speeds) and has no complex constraints, it is very appropriate to check the 
+search power and the convergence speed of the different metaheuristics on 
+small scale problems without additional constraints. 
+
+4.3.2 Design variables and objective function 
+
+Fig. 6. Design Issues of Gear Train 
+
+Assume that there are four gears with the number of teeth of 𝑥1, 𝑥2, 𝑥3, 
+𝑥4  respectively.  In  many  practical  applications,  these  gears  are  used  to 
+achieve  a  specified  transmission  ratio  or  reduce  transmission  cost/error. 
+According  to  the  mathematical  model  provided  in  the  question,  the 
+objective function of the gear system can be written as: 
+
+Assume there are four gears with the number of teeth represented by 
+𝑥1，�?，�?and 𝑥4, respectively. In numerous practical applications, these 
+gears are employed to achieve a specified transmission ratio or to minimize 
+transmission costs and errors. Based on the mathematical model provided 
+in the question, the objective function for the gear system can be expressed 
+as follows: 
+
+(33) 
+
+Where  x=[𝑥1, 𝑥2, 𝑥3, 𝑥4]T represents  the  number  of  teeth  of  the  four 
+ indicating  that  the  actual  gear  ratio  or  the  related  coefficient 
+
+gears, 𝑥2×𝑥3
+𝑥1×𝑥4
+1
+
+ is  the  expected  target  value  or  reference  value,  which  measures  the 
+6.931
+deviation  between  the  actual  value and the  target  value.  The  smaller  the 
+objective  function,  the  more  accurately  the  gear  train  can  achieve  the 
+required  transmission  ratio  or  reduce  the  corresponding  transmission 
+cost/error. 
+4.3.3 Experimental process and results 
+
+We  selected  the  enhanced  EPLO  algorithm  alongside  benchmark 
+methods  such  as  PLO,  PSO,  and  GWO  for  evaluation.  We  set 
+hyperparameters—including  population  size,  maximum  iterations,  and 
+variable bounds—and applied rounding or discrete‐encoding when discrete 
+outputs were required. Next, we ran each algorithm independently for 30 
+trials. In each trial, we recorded the best fitness, tracked the convergence 
+curve, and saved the optimal solution vector x = [𝑥1, 𝑥2, 𝑥3, 𝑥4]T. Finally, 
+we performed data analysis to compute the mean best fitness (MBF) and 
+standard  deviation  (STD)  for  each  method  on  the  gear‐train  problem, 
+assessing  both  solution  quality  and  consistency,  and  we  plotted 
+convergence curves to compare each algorithm’s convergence speed. 
+
+()223141min6.931xxfxxx�?− 
+ 
+ 
+ 
+ 
+ARAB ECONOMIC AND BUSINESS JOURNAL 00 (2014) 000�?00                                                                                                                   9 
+
+4.4.1 Problem Background and Motivation 
+
+Multi-disc clutch brakes are widely used in automotive transmission 
+systems  and  industrial  machinery.  Their  lightweight  design  is  of  great 
+significance  for  reducing  energy  consumption,  improving  efficiency  and 
+reducing manufacturing costs. As shown in Figure 2, the design problem 
+requires  optimizing  parameters  such  as  inner  radius,  outer  radius,  disc 
+thickness, force and number of friction surfaces to minimize the brake mass 
+while satisfying nine nonlinear constraints such as pressure, thermal load 
+and geometric compatibility. 
+
+Fig. 7. The convergence curve of the average optimal fitness value after 
+30 iterations of the gear system design problem 
+ Table 3 The average optimal fitness value and variance obtained from the 
+gear system design after 30 iterations 
+
+Optimal values for variables 
+
+Algorithm 
+
+OptimalCost  Rank 
+
+𝑥1 
+
+𝑥2 
+
+𝑥3 
+
+𝑥4 
+
+EPLO 
+
+42.9835 
+
+16.3254 
+
+19.3591 
+
+48.6807 
+
+2.7009e-12 
+
+ALO 
+
+HHO 
+
+FOX 
+
+BA 
+
+PLO 
+
+MFO 
+
+GSA 
+
+47.6474 
+
+17.0693 
+
+22.2116 
+
+54.4897 
+
+1.1661e-10 
+
+48.0298 
+
+16.7461 
+
+22.4839 
+
+54.4436 
+
+1.1661e-10 
+
+49.4304 
+
+12.1000 
+
+33.3485 
+
+55.5692 
+
+1.2634e-09 
+
+42.7715 
+
+24.4261 
+
+15.3782 
+
+57.9457 
+
+4.5033e-09 
+
+60 
+
+30.7362 
+
+12 
+
+43.0361 
+
+8.7008e-09 
+
+38.3440 
+
+16.4241 
+
+13.3406 
+
+38.3740 
+
+5.5227e-08 
+
+51.1468 
+
+19.2761 
+
+15.4635 
+
+39.2103 
+
+9.8256e-07 
+
+1 
+
+2 
+
+3 
+
+4 
+
+5 
+
+6 
+
+7 
+
+8 
+
+Overall, the experimental results for gearing design problems showed 
+that  the  EPLO  achieved  low  average  final  fitting  values  over  30 
+independent  operations,  which  shows  that  it  succeeded  in  minimising 
+transmission  ratio  errors.  The  small  standard  deviation  of  the  poolp 
+indicates  more  stable and  robust  results.  The average convergence  curve 
+shows that the poop decreases rapidly and stabilizes throughout the iteration, 
+fully  demonstrating  the  effective  combination  of  its  global  research  and 
+local  development  capabilities.  These  results  verified  the  feasibility  and 
+practical  usefulness  of  the  modified  EPLO  algorithm  to  address  mixed 
+integer non-linear optimization problems, such as gear design. Therefore, 
+EPLO code performance in gearing design optimization has demonstrated 
+its  ability  to  effectively  reduce  transmission  ratio  errors  and  improve 
+transmission  accuracy  while  respecting  different  design  constraints.  In 
+addition,  it  has  obvious  advantages  in  terms  of  stability  of  results  and 
+calculation efficiency. This provides strong support to improve traditional 
+designs  by  adopting  intelligent  optimization  methods  in  engineering 
+practice. 
+4.4.Multiple disk clutch brake design problem 
+
+Fig. 8. Multiple disk clutch brake design 
+
+4.4.2 Design variables and objective function 
+
+The decision variables are represented by five integer values, denoted 
+as x�?[𝑥1,𝑥2, 𝑥3, 𝑥4, 𝑥5]. Specifically: 𝑥1 corresponds to the inner radius ri 
+(mm), 𝑥2 represents the outer radius ro (mm), 𝑥3 indicates the thickness of 
+the  disk  t  (mm), 𝑥4 denotes  the  applied  force  F(N),  and 𝑥5 signifies  the 
+number of friction surfaces Z (integer). The total mass is determined by the 
+geometric volume and material density, with an objective to minimize this 
+value. 
+
+(34) 
+2)𝑥3 represents the 
+Where ρ is the material density, the coefficient 𝜋(𝑥2
+volume  of  a  single  disc,  and  (𝑥5 + 1)  is  the  number  of  disc  layers 
+corresponding to the total number of friction surfaces. 
+4.4.3 Constraints and variable scope 
+
+2 �?𝑥1
+
+Pressure Constraints: 
+
+(35) 
+
+Make  sure  that  the  actual  pressure  does  not  exceed  the  maximum 
+
+allowable value 𝑝𝑚𝑎𝑥 of the material. 
+
+Heat load constraints: 
+
+What compatibility constraints: 
+
+(36) 
+
+(37) 
+
+(38) 
+
+The difference between the inner and outer radii ΔR �?20 mm, and the total 
+axial length 
+
+�?30 mm. 
+
+Torque safety constraint: 
+
+(39) 
+
+(40) 
+
+Ensure that  the braking  torque 𝑀�?meets  the  safety  factor  s=1.5  to avoid 
+overload failure. 
+Time and speed constraints: 
+
+(41) 
+
+()()()222135min1fxxxxx=�?�?)()4122210maxxgxpxx�?�?−�?)()4212sr,maxmax030xxxngxvP�?=−�?)3120gxRxx=�?−�?)()()45310maxgxLxx�?�?++maxL()50ghgxsMM=−�?32145222123hxxMxxxx−=�?)60gxT= 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+10 
+
+ARAB ECONOMIC AND BUSINESS JOURNAL 00 (2014) 000�?00 
+
+Limit braking time: 
+
+(42) 
+
+(43) 
+
+(44) 
+
+η �?15,  sliding  speed vsr�? 10  m/s.  The  variable  range  is 60 �?x1 �?
+
+80,90 �?x2 �?110,1 �?x3 �?3,0 �?x4 �?1000,2 �?x5 �?
+9 and x1,x2,x3, x4 are integers. 
+4.4.4. Experimental process and result analysis 
+
+In the process of applying the algorithm, we start by initializing the 
+parameters,  defining  the  correlation  constants  according  to  the  design 
+requirements  and  determining  the  upper  and  lower  limits  of  the  design 
+variables,  indicating  whether  to  take  an  integer.  Then  an  appropriate 
+optimization algorithm (e.g. EPLO, GA, PSO, HHO, etc.) is selected for a 
+global search and parameters such as population size, maximum number of 
+iterations, etc. On stress handling, the penalty function method is used to 
+penalize  solutions  that  violate  constraints  and  integer  variables  are 
+processed  by  rounding  or  mixed  coding.  In  an  iterative  search,  the 
+population is initialized randomly, the value of the objective function and 
+the violation of constraints are calculated, and the optimal individuals are 
+iteratively  updated until  the termination condition  is  met.  In  the  end,  the 
+optimal  solution  and  the  corresponding  mass  are  produced  and  the 
+constraints are checked to verify the plausibility of the action force and the 
+number  of  discs.  At  the  same  time,  mass  reduction  and  performance 
+improvement  are  analyzed  compared  to  traditional  or  initial  design.  The 
+standard  deviation  (STD)  to  assess  the  stability  and  convergence  of  the 
+curve  shows  a  downward  trend  in  the  quality  as  much  as  possible  the 
+percentage  change  in  the  situation  to  assess  the  effectiveness  of  the 
+impunity function. 
+
+Table 4. 
+The average optimal fitness value and variance obtained from the multi-
+disc clutch braking after 30 iterations 
+
+Algorit
+hm 
+
+BKA 
+WOA 
+DBO 
+DO 
+SCA 
+FOX 
+PLO 
+EPLO 
+
+𝑥3 
+
+Optimal values for variables 
+𝑥4 
+𝑥1 
+600 
+60 
+600 
+60 
+600 
+60 
+600 
+60 
+600 
+60 
+600 
+60 
+600 
+60 
+600 
+60 
+
+3 
+1 
+2.1636 
+3 
+1 
+1 
+1 
+2.7194 
+
+𝑥2 
+90 
+90 
+90 
+90 
+90 
+90 
+90 
+90 
+
+OptimalCost 
+
+Rank 
+
+3.0925e-07 
+8.7452e-05 
+5.8263e-07 
+9.9761e-05 
+1.0246e-04 
+8.9660e-05 
+7.0000e-12 
+6.0000e-12 
+
+4 
+6 
+5 
+8 
+9 
+7 
+2 
+1 
+
+𝑥5 
+2 
+4 
+6 
+6 
+4 
+2 
+4 
+2 
+
+The  results  show  that  the  EPLO  algorithm  can  further  reduce  the 
+quality of the clutch brake by 10-20% provided it meets the requirements 
+of contact pressure, slip speed and torque, and put the action force F and 
+the  number  of  discs  Z  within  a  reasonable  range,  which  shows  that  the 
+improved algorithm has obvious advantages and feasibility in the optimized 
+design  of  the  multi-disc  clutch  brake.  Multiple  disc  clutch  brake  design 
+problems involve many geometric, mechanical and assembly parameters. It 
+is necessary to minimize the quality of the structure while guaranteeing the 
+torque  capacity  and  safety  margins.  An  optimal  design  solution  can  be 
+quickly  found  in  a  multivariate  and  highly  coupled  environment  by 
+constructing 
+the  corresponding  objective  function  with  non-linear 
+constraints  and  using  the  EPLO  algorithm  for  a  global  search.  The 
+experimental  results  show  that  the  improved  algorithm  can  effectively 
+reduce the quality of the clutch and brake under the condition of meeting 
+the action force and safety constraints, which provides an idea of efficient 
+and viable optimization for the industrial field in terms of energy saving 
+and emission reduction and performance improvement. 
+4.5 Planetary Gear Train Design Optimization Problem 
+4.5.1 Problem Background and Motivation 
+
+The  planetary  gear  train  is  the  core  component  of  the  automobile 
+gearbox.  Its  transmission  ratio  accuracy  directly  affects  the  power 
+transmission efficiency and driving smoothness. As shown in Figure 5, this 
+problem  requires  the  optimization  of  6  integer  variables  (number  of 
+teeth,𝑁1 ∼�?)  and  module 𝑚1, 𝑚3,  number  of  poles  p,  to  minimize  the 
+maximum  error  of  the  transmission  ratio  while  satisfying  11  geometric 
+compatibilities, assembly conditions and strength constraints[4]. Traditional 
+design relies on trial and error, while mixed integer nonlinear optimization 
+algorithms can significantly improve design efficiency and accuracy. 
+
+Fig. 9.The convergence curve of the average optimal fitness value after 30 
+operational cycles for the design issues of multi-disc clutch braking 
+
+4.5.2 Mathematical Model 
+
+Fig. 10. Planetary Gear Train Design 
+
+Variable  vector  x�?[p,𝑁6, 𝑁5, 𝑁4, 𝑁3, 𝑁2, 𝑁1, 𝑚2, 𝑚1],where  p  is  the 
+pole  number, 𝑁1 �?𝑁6  is  the  number  of  gear  teeth,  𝑚1, 𝑚3 :  module. 
+Minimize the maximum value of the transmission ratio error: 
+
+(45) 
+
+()7sr,maxsr0gxvv=�?()80maxgxTT=−whfIMM�?+()1012002max,,RRfxiiiiIi=−−− 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ARAB ECONOMIC AND BUSINESS JOURNAL 00 (2014) 000�?00                                                                                                                   11 
+
+𝑖2 = 𝑁6(𝑁1𝑁3+𝑁2𝑁4)
+𝑁1𝑁3(𝑁6−�?)
+
+, 
+
+𝑖0𝑅 = �?.11, 
+
+𝐼𝑅 =
+
+𝑖01 = 3.11, 
+
+, 
+
+𝑖1 = 𝑁6
+𝑁4
+. 𝑖02 = 1.84 
+
+in.
+�?𝑁2𝑁6
+𝑁1𝑁3
+Gear diameter limit: 
+
+(46) 
+Outer diameter D𝑚𝑎𝑥=220, ensure that the outer diameter of the gear does 
+not exceed the maximum allowable value. 
+Size restrictions for planetary gear sets: 
+
+(47) 
+
+Limit the size of the planetary gear set so that it can be assembled into the 
+given space.𝐷𝑚𝑎𝑥 
+Total width limit of internal gear ring and planetary gear: 
+
+(48) 
+
+Limit the combined width of the internal gear ring and planetary gears to 
+avoid over-dimensioning. 
+Tooth number limit: 
+
+(49) 
+
+Make  sure  the  number  of  teeth  matches  to  ensure  the  gears  can  mesh 
+correctly. 
+Assembly angle limit: 
+
+(50) 
+
+(51) 
+
+Constrain the pole number p and the assembly angle between the planetary 
+gears  to  avoid  excessive  or  small  angle  deviations  and  ensure  correct 
+meshing. 
+
+(52) 
+
+Fig. 11. Convergence Curve of the Average Optimal Fitness Value after 
+30 Runs of Planetary Gear Train Design 
+Table 5 The average optimal fitness value and variance obtained from 
+Planetary Gear Train Design after 30 iterations 
+
+Make sure the planetary gears are correctly installed on the inner ring gear 
+to avoid interference. 
+Geometry compatibility: 
+
+Algorithm 
+
+(53) 
+Make  sure  the  planetary  gears  mesh  correctly  without  geometric 
+interference. 
+Integer constraints: 
+
+(54) 
+
+It can be ensured that the difference in the number of teeth is an integer 
+multiple of the number of poles. 
+4.5.3 Experimental process and result analysis 
+
+Initially,  algorithm  parameters  are  initialized,  including  defining 
+integer ranges for gear tooth counts (𝑁1 to 𝑁6), predefined discrete sets for 
+module values (𝑚1 and 𝑚3), and the permissible range for pole pairs (p). 
+Concurrently, the target gear ratio and associated design constraints (e.g., 
+strength, geometry, and assembly requirements) are defined. Subsequently, 
+suitable  optimization  algorithms �?such  as  EPLO  (Particle  Population 
+Learning  Optimization)  and  PSO  (Particle  Swarm  Optimization) �?are 
+selected to address the problem. Discrete variables are handled via rounding 
+or  index-mapping  techniques  to  ensure  integer  feasibility.  Constraint 
+handling employs either a penalty function approach or a feasibility-first 
+strategy  to  ensure  solution  validity.  An  initial  population  is  randomly 
+generated, and each individual's objective function value and fitness score 
+are  computed.  The  algorithm  iteratively  updates  the  best  candidate 
+solutions  until 
+iterations  or 
+termination  criteria  (e.g.,  maximum 
+convergence tolerance) are met. To ensure statistical robustness, multiple 
+independent  runs  are  executed  to  compute  the  mean  best  fitness  (MBF), 
+standard deviation (STD), and convergence curves. These metrics confirm 
+compliance  with  all  assembly,  strength,  and  geometric  constraints  in  the 
+final  solution.  Finally,  the  proposed  method  is  benchmarked  against 
+conventional  methods  to  quantify  improvements  in  transmission  ratio 
+accuracy  and  evaluate  the  feasible  solution  rate.  These  metrics  further 
+assess algorithmic stability and search efficiency. 
+
+Optimal values for variables 
+
+OptimalCost  Rank 
+
+𝑁1  𝑁2  𝑁3  𝑁4  𝑁5  𝑁6  𝑚1  𝑚2  p 
+38  17  17  18  17  74  3 
+
+3 
+
+5  9.5250e+21 
+
+38  17  17  18  17  74  3 
+
+36  17  17  17  17  74  3 
+
+44  17  17  42  17  74  3 
+
+38  17  17  18  17  74  3 
+
+38  17  17  18  17  74  3 
+
+24  28  25  46  21  60  3 
+
+19  36  40  46  34  48  3 
+
+43  26  18  46  20  48  3 
+
+3 
+
+3 
+
+3 
+
+3 
+
+3 
+
+3 
+
+3 
+
+3 
+
+5  3.4450e+23 
+
+5  5.3025e+23 
+
+5  7.7525e+23 
+
+5  9.5430e+23 
+
+5  5.5250e+24 
+
+5  7.9620e+24 
+
+5  8.1915e+24 
+
+5  9.7727e+24 
+
+1 
+
+2 
+
+3 
+
+4 
+
+5 
+
+6 
+
+7 
+
+8 
+
+9 
+
+EPLO 
+
+PLO 
+
+HHO 
+
+FOX 
+
+OOA 
+
+MFO 
+
+ALO 
+
+BA 
+
+GSA 
+
+Experimental  tests  show  that  the  EPLO  algorithm  reliably  finds 
+superior configurations, cutting transmission‐ratio errors from about 0.15 
+down to nearly 0.02. Moreover, the chosen tooth counts and module sizes 
+fully  satisfy  all  design  constraints,  demonstrating  the  method’s  strong 
+global‐search ability and robustness in refining planetary‐gear‐train layouts. 
+Planetary  wheel  design  optimization  problems  are  related  to  the 
+dispersion of the number of teeth and the module, as well as multiple non-
+linear  assembly  and  strength  constraints.  By  integrating  into  the  unified 
+model  the  key  variables  (number  of  poles,  number  of  teeth,  number  of 
+modules) and the  requirements of the  transmission  ratio of  the  planetary 
+wheels, and by performing a global search with EPLO, transmission ratio 
+errors  can  be  significantly  reduced,  while  respecting  the  geometry  and 
+strength constraints of the connection. Experimental results show that the 
+EPLO algorithm converges rapidly to a high quality solution in a discrete-
+continuous mixing space, reduces the trial and error process and improves 
+design  accuracy.  It  provides  an  efficient  and  viable  technical  path  for 
+lightweight,  high-precision  planetary  wheel  design  in  areas  such  as 
+automotive gearboxes and industrial robots. 
+4.6 Robot Gripper Design Optimization Problem 
+4.6.1 Problem Background and Motivation 
+
+Robot Gripper is widely used in industrial automation, logistic sorting 
+and  medical  robots.  Its  performance  directly  affects  the  efficiency  and 
+
+()136()2.50maxgxmND=+−�?11212(()2(0))maxgxmNNmND=+++−334535(()2(0))maxgxmNNmND=+++−411236313()()()0gxmNNmNNmm=+−−−−�?12222()()()20gxNNsinpN=−−+++�?63333()()()20gxNNsinpN=−−+++�?45555()()()20gxNNsinpN=�?+++�?)()()()()()222835356345634522gxNNNNNNNNNN�?+++−−�?+�?�?)641NNhxZp�? 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+12 
+
+ARAB ECONOMIC AND BUSINESS JOURNAL 00 (2014) 000�?00 
+
+stability of the capture. Figure 5 shows schematically a typical structure of 
+a manipulator clamp: the opening and closing of the clamp and the transfer 
+of  the  gripping  force  are  achieved  by  a  number  of  links  with  the  drive 
+mechanism. Traditional designs often rely on experience or trial and error 
+methods  to  meet  basic  gripping  needs.  However,  with  the  increasing 
+demand  for  various  object  gripping  and  high  precision  control,  gripper 
+lightness,  stroke  flexibility  and  gripping  flexibility  are  becoming  key 
+considerations.  Metaheuristics  based  global  search  and  multi-purpose 
+balancing capabilities enable the efficient extraction of more optimal clamp 
+structure parameters in larger non-linear stress environments. 
+
+hyperparameters  such  as  population  size  and  maximum  number  of 
+iterations  are  set.  Constraint  processing  uses  penalty  function  method  or 
+feasibility priority strategy to ensure the feasibility of the solution, and at 
+the same time determines the maximum and minimum values of the force 
+through numerical search or analytical calculation. In the iterative search 
+stage, the feasible solution is initialized and the algorithm is updated, and 
+the  solution  is  optimized  by  crossover,  mutation  or  speed  and  position 
+adjustment  until  convergence.  The  experimental  analysis  is  carried  out 
+through multiple independent runs, statistical average best fitness (MBF) 
+and  standard  deviation  (STD),  and  the  convergence  curve  is  drawn  to 
+evaluate the performance of the algorithm under nonlinear mechanics and 
+geometric  constraints,  and  verify  whether the optimal  solution  meets  the 
+key  constraints.  Finally,  compared  with  the  traditional  solution,  the 
+reduction  of  clamping  force  fluctuation  and  the  solution  effect  of  the 
+algorithm are evaluated. 
+
+4.6.2 Mathematical model 
+
+Fig. 12. Robot Gripper Design 
+
+Variable vector x�?[a,b,c,e,f,l,δ], where a and b are the lengths of the 
+active and driven arms (mm), c is the length of the gripper connecting rod 
+(mm), e and f are the geometric offsets (mm), l is the gripper stroke (mm), 
+and δ is the transmission angle offset (rad). 
+Minimize  the  difference  between  the  maximum  and  minimum  clamping 
+force: 
+
+(55) 
+
+Where  𝐹𝑘 is the transmission relationship function between input force and 
+clamping force, 𝑍𝑚𝑎𝑥=100 mm is the maximum stroke. 
+Lower limit constraint of clamping force: 
+
+(56) 
+𝑌𝑚𝑖𝑛 = 50 N, To ensure that the clamping force of the gripper does not fall 
+below the lower limit when it is at the maximum displacement. 
+Upper limit constraint of clamping force: 
+
+(57) 
+
+Fig. 13. Convergence Curve of the Average Optimal Fitness Value after 
+30 Runs of Robot Gripper Design 
+Table 6 The average optimal fitness value and variance obtained from 
+Robot Gripper Design after 30 iterations 
+
+At  zero  displacement  (i.e.  the  gripper  is  fully closed),  the  gripping  force 
+𝑦(𝑥�? 0) does not exceed or meet a predetermined target 𝑌𝑐 = 50 N. This is 
+typically  used  to  ensure  that  when  the  gripper  is  closed,  the  required 
+gripping  force  is  achieved  or  that  excessive  stress  is  not  placed  on  the 
+gripped object. 
+Geometric compatibility constraints: 
+
+Algorithm 
+
+BKA 
+
+(58) 
+
+WOA 
+
+During design, the combined values of the gripper stroke (l) and offset (e) 
+must  be  constrained  within  the  combined  capability  of  the  active  and 
+follower arm lengths. This ensures the mechanical structure forms a closed 
+kinematic chain, thereby preventing structural interference. 
+Kinematic chain closure and complementarity constraints: 
+
+(59) 
+
+To ensure structural integrity during operation, the assembly design avoids 
+component  interference  caused  by  insufficient  or  excessive  dimensions, 
+while maintaining proper alignment and compatibility between connections. 
+Travel and force balance constraints: 
+
+(60) 
+𝑌𝑐 = 150 N,Limit the maximum stroke and ensure that the clamping force 
+reaches  the  target  value  𝑌𝑐  at  zero  displacement.The  variable  scope  is 
+
+4.6.3 Experimental Process and Results 
+In  the  algorithm  application  process,  the  upper  and  lower  bounds  of  the 
+variable x are first initialized, and the maximum stroke 𝑍𝑚𝑎𝑥, force lower 
+limit 𝑌𝑚𝑖𝑛 and target force upper limit 𝑌𝑐 are set, with the optimization goal 
+of  minimizing  the  clamping  force  fluctuation  within  the  stroke  range. 
+Subsequently,  the  optimization  algorithm  is  selected  for  solution,  and 
+
+SCA 
+
+FOX 
+
+PLO 
+
+EPLO 
+
+ALO 
+
+BA 
+
+GSA 
+
+HHO 
+
+Optimal values for variables 
+
+f 
+
+l 
+
+δ 
+
+Rank 
+
+a 
+
+b 
+
+c 
+
+70.25
+88 
+
+66.52
+59 
+
+44.91
+04 
+
+10 
+
+10 
+
+13.73
+70 
+
+35.49
+43 
+
+68.969
+8 
+
+10 
+
+45.15
+96 
+
+35.10
+16 
+
+62.824
+4 
+
+e 
+
+10 
+
+10 
+
+10 
+
+10 
+
+49.666
+4 
+
+40.832
+7 
+
+10.105
+6 
+
+79.63
+42 
+
+79.63
+82 
+
+79.65
+31 
+
+75.260
+6 
+
+79.63
+65 
+
+70.25
+29 
+
+70.26
+14 
+
+10 
+
+10 
+
+10 
+
+10 
+
+10 
+
+10.006
+1 
+
+10 
+
+109.53
+40 
+
+79.62
+82 
+
+79.63
+68 
+
+66.63
+16 
+
+19.83
+39 
+
+126.37
+08 
+
+21.78
+82 
+
+140.09
+32 
+
+83.58
+47 
+
+50.24
+64 
+
+63.16
+99 
+
+64.37
+71 
+
+27.96
+23 
+
+25.94
+24 
+
+15.88
+43 
+
+118.45
+91 
+
+79.839
+3 
+
+45.763
+6 
+
+39.03
+69 
+
+23.88
+43 
+
+10 
+
+44.767
+4 
+
+113.24
+59 
+
+44.919
+8 
+
+67.23
+40 
+
+77.39
+04 
+
+79.63
+68 
+
+150  3 
+
+60.8
+515 
+
+4 
+
+10 
+
+6 
+
+132.
+381
+3 
+
+5 
+
+10 
+
+2 
+
+25.7
+439 
+
+120.
+842
+6 
+
+82.9
+078 
+
+35.0
+914 
+
+42.1
+906 
+
+1 
+
+8 
+
+9 
+
+11 
+
+7 
+
+()()()maxmax0,0,max,min,kkzZzZfxFxzFxz=−()()1,0minmaxgxYyxZ=�?�?,00()()cgxyxY=−()()22250gxleab=+�?()()()22260maxgxbaelZ=−−−−()70maxgxZl=−�?0,,150,050,100200,100300,1.abfecl 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+ARAB ECONOMIC AND BUSINESS JOURNAL 00 (2014) 000�?00                                                                                                                   13 
+
+MFO 
+
+67.32
+92 
+
+73.22
+01 
+
+38.26
+78 
+
+Experimental 
+
+128.29
+33 
+
+139.85
+32 
+that 
+
+16.97
+06 
+results  demonstrate 
+
+67.0
+885 
+the  EPLO  algorithm 
+consistently  achieves  minimal 𝐹𝑘value  ranges  (max(𝐹𝑘)−min(𝐹𝑘))  across 
+multiple  runs  while  satisfying  all  constraints.  This  underscores  the 
+algorithm's strong applicability in robotic gripper structural optimization. 
+Compared to traditional trial-and-error manual methods or heuristic design 
+approaches, this technique significantly reduces gripping force variability, 
+thereby enhancing operational stability and efficiency.  
+
+10 
+
+The  problem  of  optimizing  the  design  of  robotic  pliers  involves 
+variable  geometric  and  kinematic  parameters,  as  well  as  a  number  of 
+mechanical and geometric stresses and the objective function often has to 
+look for the maximum/minimum value of the gripping force over a certain 
+interval  z∈[0, Z𝑚𝑎𝑥 ]  to  measure  the  fluctuations.  Thanks  to  the  overall 
+search capability of the EPLO algorithm, it is possible to quickly converge 
+to an optimal solution in a high dimensional and non-linear environment, 
+which reduces fluctuations in grip force over the entire travel range, while 
+ensuring  the  requirements  of  the  travel  and  force  range.  Experimental 
+results  show  that  this  method  can  effectively  respond  to  the  design  of 
+complex mechanical structures and offers an efficient and viable technical 
+path for the needs of robotic clamp in terms of lightness, high precision and 
+multifunctionality. 
+
+Overall, the experimental results concerning the optimization problem 
+of the design of robotic pliers have fully demonstrated the feasibility and 
+value  of  engineering  applications  of  the  modified  EPLO  algorithm.  The 
+EPLO can quickly locate the area of excellent design and effectively reduce 
+the fluctuations of gripping force. In subsequent phases of convergence, the 
+EPLO  performs  fine  research using adaptive  strategies to  ensure  that the 
+design  solution  meets  the  constraints.  Through  the  statistical  analysis  of 
+several  independent  operations,  the  EPLO  showed  a  small  fluctuation  in 
+results,  adapted  to  the  repeatability  requirements  in  actual  engineering 
+designs. This study verified the excellent performance of EPLO in complex, 
+multi-variable and multi-stress engineering problems, such as robotic pliers. 
+It provides an efficient and reliable optimization tool for practical designs. 
+5  UAV dynamically avoid obstacles and plan routes in 3D 
+
+With the in-depth application of unmanned aerial vehicle (UAV) swarms 
+in disaster rescue, environmental monitoring, and intelligent logistics, the 
+complexity  and  dynamics  of  the  airspace  environment  are  constantly 
+increasing. Traditional path planning methods often assume that obstacles 
+are  stationary  and  known.  However,  in  actual  tasks,  unmanned  aerial 
+vehicles  (UAVs)  need  to  deal  with  real-time  detected  moving  obstacles, 
+emergency  areas,  and  potential  conflicts  with  other  UAVs  or  manned 
+aircraft[47].  In  addition, the coordinated  operation or  formation  flight of 
+multiple  unmanned  aerial  vehicles  (UAVs)  requires  maximizing  mission 
+efficiency and minimizing the overall completion time while ensuring the 
+safety of their respective trajectories[48]. It is necessary not only to have 
+the online obstacle avoidance capability to deal with the frequent updates 
+of  dynamic  threat  zones,  but  also  to  achieve  conflict  detection  and 
+collaborative  scheduling  in  a  multi-drone  environment.  To  address  the 
+above  issues,  this  study  proposes  a  multi-path  and  multi-UAV  real-time 
+dynamic obstacle avoidance and scheduling framework based on density 
+clustering and  meta-heuristic  optimization  (EPLO).  Firstly,  the  terrain of 
+Xiaozhu  Mountain  area  in  Huangdao,  China  is  selected  for  partial 
+extraction. The system collects the obstacle point cloud in real time through 
+airborne  sensors  and  ground  stations,  and  uses  the  improved  DBSCAN 
+algorithm[49] to extract the Xiaozhu Mountain dataset online and merge 
+the dynamic threat area. Subsequently, for each preset flight mission, a safe 
+initial flight path is generated by combining Dijkstra's shortest path and B-
+spline  smoothing  techniques;  Then,  the  path  optimization  objective 
+function is constructed by introducing perturbation variables, and the EPLO 
+algorithm  combining  particle  swarm  and  local  learning  is  adopted  to 
+globally optimize the track. Finally, based on the frame-by-frame conflict 
+detection results, the takeoff delay scheduling vector is introduced, and the 
+EPLO  algorithm  is  utilized  to  minimize  the  task  completion  delay  of 
+multiple unmanned aerial vehicles under the premise of ensuring safety[50]. 
+5.1 Mathematical Model 
+In this section, we present the mathematical formulation of the proposed 
+EPLO-based  UAV path  planning  framework.  The  model  consists  of  five 
+
+interconnected  modules:  threat  modeling,  path  generation,  conflict 
+detection, scheduling optimization, and dynamic obstacle avoidance. 
+5.1.1 Threat Modeling 
+We model the operating domain as a Euclidean region 
+(full 3D). 
+Threats are represented as a set of time-varying circular/ball regions (for 
+at continuous time 
+2D/3D respectively). For each threat index 
+t, the threat zone is: 
+
+Where 
+
+is  the  center  of  threat  k  at  time  t, 
+
+(61) 
+
+is  the 
+
+effective radius,
+
+is the dimension. 
+
+Threat motion is modeled by a simple kinematic model with possible 
+
+boundary reflection: for time step Δt, 
+
+A hard safety requirement for a UAV position p(t) is: 
+
+(62) 
+
+(63) 
+
+Where 
+
+denotes the planar projection of p (if n=3) and η>0 is the 
+
+design safety margin. 
+The global threat set is: 
+
+(64) 
+
+5.1.2 Path Feasibility Graph Model 
+
+We discretize the planning topology by constructing a candidate node 
+
+set V and feasible edge set E.  
+
+(65) 
+
+Nodes  consist  of:  start  point  s,  goal  point  g,  tangent/sample  points 
+generated around threat boundaries, for each threat k, sample L points on 
+(offset),  where  δ  is  an  exploration  offset,  and 
+the  circle  of  radius 
+
+define the undirected weighted graph G=(V,E,W) where edge (u,v)∈E iff 
+,c) 
+the straight-line segment 
+
+does not intersect any threat, where dist(
+
+denotes the minimum Euclidean distance between the line segment 
+point c. The edge weight is Euclidean length: 
+
+and 
+
+(66) 
+
+A  feasible  shortest  discrete  path  from  s  to  g  is  found  by  running 
+
+Dijkstra (or A*) on G: 
+
+(67) 
+
+In dynamic-threat scenarios, the feasibility of an edge should take into 
+account the time-varying threat envelope encountered while the edge would 
+be  traversed  (i.e.,  the  worst  case).  One  may  define  a  maximal-radius 
+or  perform  explicit  time-varying  checks.  If  there  exists  any 
+envelope 
+
+time  t  such  that 
+
+,then  the  edge  (u,v)  is  considered 
+
+infeasible. After obtaining the discrete path, a continuous trajectory P(t) is 
+constructed by spline interpolation. 
+5.1.3 Trajectory Optimization EPLO Model 
+
+After generating an initial continuous feasible trajectory 
+
+for each 
+
+UAV,  we  apply  a  trajectory-  and  schedule-aware  optimizer  �? EPLO 
+(Parallel Particle-based Learning Optimizer) �?to refine trajectories and to 
+perform  scheduling  search.  EPLO  is  an  evolutionary/particle-based 
+optimizer with the following mathematical elements. 
+
+For each UAV i with a discretized trajectory of 
+
+sample waypoints, 
+
+we denote the waypoint matrix: 
+
+(68) 
+
+3R1,{,}kK(){()()}  2kkkTtxxctrt=−()nkctR�?0(krt{2,3}n�?)()()[]()()kkkkkkcostcttctvtwtsint+�?+�?2()(),()xykkkptctrt−�?xyp1()()KkkTtTt==�?11{},}{KLkkVsgv==�?kr�?uvuvuv2(),Wuvuv=−�?),discGPShortestPathsg=kr�?(,))()kkdistuvctrt�?()PtiM()()()()(111(3))()iiiiiiiMiiiMMMxyzXiRxyz�? 
+ 
+ 
+  
+ 
+  
+ 
+  
+ 
+  
+ 
+  
+ 
+  
+ 
+  
+ 
+  
+14 
+
+ARAB ECONOMIC AND BUSINESS JOURNAL 00 (2014) 000�?00 
+
+EPLO optimizes 
+function that balances length, smoothness, and safety: 
+
+ jointly (or per-path) to minimize an aggregate cost 
+
+(69) 
+
+where L denotes the path length, S denotes the smoothness / curvature 
+denotes  the  safety  penalty  relative  to  the  threat  zones. 
+
+penalty,  and 
+
+EPLO augments the particle-swarm-style update with parallel subgroups, 
+periodic  migration  between  subgroups,  an  elite  pool  of  best  solutions, 
+opposition  learning,  Lévy-flight  perturbations,  and  numerical  gradient 
+refinement to balance global exploration and local exploitation. After each 
+population update, any waypoint that violates safety constraints is projected 
+outward onto the safe set to guarantee solution feasibility. 
+5.1.4 Takeoff Scheduling Model 
+
+Let there be U UAVs indexed i=1,�?U. For each UAV we define a 
+.  Introduce  integer 
+
+discrete-time  sampled  trajectory 
+
+for
+
+departure delays 
+
+frame t is: 
+
+.  The global-time  position of  UAV  i  at 
+
+battery_level 
+
+obstacle_detected 
+
+obstacle_size 
+
+Field Name 
+
+timestamp 
+
+latitude 
+longitude 
+altitude 
+imu_acc_x 
+imu_acc_y 
+
+Unit 
+
+meters 
+
+% 
+boolean 
+(0/1) 
+
+Remaining battery level of the UAV 
+Indicator whether an obstacle was 
+detected (1 = true) 
+Estimated size (diameter) of the 
+detected obstacle 
+Description 
+Time in seconds since the start of the 
+simulation 
+degrees  Latitude of the obstacle 
+degrees  Longitude of the obstacle 
+meters 
+m/s² 
+m/s² 
+
+Altitude of the obstacle 
+IMU linear acceleration along X-axis 
+IMU linear acceleration along Y-axis 
+
+seconds 
+
+The following table lists all the variables/symbols related to the main 
+formulas  and  strategies  of  multi-rotor  unmanned  aerial  vehicles  during 
+cruise flights in complex environments. 
+
+Symbol 
+
+description 
+
+Define minimum inter-UAV safety distance 
+
+. For pair(i,j), define 
+
+(70) 
+
+Ω 
+
+K 
+
+per-frame violation measure: 
+
+and cumulative collision penalty: 
+
+where 
+
+is optional time-weighting. The scheduling objective is 
+
+(71) 
+
+(72) 
+
+(73) 
+
+subject  to 
+
+.  Here 
+
+balances  makespan  vs  collision 
+
+penalty. 
+
+The  scheduling  search  is  performed  by  EPLO  where  the  decision 
+
+. 
+
+Unit 
+
+seconds 
+
+timestamp 
+
+Field Name 
+
+vector is
+5.2 Dataset Construction and Description 
+To verify the effectiveness of the proposed dynamic obstacle avoidance and 
+path  optimization  method,  this  paper  constructs  a  dynamic  obstacle 
+unmanned aerial vehicle navigation dataset dynamic_obstacle_dataset.csv 
+based  on  real  scenarios.  The  dataset  simulates  various  obstacles  and 
+perception  data  encountered  by  a  multi-rotor  unmanned  aerial  vehicle 
+during cruise flight in a complex environment. 
+This dataset contains the following main fields: 
+Description 
+Time in seconds since the start of the 
+simulation 
+degrees  Latitude of the obstacle 
+degrees  Longitude of the obstacle 
+meters 
+m/s² 
+m/s² 
+m/s² 
+rad/s 
+rad/s 
+rad/s 
+
+latitude 
+longitude 
+altitude 
+imu_acc_x 
+imu_acc_y 
+imu_acc_z 
+imu_gyro_x 
+imu_gyro_y 
+imu_gyro_z 
+
+Altitude of the obstacle 
+IMU linear acceleration along X-axis 
+IMU linear acceleration along Y-axis 
+IMU linear acceleration along Z-axis 
+IMU angular velocity around X-axis 
+IMU angular velocity around Y-axis 
+IMU angular velocity around Z-axis 
+Distance to the nearest obstacle 
+measured by LiDAR 
+UAV flight speed at the time of 
+measurement 
+Estimated wind speed affecting the 
+UAV 
+
+lidar_distance 
+
+meters 
+
+speed 
+
+wind_speed 
+
+m/s 
+
+m/s 
+
+Operating domain (workspace) 
+
+Number of threat zones 
+
+Threat region k at time t 
+
+Center (position) of threat k at time t 
+
+Effective radius of threat k at time t 
+
+Threat linear speed 
+
+Threat heading (direction) 
+
+Process noise for threat motion 
+
+Safety margin w.r.t threat radius 
+
+Start and goal points 
+
+Number of sample/tangent points per threat 
+
+�?th sample point around threat k 
+
+Sampling offset from threat boundary 
+
+Node set of graph G 
+
+Feasible edge set of graph G 
+
+η 
+
+s,  g 
+
+L 
+
+δ 
+
+V 
+
+E 
+
+G=(V,E,W)  Graph with nodes, edges, weights 
+
+dist(
+
+,c)  Min distance between segment 
+
+ and point c 
+
+W(u,v) 
+
+Edge weight between nodes u and v (Euclidean length) 
+
+Discrete shortest path (sequence of nodes) 
+
+P(t) 
+
+Continuous (spline) trajectory from discrete nodes 
+
+Waypoint matrix for UAV i (
+
+×3) 
+
+Number of waypoints for UAV i 
+
+Path length functional for UAV i 
+
+Smoothness / curvature penalty 
+
+Safety penalty (distance to threats) 
+
+N 
+
+w(t) 
+
+Planned time (or frame index) of visiting waypoint j 
+
+EPLO population size (number of particles) 
+
+Inertia weight at iter t 
+
+Launch delay (frames) for UAV i 
+
+Discrete trajectory sample for UAV i at frame n 
+
+   Global-time position of UAV i at frame t given delay 
+
+Minimum inter-UAV safety distance 
+
+()Xi()()()()(()()()) iiitrajLSsafesafeXiminJXLXSXPX�?++safeP()[]ixn1,,inN=�?,1,,{}imax()()()()  ,;1,1.()[][]iiiglobaliiiiiiiiiundefinednotlaunchedtxtxttNxNtN=−�?−�?−mind2()()(){;()()},0,?;;ijijijminglobaliglobaljtmaxdxtxt�?−−0 ;,()()simTtijijijtCwt�?=tw()(( ,))UiicoliZmakespanminFmaxNC�?�?++max[0,]icol()kTt()kct()krtvk()kt�?)kwt,kvuvuvdiscP()XiiMiM()()iLX()()iSX()()isafePXjj�?)[]ixn());(iglobalixtjmind 
+ 
+  
+ 
+  
+ 
+  
+ 
+  
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+ 
+  
+  
+  
+  
+ 
+ 
+ 
+ 
+ARAB ECONOMIC AND BUSINESS JOURNAL 00 (2014) 000�?00                                                                                                                   15 
+
+Symbol 
+
+description 
+
+paper successfully avoids all UAV conflicts through the scheduling delay 
+and the delay 
+mechanism. The Table 8 are the optimal total flight time 
+
+Per-frame violation magnitude between I and j 
+
+Cumulative collision penalty for schedule τ 
+
+vector τ under different numbers of UAVs: 
+Table 8. Multi-uav scheduling analysis. 
+
+Optional time-weight for penalty at frame t 
+
+The number of UAVs 
+
+τ(s) 
+
+(s) 
+
+conflicts 
+
+Simulation horizon (frames) for evaluation 
+
+Collision penalty weight (scheduling objective) 
+
+F(τ) 
+
+Scheduling objective (makespan + penalty) 
+
+5.3 Datasets Analysis and Comparison 
+5.3.1 Comparison of Path Planning Effects 
+In the UAV path planning code, the clustering process is mainly used to 
+extract  meaningful  threat  zones  from  the  original  obstacle  point  cloud, 
+providing  a  basis  for  subsequent  path  planning  and  obstacle  avoidance. 
+Firstly,  the  code  reads  the  dynamic  obstacle  dataset  from  a  CSV  file, 
+extracts the detected obstacle points, converts the latitude, longitude, and 
+altitude information into Cartesian coordinates (x, y, z) representing east, 
+north, and altitude directions through coordinate transformation, and then 
+normalizes  these  coordinates  to  eliminate  the  influence  of  dimensions. 
+the  DBSCAN  (Density-Based  Spatial  Clustering  of 
+Subsequently, 
+Applications  with  Noise)  algorithm  is  used  for  clustering,  with  the 
+neighborhood  radius  eps=0.35  and  the  minimum  number  of  core  points 
+minPts=3.  Points  that  are  density-connected  are  grouped  into  the  same 
+cluster by calculating distances  between points,  while  isolated points  are 
+marked as noise. For each valid cluster, the code restores the cluster points 
+to the original scale, calculates the cluster center on the XY plane, and takes 
+the maximum distance from points within the cluster to the center plus a 
+15-meter safety margin as the radius of the threat zone; for noise points, 
+they are individually treated as small threat zones with a radius of 10 meters. 
+To optimize the distribution  of threat  zones, the  code  further performs  a 
+merging  operation  to  remove  small  zones  completely  contained  within 
+larger threat zones, and ensures the number of threat zones remains within 
+a reasonable range of 5-8 through random addition or screening. The final 
+generated threat zones are used for obstacle avoidance planning in UAV 
+paths.  This  experiment  conducts  multi-UAV  path  planning  tests  in  a 
+complex dynamic threat environment. The environment consists of 8 threat 
+zones, with the radius of the threat zones ranging from 10 to 45 meters and 
+the  moving  speed  of  dynamic  threats  ranging  from  0.5  to  2.0  m/s.  The 
+system deploys 6 drones, divided into three paths, with a safety distance set 
+at  15  meters.  The  parameters  of  the  EPLO  algorithm  are  set  as  follows: 
+population  size  20,  maximum  iteration  500  times,  4  parallel  subclusters, 
+elite pool size 5, migration cycle 20 generations. 
+The  comprehensive  performance  of  four  path  generation  methods  was 
+compared: A* algorithm, RRT, traditional PSO optimizer, and the dynamic 
+clustering + EPLO optimizer proposed in this paper (referred to as DEPLO). 
+The performance indicators are as follows Table 7: 
+Table 7. 
+ Comparison of path planning effects. 
+
+Method 
+
+success 
+rate 
+
+average 
+path 
+length 
+(m) 
+
+average 
+planning 
+time (s) 
+
+average 
+curvature 
+change 
+
+number of 
+conflicts 
+(multiple 
+people) 
+
+A* + grid 
+RRT（No 
+Optimization�?
+
+73.4% 
+
+195.2 
+
+0.82 
+
+average  
+
+78.9% 
+
+186.5 
+
+1.21 
+
+Extremely  
+
+PSO optimizer  84.6% 
+
+DEPLO 
+
+96.8% 
+
+178.3 
+
+162.7 
+
+2.43 
+
+2.78 
+
+high 
+
+In the 
+
+4 
+
+6 
+
+2 
+
+0 
+
+It can be seen that the method proposed in this paper performs the best 
+in  multi-objective  indicators.  The  average  path  length  is  shortened  by 
+10.3%,  the number of  conflicts  is  reduced  to  0, and  the planning  time  is 
+maintained within an acceptable range, demonstrating strong practicability. 
+5.3.2 Multi-UAV Scheduling Analysis 
+When the number of participating UAVs is P=3 to 5, the algorithm in this 
+
+3 
+
+4 
+
+5 
+
+[0, 5, 11] 
+
+[0, 7, 12, 20] 
+
+[0, 5, 10, 18, 24] 
+
+68.3 
+
+74.6 
+
+81.5 
+
+0 
+
+0 
+
+0 
+
+5.3.3 Analysis of Takeoff Delay Optimization 
+The distribution of the unmanned aerial vehicle takeoff delay optimized by 
+the EPLO algorithm is shown in the following Table 9: 
+Table 9  
+Optimization results of unmanned aerial vehicle dispatching parameters. 
+
+Drone 
+number 
+
+UAV1 
+UAV2 
+UAV3 
+UAV4 
+UAV5 
+UAV6 
+
+path 
+
+delay 
+(frames) 
+
+1 
+1 
+1 
+2 
+2 
+3 
+
+0 
+15 
+28 
+4 
+16 
+30 
+
+total  flight 
+time 
+(frames) 
+102 
+117 
+130 
+98 
+125 
+158 
+
+path 
+length 
+(m) 
+1245.7 
+1245.7 
+1245.7 
+1180.3 
+1180.3 
+1420.8 
+
+The 
+number  of 
+replans 
+7 
+6 
+6 
+2 
+2 
+2 
+
+The three drones on Path 1 have delays of 0, 15, and 28 frames respectively, 
+creating a takeoff time difference and effectively avoiding conflicts within 
+the  same path.  The  UAV6 on path  3  has  the  highest  delay,  avoiding  the 
+peak flight periods of Path 1 and Path 2. Path 3 has the longest delay but 
+the highest delay. Conflicts are avoided by exchanging time for space, and 
+all  tasks  are  completed  at  158  frames.  It  is  22.6%  less  than  random 
+scheduling. 
+Fig. 14 shows the results of collaborative path planning for six unmanned 
+aerial vehicles (UAVs) in eight threat zones. All drone trajectories are kept 
+at a safe distance from the threat area. For instance, UAV1 has mapped out 
+a smooth detour path between the threat zones T1 and T6, with a minimum 
+spacing  of  25  meters.  Three  paths  are  respectively  allocated  3,  2  and  1 
+unmanned  aerial  vehicles,  with  path  lengths  of  320m,  280m  and  250m 
+respectively.  Path1's  UAV1-3  adopts  differentiated  latency  to  avoid 
+conflicts within the queue. B-spline curve processing significantly reduces 
+path turning points. For instance, the waypoints of Path2 are reduced from 
+the initial 12 to a continuous curve of a smooth path, and the turning Angle 
+is lowered from an average of 90° to below 45°. 
+
+Fig. 14.Operation diagram of multi-path and multi-drone obstacle 
+avoidance planning 
+
+();ijt()CtwsimTcoltotalTtotalT 
+ 
+  
+  
+  
+  
+ 
+ 
+16 
+
+ARAB ECONOMIC AND BUSINESS JOURNAL 00 (2014) 000�?00 
+
+Fig.  15  captures  the  dynamic  obstacle  avoidance  scene  at  frame  270, 
+highlighting the algorithm's response capability to mobile threats, with the 
+red threat moving in the direction of the arrow. When UAV8 approaches 
+T1,  it  triggers  a  vertical  climb,  and  the  real-time  obstacle  avoidance 
+distance drops from 82 meters to the safe value of 105 meters. The original 
+trajectory distance between UAV4 and UAV5 during frames 150-160 was 
+only 8m. Through delay scheduling, the actual distance was increased to 
+23m. The black dashed box indicates that the threat rebounded within a 50-
+meter boundary margin without affecting the drone's flight path. Dynamic 
+threat  detection  and  re-planning  mechanism  enable  the  unmanned  aerial 
+vehicle to trigger an average of only 0.33 emergency evasive maneuvers, 
+significantly reducing the computational load. 
+
+Fig. 15.Real-time performance diagram of dynamic obstacle avoidance 
+The Fig. 16 show that EPLO achieves three-stage intelligent convergence 
+through a hierarchical hybrid strategy. The early-stage migration operation 
+accelerates global exploration, the mid-stage Levy flight breaks through the 
+stagnation  point,  and  the  late-stage  gradient  descent  fine-tuning.  In 
+unmanned aerial vehicle (UAV) scheduling, its 120-degree fitness solution 
+reduces the maximum completion time of six UAVs in a dynamic threat 
+environment to 12.4 seconds, with zero conflicts occurring. The horizontal 
+stability  at  the  end  of  the  curve  (change  <0.1%  after  substituting  350) 
+confirms  that  the  algorithm  solution  has  approached  the  Pareto  frontier, 
+providing a theoretical guarantee for large-scale cluster applications. 
+
+Fig. 16.The EPLO algorithm is used to optimize the fitness curve for 
+unmanned aerial vehicle (UAV) avoidance 
+6.  Node  localization  method  for  three-dimensional  wireless  sensor 
+networks 
+
+Wireless Sensor Networks (WSNs) are composed of a large number 
+of low-power and low-cost sensor nodes and are widely used in fields such 
+as  environmental  monitoring, target tracking,  and  smart home[51].  Node 
+location  is  one  of  the  key  technologies  in  WSN,  providing  necessary 
+location  information  support  for  the  network[52].  In  three-dimensional 
+environments,  such  as  mountain  monitoring,  Marine  exploration,  and 
+indoor positioning, node positioning faces greater challenges. 
+
+Traditional  range-based  positioning  technologies  such  as  RSSI[53], 
+TOA[54], TDOA and AOA[55], although they have high accuracy, require 
+additional hardware support, increasing the cost and energy consumption 
+of  nodes.  In  non-ranging  and  positioning  technologies,  the  DV-Hop 
+algorithm has been widely applied due to its advantages such as simplicity 
+and  ease  of  implementation,  and  no  reliance  on  additional  hardware. 
+However,  the  DV-Hop  algorithm  has  the  following  problems  in  a  three-
+dimensional  environment:  the  uneven  distribution  of  nodes  in  three-
+dimensional  space  leads  to  inaccurate  estimation  of  the  average  hop 
+distance,  the  three-dimensional  environment  is  complex,  and  signal 
+propagation is greatly affected by the environment, when the anchor nodes 
+are unevenly distributed, the error in solving the node coordinates by the 
+least squares method is relatively large. In response to the above problems, 
+researchers  have proposed  a variety of  DV-Hop algorithms  improved  by 
+intelligent  optimization  algorithms  in  recent  years,  such  as  PSO-DV-
+Hop[56],  GWO-DV-Hop[57]  and  WOA-DV-Hop[58],  etc.  These 
+algorithms have improved the positioning accuracy to a certain extent, but 
+there  are  still  problems  such  as  premature  convergence  and  insufficient 
+global exploration ability. 
+6.1 EPLO-DV-Hop positioning algorithm 
+
+The overall framework of the EPLO-DV-HOP algorithm first involves 
+network  initialization and  DV-Hop  information collection, calculation of 
+the average Hop distance of anchor nodes, estimation of the distance from 
+unknown nodes to anchor nodes, EPLO optimization of the coordinates of 
+unknown nodes, and evaluation and output of positioning results. 
+
+In a three-dimensional WSN, there are N nodes, among which M are 
+anchor nodes whose positions are known. There are N to M unknown nodes 
+that  need  to  be  located.  The  steps  of  the  three-dimensional  DV-Hop 
+algorithm are as follows: 
+
+Calculate the Euclidean distance matrix between nodes: 
+
+(74) 
+
+The Euclidean distance between nodes is defined as above. Here 
+
+is the true Euclidean distance between node iii and node j;
+
+ and
+
+ are  their 3-D coordinates.  This is  the  standard 3-D  Euclidean 
+
+distance  used  to  form  the  distance  matrix  employed  in  hop-count 
+calculations and average hop-size estimation. 
+
+Communication  radius  Under  𝑅,  the  hop  matrix  is  approximated 
+
+discretized: 
+
+(75) 
+
+Under  communication  radius  R,  hop  counts  are  approximated  by
+ denotes minimal hop count from node i to j, and R 
+
+. Here
+
+is  communication  radius. This  assumes  an  idealized per-hop  reach  of R; 
+however, environmental non-idealities motivate using averaged hop-size to 
+correct this approximation. 
+
+(76) 
+
+For each anchor k we compute an average hop-size: the sum of true 
+distances  between  anchor  k  and  other  anchors  divided  by  the  sum  of 
+corresponding  hop  counts.  Here  M  is  number  of  anchors.  The  hop  size 
+estimates the average metric distance per hop and is used to convert hop 
+counts from unknown nodes into physical distance estimates. 
+
+Then the estimated distance from the unknown node 𝑢 to the anchor 
+
+node 𝑘 is adopted: 
+
+(77) 
+
+Here, 
+
+is the hop count from the unknown node 𝑢 to the anchor node 𝑘, 
+
+222()()()ijijijijdxxyyzz=�?�?−ijd(,,)iiixyz(),,jjjxyzijijdhR=/ijijhdR=ijh1,1,MklllkkMklllkdHopSizeh=�?�?    kuijkudHopSizeh=�?kuh 
+ 
+ 
+ 
+  
+ 
+ 
+  
+ 
+  
+ 
+  
+ARAB ECONOMIC AND BUSINESS JOURNAL 00 (2014) 000�?00                                                                                                                   17 
+
+and 
+
+is  the  estimated  distance.  The  conversion  from  hop  count  to 
+
+physical distance in  this  estimation  depends on the local  structure of  the 
+anchor  points.  By  combining  the  estimations  of  all  anchor  points, 
+observational data and weighted residuals can be provided for subsequent 
+positioning optimization. 
+To refine unknown node coordinates under DV-Hop distance constraints, 
+we define a weighted normalized fitness function: 
+
+This  Fig.  17  compares  the  average  positioning  error  (ALE)  of  four 
+algorithms  (DV-Hop,  WOA-DV-Hop,  GWO-DV-Hop,  and  EPLO-DV-
+Hop). ALE normalizes the communication radius and plots it as the pole 
+height. Considering the EPLO wrapper, the significant reduction in EPLO 
+bars indicates that the subpopulation and exchange architecture of EPLO 
+improve  global  search,  and  the  integrated  restart  combined  with  local 
+refinement  reduces  randomness  and  local  capture,  jointly  lowering  the 
+average error. 
+
+(78) 
+
+To transform localization into an optimization, we define the weighted 
+normalized  fitness  function  above.  Here  x  is  the  candidate 3-D estimate, 
+are  anchor 
+
+ are  anchor  coordinates, 
+
+are  estimated  distances,
+
+weights, λ is a penalty coefficient, and 
+penalizes boundary violations. 
+The  first  term  is  a  weighted  squared  relative  residual,  preventing  large 
+absolute  distances  from  dominating  the  objective;  weights  favor  more 
+reliable  anchors.  The  penalty  term  ensures  feasible  physical  solutions 
+within the predefined search box.Anchor weights are defined as an inverse 
+function of hop count: 
+
+(79) 
+
+with small ϵ epsilonϵ to avoid division by zero. The rationale is that 
+larger  hop  counts  typically  indicate  higher  uncertainty  in  the  distance 
+estimate;  therefore  such  anchors  should  contribute  less  to  the  objective, 
+while anchors with fewer hops receive larger weight.The boundary penalty 
+term adopts a component-by-component quadratic penalty form to restrict 
+the solution domain in a soft constraint manner: 
+
+(80) 
+
+The main indicator for evaluating positioning performance is the mean 
+positioning error (ALE), defined as follows: 
+
+(81) 
+
+The primary performance metric is Average Localization Error (ALE) 
+ true 
+
+defined as above. U is number of unknown nodes, 
+
+the estimate, 
+
+coordinate,  and  R  communication  radius.  ALE  normalizes  errors  by  R, 
+facilitating  comparisons  across  connectivity  regimes.  Standard  deviation 
+reflects  stability, and  convergence  curves  exhibit  convergence  speed and 
+late-stage refinement ability. 
+6.2 Simulation experiment settings 
+
+Generate N=100 uniformly random nodes inside a 100×100×100 cube  
+and randomly select M=20 anchors. Set communication radius R=30 m. For 
+each unknown node, run the optimizer independently to obtain estimated 
+coordinates.  Repeat  each  algorithm  30  independent  runs  with  different 
+random initial populations. 
+
+Fig. 17. Bar chart of average positioning error 
+
+Fig. 18. Box plot of positioning error 
+
+The box represents the interquartile range (IQR), and the median and 
+outliers can visually reflect the error distribution and the number of outliers 
+of  the  algorithm  at  different nodes. The  analysis of  the  positioning  error 
+distribution in Fig. 18 shows that the PPO-DV-HOP algorithm exhibits the 
+best performance, with a median of only 1.8 m, the smallest IQR, an error 
+distribution limited to 0.3-3.2 m, and the box height is significantly lower 
+than that of other algorithms, indicating that it has both high precision and 
+stability.  Statistical  tests  showed  that  there  was  a  significant  difference 
+(p<0.01) in the error distribution of PPO-DV-Hop compared with the other 
+algorithms, verifying the effectiveness of the particle swarm optimization 
+strategy in reducing multi-hop positioning errors. 
+
+Fig. 19. Convergence curve comparison chart 
+
+the 
+
+throughout 
+
+The comparison results of the convergence curves shown in  Fig. 19 
+indicate that the PPO-DV-HOP algorithm (purple curve) demonstrates the 
+best  performance 
+its 
+convergence  speed  is  not  the  fastest,  the  final  convergence  value  is  the 
+lowest  (close  to  0.05),  and  the  curve  is  highly  stable,  indicating  that  the 
+improved particle swarm optimization algorithm effectively enhances the 
+global  optimization  ability  through  the  dynamic  parameter  adjustment 
+mechanism.  The  experimental  results  show  that  in  the  long-term 
+the 
+optimization  scenarios  requiring  high  precision  and  stability, 
+
+iterative  process.  Although 
+
+kud21ˆ()()MkkukkkuxadFxwPxd�?−−=�?kaˆkudkw()Px1kkuwh=+�?310,(0,)()()iiiiiPxmaxlxmaxxu==�?−2221()()(ˆˆ1)ˆUiiiiiiixxyyzzALEUR=�?�?�?ˆixix 
+ 
+ 
+  
+ 
+  
+ 
+  
+ 
+  
+ 
+ 
+ 
+18 
+
+ARAB ECONOMIC AND BUSINESS JOURNAL 00 (2014) 000�?00 
+
+comprehensive performance of the EPLO-DV-Hop algorithm is superior to 
+the other three methods, while the DV-Hop and WOA-DV-Hop algorithms 
+are more suitable for applications with higher requirements for the initial 
+convergence speed. In combination with the Settings of this experiment, the 
+convergence  curve  can  be  used  to  explain  the  cause  of  the  final  ALE 
+difference:  a  lower  and  more  stable  convergence  curve  corresponds  to  a 
+lower average error and a smaller variance. 
+
+problems  through  the  global  search  strategy.  Its  dynamic  parameter 
+adjustment  mechanism  can  compensate  for  the  nonlinear  propagation 
+influence  of  multi-peak  terrain,  achieving  an  error  reduction  of  43.75% 
+(1.8m  vs  3.2m)  in  the  peak  area,  and  optimizing  path  planning  through 
+three-dimensional  gradient  descent  in  the  slope  area.  Stabilize  the 
+positioning deviation below the fitness value of 0.05 (compared with 0.15 
+of  DV-Hop).  In  addition,  EPLO's  adaptive  processing  ability  for  local 
+elevation changes (such as fusing terrain gradient information of multi-hop 
+paths) enables it to maintain high positioning accuracy at terrain edges with 
+sparse  node  distribution  (with  less  than  3  adjacent  nodes),  verifying  its 
+superiority in multi-peak and complex environments. 
+
+Table 10. Impact of Total Number of Nodes 
+
+Communication 
+radius 
+
+DV-Hop  WOA-
+
+DV-Hop
+
+GWO-
+DV-Hop
+
+EPLO-
+DV-Hop 
+
+Fig. 20. A single-peak terrain surface map with nodes 
+
+In Fig. 20, on the single-peak terrain surface, the distribution of anchor 
+nodes  (red)  and  unknown  nodes  (blue)  shows  significant  spatial 
+heterogeneity.  Among  them,  the  nodes  in  the  slope  and  peak  areas  are 
+significantly  more  sensitive  to  Hop  estimation  and  distance  errors  than 
+those  in  the  flat  areas.  Nodes  located  at  the  edge  of  the  terrain  have 
+insufficient  numbers  of  adjacent  nodes,  resulting  in  the  loss  of  local 
+connectivity  in  Hop estimation.  However, due to the excessive elevation 
+difference between the peak and the base, the distance measurement of the 
+node  is  affected  by  the  nonlinearity  of  the  terrain  undulation,  and  the 
+cumulative  error  can  reach  2.3  times  that  of  the  traditional  method.  The 
+EPLO-DV-Hop algorithm demonstrates significant advantages in complex 
+terrains.  Its  global  search  strategy,  through  dynamic  optimization  in  the 
+three-dimensional  parameter  space,  effectively  avoids the  local optimum 
+trap.  This  algorithm  compensates  for  the  non-uniform  propagation 
+environment of slope nodes by introducing terrain gradient weight factors, 
+thereby achieving more accurate positioning solutions in three-dimensional 
+space. 
+
+Fig. 21. A multi-peak terrain surface map with nodes 
+
+The cross-elevation distribution of anchor nodes (red) and unknown 
+nodes  (blue)  in  the  terrain  shown  in  Fig.  21  reveals  the  limitations  of 
+in  path  occlusion  and  signal  attenuation 
+traditional  algorithms 
+environments.  The  EPLO-DV-Hop  algorithm  effectively  avoids  such 
+
+Unimodal Topology: 
+50 
+100 
+150 
+200 
+250 
+300 
+50 
+100 
+Multimodal Topology: 
+50 
+100 
+150 
+200 
+250 
+300 
+
+5.709 
+7.5531 
+5.835 
+5.6407 
+5.8036 
+5.5286 
+5.709 
+7.5531 
+
+2.038 
+2.0378 
+1.9447 
+1.9696 
+1.9609 
+2.1312 
+2.038 
+2.0378 
+
+3.2324 
+3.0522 
+3.208 
+3.1872 
+3.1065 
+3.141 
+3.2324 
+3.0522 
+
+1.595 
+1.7516 
+1.5446 
+1.9767 
+1.5321 
+1.8856 
+1.595 
+1.7516 
+
+5.5268 
+5.0363 
+4.7087 
+4.9253 
+4.7581 
+5.2584 
+
+1.8584 
+1.8688 
+1.634 
+2.4605 
+1.7416 
+1.7403 
+
+2.8219 
+2.6663 
+2.7273 
+2.6133 
+2.6906 
+2.9279 
+
+2.3306 
+2.0204 
+2.4078 
+2.4551 
+2.3468 
+2.1695 
+Table  10 delineates the  impact  of  the  total number of nodes on  the 
+localization  accuracy  across  unimodal  and  multimodal  terrains.  The 
+proposed  EPLO-DV-Hop  algorithm  consistently  demonstrates  superior 
+performance, achieving the lowest Average Localization Error (ALE) in 10 
+out of the 12 test scenarios. Notably, in unimodal terrain, EPLO-DV-Hop 
+sustains  an  ALE  below  2.0  across  all  node  densities,  with  its  best 
+performance  (ALE  =  1.5321)  observed  at  250  nodes.  This  stability 
+underscores the algorithm's robustness against variations in network scale. 
+In  the  more  challenging  multimodal  terrain,  EPLO-DV-Hop  maintains  a 
+significant  lead, particularly at  higher  node  counts  (300 nodes),  where it 
+achieves  an  ALE  of  1.7403,  outperforming  the  second-best  algorithm 
+(WOA-DV-Hop, ALE=2.1695) by approximately 20%. This performance 
+advantage  is  attributed  to  EPLO's  enhanced  parallel  search  strategy  and 
+refined  exploitation  mechanism,  which  effectively  navigate  complex 
+solution  spaces  and  mitigate  error  accumulation  inherent  in  the  standard 
+DV-Hop and other metaheuristic-aided variants. The results confirm that 
+EPLO-DV-Hop  is  less  sensitive  to  node  density  fluctuations  and  terrain 
+complexity, providing reliable localization precision. 
+
+Table 11. Impact of Number of Anchor Nodes 
+
+DV-Hop 
+
+of 
+
+Number 
+anchors 
+Unimodal Topology: 
+5 
+10 
+15 
+20 
+25 
+30 
+Multimodal Topology: 
+5 
+10 
+15 
+20 
+
+6.0566 
+6.2697 
+5.3444 
+6.5645 
+5.1497 
+5.3007 
+
+8.0472 
+4.7958 
+4.5817 
+4.6546 
+
+WOA-
+DV-Hop 
+
+GWO-
+DV-Hop 
+
+EPLO-
+DV-Hop 
+
+1.9825 
+1.983 
+2.0784 
+1.9962 
+2.0036 
+1.8734 
+
+2.337 
+2.544 
+2.4423 
+2.0345 
+
+3.0936 
+3.2212 
+3.057 
+3.1034 
+3.1051 
+3.0772 
+
+2.5744 
+2.538 
+2.4312 
+2.5628 
+
+1.788 
+1.8692 
+2.3303 
+1.4278 
+1.5488 
+2.1556 
+
+2.4844 
+2.3942 
+1.5107 
+2.0876 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ARAB ECONOMIC AND BUSINESS JOURNAL 00 (2014) 000�?00                                                                                                                   19 
+
+25 
+30 
+
+4.7989 
+5.1274 
+
+2.2724 
+2.196 
+
+2.5798 
+2.6757 
+
+1.6913 
+2.0341 
+
+The  influence  of  anchor  node  quantity  on  localization  precision  is 
+systematically presented in Table 11 A critical observation is that while all 
+algorithms  generally  benefit  from  an  increased  number  of  anchors,  the 
+degree of improvement varies significantly. The EPLO-DV-Hop algorithm 
+exhibits remarkable efficiency and consistency, securing the top rank in 9 
+of the 12 cases. Its performance is particularly outstanding in scenarios with 
+a moderate number of anchors (20 and 25), where it achieves minimal ALE 
+values of 1.4278 and 1.5488 in unimodal terrain, respectively. This suggests 
+that  EPLO-DV-Hop  can  extract  maximal  positional  information  from  a 
+limited set of reference points, a crucial advantage in cost-sensitive WSN 
+deployments  where  anchor  nodes  are  expensive.  Even  in  multimodal 
+environments  with  scarce  anchors  (5  nodes),  EPLO-DV-Hop  delivers 
+competitive  results  (ALE=2.4844),  demonstrating  its  resilience.  The 
+algorithm's ability to maintain low error rates despite constraints on anchor 
+node  count  stems  from  its  effective  optimization  core,  which  precisely 
+minimizes the discrepancy between estimated and actual distances, thereby 
+reducing the dependency on  a  high  density of  anchor nodes  for  accurate 
+localization. 
+
+Table 12. Impact of Communication Radius 
+
+Communication 
+radius 
+
+DV-Hop  WOA-
+
+DV-Hop
+
+GWO-
+DV-Hop
+
+EPLO-
+DV-Hop 
+
+Unimodal Topology: 
+25 
+30 
+35 
+40 
+45 
+50 
+Multimodal Topology: 
+25 
+30 
+35 
+40 
+45 
+50 
+
+8.182 
+6.0895 
+5.1755 
+5.0146 
+3.5046 
+4.102 
+
+6.2194 
+5.3371 
+4.3743 
+3.9459 
+3.679 
+3.0484 
+
+2.4439 
+2.0284 
+1.7817 
+1.6087 
+1.3855 
+1.2324 
+
+2.5538 
+2.034 
+2.304 
+1.5834 
+1.4845 
+1.4793 
+
+3.5935 
+3.3446 
+2.7531 
+2.347 
+2.1064 
+1.8684 
+
+3.4675 
+2.9039 
+2.4018 
+2.2271 
+1.933 
+1.522 
+
+1.7533 
+1.3244 
+1.7031 
+1.2361 
+1.0079 
+1.091 
+
+2.8258 
+1.8021 
+1.6516 
+1.8628 
+1.2916 
+0.9431 
+
+Table 12 elucidates the effect of varying the communication radius on the 
+localization  performance.  The  results  unequivocally  indicate  that  EPLO-
+DV-Hop  achieves  the  highest  accuracy  across  all  tested  communication 
+ranges  and  both  terrain  types.  A  prominent  trend  is  the  performance 
+convergence  of  all  algorithms  as  the  communication  radius  increases  to 
+45m and 50m, due to improved network connectivity reducing the inherent 
+limitations  of 
+the  DV-Hop  principle.  However,  EPLO-DV-Hop 
+distinguishes  itself  by  achieving  superior  accuracy  even  at  smaller  radii 
+(25m-35m),  where  network  connectivity  is  challenging.  For  instance,  in 
+unimodal  terrain  with  a  30m  radius,  EPLO-DV-Hop  attains  an  ALE  of 
+1.3244, which is 35% and 60% lower than WOA-DV-Hop and DV-Hop, 
+respectively. Its most impressive result is observed in multimodal terrain at 
+a  50m  radius,  achieving  an  exceptional  ALE  of  0.9431,  effectively 
+demonstrating  near-optimal  localization  capability.  This  exceptional 
+performance,  especially  under  constrained  communication  conditions, 
+highlights the strength of EPLO's hybrid exploration-exploitation strategy 
+in  mitigating  ranging  inaccuracies  and  solving  the  complex  nonlinear 
+equations involved in node location estimation, making it highly suitable 
+for real-world applications with variable communication constraints. 
+7. Conclusion and future work 
+This  study  successfully  developed  and  validated  the  Parallel  Polarized 
+Learning  Optimizer  (EPLO),  a  significant  enhancement over the original 
+Aurora  Optimization  Algorithm  (PLO).  By  integrating  a  multi-group 
+collaborative  architecture,  opposition-based  learning,  adaptive  parameter 
+control,  and  advanced  exploitation  mechanisms,  EPLO  effectively 
+overcomes  the  core  limitations  of  PLO,  namely  premature  convergence, 
+
+population diversity loss, and inadequate balance between exploration and 
+exploitation. Extensive experimental results on standardized IEEE CEC test 
+suites  conclusively  demonstrate  that  EPLO  achieves  faster  convergence 
+rates, superior solution quality, and enhanced robustness across a diverse 
+set of benchmark functions, including unimodal, multimodal, hybrid, and 
+composition types. Statistical analysis and ranking confirm its outstanding 
+performance  against  a  wide  array  of  contemporary  metaheuristics.  The 
+practical value of EPLO is further solidified by its successful application to 
+five distinct, constrained engineering design problems. In each case, EPLO 
+consistently  found  optimal  or  near-optimal  designs  that  satisfied  all 
+constraints,  often  outperforming  other  algorithms  in  terms  of  solution 
+quality, consistency (low standard deviation), and convergence speed. The 
+extension of EPLO to complex domains like 3D UAV path planning amidst 
+dynamic  obstacles  and  3D  WSN  localization  further  underscores  its 
+versatility and effectiveness in handling real-world, high-dimensional, and 
+constrained  optimization  challenges.  The  algorithm's  design,  which 
+incorporates  strategies  for  both  global  search  intensification  and  local 
+refinement,  proves  highly  effective  for  navigating  complex  search 
+landscapes.  Therefore,  EPLO  emerges  as  a  robust,  efficient,  and  reliable 
+optimization  tool,  offering  substantial  promise  for  solving  complex 
+problems  in  engineering,  robotics,  communications,  and  other  scientific 
+fields. 
+7.1 Future Work 
+Subsequent studies could focus on developing hybrid models that integrate 
+EPLO with other optimization techniques or machine learning approaches, 
+such as surrogate-assisted evolution or neural network-based predictors, to 
+enhance  its  performance  on  problems  with  computationally  expensive 
+fitness evaluations.   Further investigation is also warranted into adapting 
+EPLO  for  dynamic  optimization  environments  where  the  problem 
+landscape  or  constraints  change  over  time,  as  well  as  for  robust 
+optimization  under  uncertainty,  which  would  greatly  expand 
+its 
+applicability  in  real-time  control  and  adaptive  systems.      Addressing  the 
+challenges  of  large-scale  optimization  involving  thousands  of  variables 
+through strategies like dimension reduction or cooperative co-evolutionary 
+frameworks  represents  another  critical  direction.      Extending  the  EPLO 
+framework 
+to  natively  handle  multi-objective  and  many-objective 
+optimization problems  would also be  highly valuable, enabling  its direct 
+application to complex design problems requiring the balancing of multiple 
+competing  criteria.      Additionally,  a  more  in-depth  exploration  of  the 
+parallelization potential inherent in the multi-group EPLO architecture on 
+modern  high-performance  computing  platforms,  such  as  GPUs  or 
+distributed  clusters,  could  significantly  reduce  computation  times  for 
+complex problems.   Finally, conducting a rigorous theoretical analysis of 
+EPLO's  convergence  properties  and  stability  would  provide  a  deeper 
+understanding  of  its  search  behavior  and  strengthen  its  theoretical 
+foundation, while applications to a broader range of domains, such as deep 
+learning  architecture  design,  hyperparameter  tuning,  pharmaceutical 
+discovery, and financial modeling, could further demonstrate its versatility 
+and uncover new challenges for algorithmic refinement.   Pursuing these 
+directions  would  substantially  expand  the  capabilities  and  impact  of  the 
+EPLO algorithm. 
+
+REFERENCES 
+
+[1] 
+
+[2] 
+
+[3] 
+
+[4] 
+
+[5] 
+
+X. Xiao, D. Xiao, J. Lin, et al., Overview of research on multi-objective 
+optimization problems, Computer Applications Research 28 (2011) 
+805�?27. 
+Z. Chi, Research on efficient metaheuristic algorithms for large-scale 
+optimization problems, Ph.D. dissertation, Dalian University of 
+Technology, 2021. DOI: 10.26991/d.cnki.gdllu.2021.003805. 
+Desale, S., et al., Heuristic and meta-heuristic algorithms and their 
+relevance to the real world: a survey. 2015. 351(5): p. 2349-7084.  
+X. Xia, J. Liu, and Y. Li, "Particle Swarm Optimization Algorithm with 
+Reverse-Learning and Local-Learning Behavior," Journal of Software, 
+vol. 9, no. 2, pp. 357�?64, Feb. 2014. 
+J.H. Holland, Adaptation in Natural and Artificial Systems: an 
+Introductory Analysis with Applications to Biology, Control, and 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ARAB ECONOMIC AND BUSINESS JOURNAL 00 (2014) 000�?00 
+
+20 
+
+[6] 
+
+[7] 
+
+[8] 
+
+[9] 
+
+[10] 
+
+Artificial Intelligence, MIT press, 1992. 
+R. Storn, K. Price, Differential evolution–a simple and efficient heuristic 
+for global optimization over continuous spaces, J. Glob. Optim. 11 
+(1997) 341�?59. 
+S. Mirjalili, et al., in: S. Mirjalili, J. Song Dong, A. Lewis (Eds.), Grey 
+Wolf Optimizer: Theory, Literature Review, and Application in 
+Computational Fluid Dynamics Problems, in Nature-Inspired 
+Optimizers: Theories, Literature Reviews and Applications, Springer 
+International Publishing, Cham, 2020, pp. 87�?05. 
+S. Mirjalili, A. Lewis, The whale optimization algorithm, Adv. Eng. Softw. 
+95 (2016) 51�?7. 
+A.A. Heidari, S. Mirjalili, H. Faris, I. Aljarah, M. Mafarja, H. Chen, Harris 
+hawks optimization: algorithm and applications, Future Gener. Comput. 
+Syst. 97 (2019) 849�?72. 
+J. Tu, H. Chen, M. Wang, A.H. Gandomi, The colony predation 
+algorithm, J. Bionic Eng. 18 (2021) 674�?10. 
+
+[11]  M.H. Amiri, N. Mehrabi Hashjin, M. Montazeri, S. Mirjalili, N. 
+
+Khodadadi, Hippopotamus optimization algorithm: a novel nature-
+inspired optimization algorithm, Sci. Rep. 14 (2024) 5032. 
+
+[12]  Zhao S., Zhang T., Ma S., & Chen M, (2022) Dandelion Optimizer: A 
+nature-inspired metaheuristic algorithm for engineering applications, 
+Engineering Applications of Artificial Intelligence, 114, 105075. DOI: 
+10.1016/j.engappai.2022.105075. 
+S. Mirjalili, A.H. Gandomi, S.Z. Mirjalili, S. Saremi, H. Faris, S.M. Mirjalili, 
+Salp swarm algorithm: a bio-inspired optimizer for engineering design 
+problems, Adv. Eng. Softw. 114 (2017) 163�?91. 
+
+[13] 
+
+[14]  Dhiman G, Kumar V. Emperor penguin optimizer: A bio-inspired 
+
+algorithm for engineering problems[J]. Knowledge-Based Systems, 
+2018, 159: 20-50. 
+
+[15]  A.H. Gandomi, X.S. Yang, A.H. Alavi, Cuckoo search algorithm: a 
+
+metaheuristic approach to solve structural optimization problems, Eng. 
+Comput. 29 (2013) 17�?5. 
+S. Mirjalili, SCA: a sine cosine algorithm for solving optimization 
+problems, Knowl. Based Syst. 96 (2016) 120�?33. 
+
+[16] 
+
+[17]  H. Abedinpourshotorban, S.M. Shamsuddin, Z. Beheshti, D.N. Jawawi, 
+
+Electromagnetic field optimization: a physics-inspired metaheuristic 
+optimization algorithm, Swarm Evol. Comput. 26 (2016) 8�?2. 
+[18]  B. Javidy, A. Hatamlou, S. Mirjalili, Ions motion algorithm for solving 
+optimization problems, Appl. Soft Comput. 32 (2015) 72�?9. 
+[19]  W. Zhao, L. Wang and Z. Zhang, Atom search optimization and its 
+application to solve a hydrogeologic parameter estimation problem, 
+Knowledge-Based Systems,2019,163:283-304, 
+https://doi.org/10.1016/j.knosys.2018.08.030. 
+
+[20]  Faramarzi A, Heidarinejad M, Stephens B, et al. Equilibrium optimizer: 
+
+A novel optimization algorithm[J]. Knowledge-based systems, 2020, 
+191: 105190. 
+
+[21]  E. Rashedi, H. Nezamabadi-Pour, S. Saryazdi, GSA: a gravitational search 
+
+algorithm, Inf. Sci. 179 (13) (2009) 2232�?248. 
+[22]  Talatahari S, Azizi M. Chaos game optimization: a novel 
+
+metaheuristic algorithm[J]. Artificial Intelligence Review, 2021, 54(2): 
+917-1004.  
+
+[23]  Abualigah L, Diabat A, Mirjalili S, et al. The arithmetic optimization 
+
+algorithm[J]. Computer methods in applied mechanics and engineering, 
+2021, 376: 113609. 
+
+[24]  Rao R V, Savsani V J, Vakharia D P. Teaching–learning-based 
+
+optimization: an optimization method for continuous non-linear large 
+scale problems[J]. Information sciences, 2012, 183(1): 1-15. 
+
+[25]  Oladejo S O, Ekwe S O, Mirjalili S. The Hiking Optimization 
+Algorithm: A novel human-based metaheuristic approach[J]. 
+Knowledge-Based Systems, 2024, 296: 111880. 
+
+[26]  S. Talatahari, H. Bayzidi and M. Saraee, “Social Network Search for 
+
+Global Optimization,�?in IEEE Access, vol. 9, pp. 92815-92863, 2021, 
+doi: 10.1109/ACCESS.2021.3091495. 
+
+[27]  Q. Lu, W. Cui, S. Yan, T. Li, An improved differential evolution 
+
+algorithm based on invasive weed optimization, Computer Science and 
+Applications 9 (2019) 266�?74. 
+https://doi.org/10.12677/CSA.2019.92031. 
+
+[28]  X. S. Yang, Flower pollination algorithm for global optimization, in: 
+
+Proceedings of the International Conference on Unconventional 
+Computing and Natural Computation, Springer, Berlin, Heidelberg, 
+2012, pp. 240�?49. 
+
+[29]  S. Arora, H. Singh, M. Sharma, S. Sharma, and P. Anand, A new hybrid 
+algorithm based on Grey Wolf Optimization and Crow Search 
+Algorithm for unconstrained function optimization and feature 
+selection, IEEE Access 7 (2019) 26343�?6361. DOI: 
+10.1109/ACCESS.2019.2897325. 
+
+[30]  R. M. Rizk-Allah, A quantum-based sine cosine algorithm for solving 
+general systems of nonlinear equations, Artificial Intelligence Review 
+54 (2021) 3939�?990. DOI: 10.1007/s10462-020-09944-0. 
+
+[31]  E. Manafi, B. Domenech, R. Tavakkoli-Moghaddam, M. Ranaboldo, A 
+
+self-learning whale optimization algorithm based on reinforcement 
+learning for a dual-resource flexible job shop scheduling problem, 
+Applied Soft Computing 180 (2025) 113436. DOI: 
+10.1016/j.asoc.2025.113436. ISSN: 1568-4946. 
+
+[32]  C. Yuan, D. Zhao, A. A. Heidari, L. Liu, Y. Chen, H. Chen, Polar lights 
+optimizer: Algorithm and applications in image segmentation and 
+feature selection, Neurocomputing 607 (2024) 128427. DOI: 
+10.1016/j.neucom.2024.128427. 
+
+[33]  X. Zhao, Z. Wang, C. Huang, et al., Mobile robot path planning based 
+on an improved A algorithm*, Robot 40 (2018) 903�?10. DOI: 
+10.13973/j.cnki.robot.170591. 
+
+[34]  G. Huang, Research on key techniques and applications of digital close-
+
+range industrial photogrammetry, Ph.D. dissertation, Tianjin 
+University, 2005. 
+J. Zhang, Y. Wu, F. Shi, et al., DV-Hop-based localization algorithm for 
+wireless sensor networks, Computer Applications 30 (2010) 323�?26. 
+
+[35] 
+
+[36]  Y. Qiu, C. Zhao, G. Dai, et al., Research on node localization 
+
+techniques for wireless sensor networks, Computer Science (2008) (05) 
+47�?0, 63. 
+
+[37]  F. Yu, et al., A knowledge-guided bi-population evolutionary algorithm 
+for energy-efffcient scheduling of distributed ffexible job shop problem, 
+Eng. Appl. Artif. Intell. 128 (2024) 107458. 
+
+[38]  P. W. Tsai, T. T. Nguyen, J. S. Pan, T. K. Dao, and W. M. Zheng, “A 
+parallel optimization algorithm based on communication strategy of 
+pollens and agents,�?in Advances in Intelligent Information Hiding and 
+Multimedia Signal Processing, Cham, Switzerland: Springer 
+International Publishing, 2017, pp. 315�?24, doi: 10.1007/978-3-319-
+50212-0_38.  
+
+[39]  X. Xia, J. Liu, K. Gao, et al., Particle swarm optimization algorithm 
+
+with reverse learning and local learning abilities, Journal of Computer 
+Research and Development 38 (2015) 1397�?407. 
+
+[41] 
+
+[40]  Q. Wang, X. Guo, Particle swarm optimization algorithm based on 
+Lévy flight, Computer Applications Research 33 (2016) 2588�?591. 
+J. Liu, H. Meng, Y. Hu, Efficiency optimization of maximum power 
+point tracking with optimal torque for wind power generation systems 
+using gradient estimation, Proceedings of the Chinese Society for 
+Electrical Engineering 35 (2015) 2367�?374. DOI: 10.13334/j.0258-
+8013.pcsee.2015.10.001. 
+
+[42]  D. Rodrigues, L. A. M. Pereira, J. P. Papa, and S. A. T. Weber, "A 
+binary krill herd approach for feature selection," 2014 22nd 
+International Conference on Pattern Recognition (ICPR), Stockholm, 
+Sweden, 2014, pp. 1407-1412, doi: 10.1109/ICPR.2014.251. 
+[43]  H. Mohammed and T. Rashid, "FOX: A FOX-inspired optimization 
+algorithm," *Applied Intelligence*, vol. 53, pp. 1030�?050, January 
+2023. 
+ Mirjalili S. The Ant Lion Optimizer [J]. Advances in Engineering 
+Software, 2015, 83: 80-98. 
+
+[44] 
+
+[45]  HUANG J Q, MA Y. Bat algorithm based on an integration strategy and 
+Gaussian distribution[J]. Mathematical Problems in Engineering, 2020, 
+2020: 9495281. DOI:10.1155/2020/9495281. 
+
+[46]  S. Mirjalili, Moth-ffame optimization algorithm: a novel nature-inspired 
+
+heuristic paradigm, Knowl. -Based Syst. 89 (2015) 228�?49. 
+
+[47]  D. Li, M. Li, Progress and application prospects of UAV remote sensing 
+systems, Journal of Wuhan University (Information Science Edition) 39 
+(2014) 505�?13, 540. DOI: 10.13203/j.whugis20140045. 
+
+[48]  Q. Zong, D. Wang, S. Shao, et al., Research status and development of 
+
+cooperative formation flight control for multiple UAVs, Journal of 
+Harbin Institute of Technology 49 (2017) 1�?4. 
+
+[49]  Q. Rong, J. Yan, G. Guo, Research and implementation of the DBSCAN 
+
+clustering algorithm, Computer Applications (2004) (04) 45�?6, 61. 
+[50]  L. Li, T. Xiong, X. Hu, A brief discussion on UAV application areas 
+
+and prospects, Geospatial Information 8 (2010) 7�?. 
+
+[51]  F. Ojeda, D. Mendez, A. Fajardo, F. Ellinger, On wireless sensor 
+
+network models: a cross-layer systematic review, J. Sens. Actuator 
+Netw. 12 (2023) 50. 
+
+[52]  A. Narwaria, A.P. Mazumdar, Software-defined wireless sensor 
+
+network: a comprehensive survey, J. Netw. Comput. Appl. 215 (2023) 
+103636. 
+
+[53]  M. Fu, Q. Liao, RSSI-based localization algorithm for wireless sensor 
+network nodes, Wireless Communications 7 (2017) 129�?36. 
+https://doi.org/10.12677/HJWC.2017.74016. 
+
+[54]  R. Ding, Z. Qian, X. Wang, UWB localization method based on joint 
+
+TOA and DOA estimation, Journal of Electronics & Information 
+
+ 
+ARAB ECONOMIC AND BUSINESS JOURNAL 00 (2014) 000�?00                                                                                                                   21 
+
+Technology 32 (2010) 313�?17. 
+
+[55]  C. Liu, J. Yang, F. Wang, Joint TDOA and AOA location algorithm, 
+
+Journal of Systems Engineering and Electronics 24 (2013) 183�?88.  
+[56]  V. Kanwar and A. Kumar, PSO DV-Hop based relocalization methods 
+
+for dead nodes in wireless sensor networks, in: Proceedings of the 2021 
+8th International Conference on Computing for Sustainable Global 
+Development (INDIACom), New Delhi, India, 2021, pp. 596�?00. 
+
+[57]  B. Sun, S. Wei, DV-Hop localization algorithm based on an adaptive-
+adjustment strategy Grey Wolf optimizer, Computer Science 46 (2019) 
+77�?2. 
+
+[58]  Z. Liu, X. Dong, D. Zhang, et al., Personnel localization algorithm 
+
+based on DV-Hop optimized by whale optimization algorithm, Hebei 
+Electric Power Technology 41 (2022) 85�?9. 
+
+Fig. 22. Convergence curves of EPLO and compared algorithms for CEC2022 (20 dim). 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+22 
+
+ARAB ECONOMIC AND BUSINESS JOURNAL 00 (2014) 000�?00 
+
+Table 13. Simulation results for CEC2022 (10 dim). 
+
+F6 
+
+F5 
+
+F1 
+
+F2 
+
+F7 
+
+F3 
+
+F4 
+
+avg 
+std 
+rank 
+avg 
+std 
+rank 
+avg 
+std 
+rank 
+avg 
+std 
+rank 
+avg 
+std 
+rank 
+avg 
+std 
+rank 
+avg 
+std 
+rank 
+avg 
+std 
+rank 
+avg 
+std 
+rank 
+avg 
+std 
+rank 
+avg 
+std 
+rank 
+avg 
+std 
+rank 
+Mean Rank 
+Win 
+
+F10 
+
+F11 
+
+F12 
+
+F8 
+
+F9 
+
+EPLO 
+3.01E+02 
+1.95E+00 
+1 
+4.10E+02 
+1.20E+01 
+1 
+6.00E+02 
+1.77E-01 
+1 
+8.20E+02 
+9.99E+00 
+1 
+9.04E+02 
+1.39E+01 
+1 
+4.76E+03 
+2.16E+03 
+2 
+2.02E+03 
+7.51E+00 
+1 
+2.22E+03 
+8.13E+00 
+1 
+2.53E+03 
+1.94E-01 
+1 
+2.51E+03 
+3.21E+01 
+1 
+2.67E+03 
+1.34E+02 
+1 
+2.86E+03 
+2.88E+00 
+1 
+1.08 
+\ 
+
+BKA 
+1.10E+03 
+2.07E+03 
+2 
+4.12E+02 
+3.46E+01 
+2 
+6.29E+02 
+1.12E+01 
+3 
+8.22E+02 
+1.05E+01 
+3 
+1.09E+03 
+1.07E+02 
+3 
+3.04E+03 
+1.99E+03 
+1 
+2.05E+03 
+2.20E+01 
+3 
+2.24E+03 
+3.77E+01 
+5 
+2.55E+03 
+5.87E+01 
+2 
+2.59E+03 
+1.40E+02 
+2 
+2.75E+03 
+1.53E+02 
+2 
+2.87E+03 
+2.09E+01 
+2 
+2.5 
+11 
+
+WOA 
+2.53E+04 
+1.08E+04 
+5 
+4.76E+02 
+8.91E+01 
+5 
+6.34E+02 
+1.24E+01 
+4 
+8.36E+02 
+1.21E+01 
+7 
+1.65E+03 
+6.30E+02 
+7 
+5.72E+03 
+3.34E+03 
+5 
+2.08E+03 
+2.92E+01 
+5 
+2.24E+03 
+1.39E+01 
+3 
+2.60E+03 
+5.43E+01 
+5 
+2.66E+03 
+3.49E+02 
+5 
+2.98E+03 
+1.33E+02 
+6 
+2.90E+03 
+4.83E+01 
+4 
+5.08 
+12 
+
+FOX 
+4.56E+03 
+6.32E+03 
+6 
+4.67E+02 
+1.15E+02 
+4 
+6.58E+02 
+1.26E+01 
+8 
+8.31E+02 
+6.78E+00 
+5 
+1.45E+03 
+1.59E+02 
+5 
+4.90E+03 
+2.62E+03 
+3 
+2.15E+03 
+7.37E+01 
+7 
+2.43E+03 
+1.45E+02 
+8 
+2.63E+03 
+4.96E+01 
+6 
+3.14E+03 
+5.46E+02 
+7 
+2.86E+03 
+9.06E+01 
+4 
+3.00E+03 
+7.54E+01 
+6 
+5.75 
+12 
+
+PLO 
+1.68E+03 
+2.04E+03 
+4 
+5.02E+02 
+9.89E+01 
+5 
+6.04E+02 
+3.83E+00 
+2 
+8.21E+02 
+9.66E+00 
+2 
+9.16E+02 
+7.63E+01 
+2 
+6.29E+03 
+2.11E+03 
+6 
+2.03E+03 
+9.95E+00 
+2 
+2.23E+03 
+2.35E+01 
+2 
+2.59E+03 
+6.39E+01 
+3 
+2.61E+03 
+1.48E+02 
+3 
+2.86E+03 
+1.93E+02 
+5 
+2.88E+03 
+2.26E+01 
+3 
+3.25 
+12 
+
+ALO 
+1.21E+04 
+5.94E+03 
+7 
+9.01E+02 
+3.15E+02 
+6 
+6.35E+02 
+1.23E+01 
+5 
+8.35E+02 
+1.08E+01 
+6 
+1.26E+03 
+2.61E+02 
+4 
+1.58E+08 
+3.68E+08 
+7 
+2.08E+03 
+3.56E+01 
+6 
+2.31E+03 
+2.33E+02 
+6 
+2.72E+03 
+3.95E+01 
+7 
+2.73E+03 
+2.30E+02 
+6 
+6.15E+03 
+2.59E+03 
+7 
+3.03E+03 
+6.70E+01 
+7 
+6.17 
+12 
+
+BA 
+3.03E+04 
+1.40E+04 
+8 
+2.76E+03 
+1.54E+03 
+7 
+6.57E+02 
+1.49E+01 
+7 
+8.83E+02 
+1.75E+01 
+8 
+1.91E+03 
+4.12E+02 
+8 
+8.58E+08 
+8.26E+08 
+8 
+2.17E+03 
+5.94E+01 
+8 
+2.39E+03 
+1.75E+02 
+7 
+2.93E+03 
+1.56E+02 
+8 
+3.48E+03 
+7.44E+02 
+8 
+3.38E+04 
+1.26E+04 
+88 
+3.18E+03 
+1.52E+02 
+8 
+14.42 
+12 
+
+GSA 
+2.03E+07 
+7.88E+07 
+10 
+3.63E+03 
+1.76E+03 
+8 
+7.08E+02 
+1.68E+01 
+8 
+9.26E+02 
+1.73E+01 
+9 
+5.37E+03 
+1.14E+03 
+9 
+1.61E+09 
+8.88E+08 
+9 
+2.30E+03 
+6.88E+01 
+10 
+3.88E+03 
+5.20E+03 
+10 
+3.14E+03 
+2.23E+02 
+9 
+4.29E+03 
+8.91E+02 
+10 
+8.29E+04 
+2.38E+04 
+10 
+3.29E+03 
+1.36E+02 
+10 
+9.33 
+12 
+
+HHO 
+1.13E+03 
+6.40E+02 
+3 
+4.44E+02 
+3.36E+01 
+3 
+6.38E+02 
+1.09E+01 
+10 
+8.27E+02 
+7.76E+00 
+4 
+1.45E+03 
+1.54E+02 
+6 
+5.68E+03 
+3.43E+03 
+4 
+2.08E+03 
+3.70E+01 
+4 
+2.24E+03 
+1.42E+01 
+4 
+2.60E+03 
+3.83E+01 
+4 
+2.64E+03 
+2.48E+02 
+4 
+2.83E+03 
+9.53E+01 
+3 
+2.91E+03 
+3.44E+01 
+5 
+4.5 
+12 
+
+MFO 
+1.34E+07 
+6.56E+07 
+9 
+4.17E+03 
+1.87E+03 
+9 
+6.98E+02 
+2.25E+01 
+9 
+9.29E+02 
+1.99E+01 
+10 
+5.61E+03 
+1.27E+03 
+10 
+1.68E+09 
+1.31E+09 
+10 
+2.29E+03 
+9.98E+01 
+9 
+3.31E+03 
+2.38E+03 
+9 
+3.18E+03 
+2.50E+02 
+10 
+3.99E+03 
+9.90E+02 
+9 
+8.24E+04 
+1.83E+04 
+9 
+3.27E+03 
+1.86E+02 
+9 
+9.33 
+12 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ARAB ECONOMIC AND BUSINESS JOURNAL 00 (2014) 000�?00                                                                                                                   23 
+
+Fig. 23. Convergence curves of EPLO and compared algorithms for CEC2022 (10 dim). 
+
+Table 14. Simulation results for CEC2022 (20 dim). 
+
+F5 
+
+F2 
+
+F6 
+
+F7 
+
+F3 
+
+F4 
+
+F1 
+
+avg 
+std 
+rank 
+avg 
+std 
+rank 
+avg 
+std 
+rank 
+avg 
+std 
+rank 
+avg 
+std 
+rank 
+avg 
+std 
+rank 
+avg 
+std 
+rank 
+avg 
+std 
+rank 
+avg 
+std 
+rank 
+avg 
+std 
+rank 
+avg 
+std 
+rank 
+avg 
+std 
+rank 
+Mean Rank 
+Win 
+
+F8 
+
+F9 
+
+F10 
+
+F11 
+
+F12 
+
+EPLO 
+1.22E+04 
+8.11E+03 
+2 
+4.55E+02 
+1.52E+01 
+1 
+6.02E+02 
+1.66E+00 
+1 
+8.52E+02 
+1.83E+01 
+1 
+1.12E+03 
+4.01E+02 
+1 
+3.92E+03 
+2.53E+03 
+2 
+2.09E+03 
+3.89E+01 
+1 
+2.23E+03 
+9.22E+00 
+1 
+2.48E+03 
+5.66E+00 
+1 
+3.11E+03 
+1.03E+03 
+1 
+2.90E+03 
+6.38E-01 
+1 
+2.95E+03 
+8.17E+00 
+1 
+1.17 
+\ 
+
+BKA 
+5.94E+03 
+4.58E+03 
+1 
+5.65E+02 
+1.16E+02 
+4 
+6.53E+02 
+6.13E+00 
+3 
+8.80E+02 
+1.58E+01 
+2 
+2.14E+03 
+2.98E+02 
+3 
+8.83E+06 
+4.83E+07 
+5 
+2.13E+03 
+4.91E+01 
+3 
+2.30E+03 
+7.99E+01 
+3 
+2.51E+03 
+5.72E+01 
+2 
+4.41E+03 
+9.78E+02 
+4 
+4.16E+03 
+1.34E+03 
+6 
+3.10E+03 
+1.33E+02 
+3 
+3.25 
+11 
+
+WOA 
+3.51E+04 
+8.61E+03 
+5 
+6.35E+02 
+8.36E+01 
+6 
+6.67E+02 
+1.35E+01 
+6 
+9.52E+02 
+3.48E+01 
+7 
+4.00E+03 
+1.90E+03 
+7 
+7.46E+06 
+6.69E+06 
+4 
+2.22E+03 
+7.88E+01 
+6 
+2.31E+03 
+1.09E+02 
+5 
+2.61E+03 
+5.67E+01 
+5 
+5.18E+03 
+1.03E+03 
+6 
+4.06E+03 
+5.95E+02 
+5 
+3.16E+03 
+1.34E+02 
+4 
+5.5 
+12 
+
+FOX 
+2.49E+04 
+1.81E+04 
+4 
+5.04E+02 
+2.27E+01 
+2 
+6.70E+02 
+8.32E+00 
+7 
+8.86E+02 
+1.06E+01 
+4 
+2.39E+03 
+6.29E+01 
+4 
+3.84E+03 
+3.69E+03 
+1 
+2.32E+03 
+1.21E+02 
+7 
+2.56E+03 
+2.15E+02 
+6 
+2.59E+03 
+6.47E+01 
+4 
+5.09E+03 
+6.74E+02 
+5 
+3.94E+03 
+1.00E+03 
+4 
+3.71E+03 
+2.84E+02 
+6 
+4.5 
+11 
+
+PLO 
+5.95E+04 
+2.07E+04 
+7 
+6.17E+02 
+1.22E+02 
+5 
+6.17E+02 
+8.46E+00 
+2 
+8.99E+02 
+3.09E+01 
+5 
+2.06E+03 
+8.33E+02 
+2 
+1.08E+07 
+1.55E+07 
+6 
+2.10E+03 
+5.62E+01 
+2 
+2.27E+03 
+4.96E+01 
+2 
+2.61E+03 
+7.86E+01 
+6 
+4.20E+03 
+1.13E+03 
+2 
+2.95E+03 
+2.28E+01 
+2 
+3.06E+03 
+8.02E+01 
+2 
+3.58 
+12 
+
+ALO 
+4.16E+04 
+1.15E+04 
+6 
+1.52E+03 
+4.93E+02 
+7 
+6.59E+02 
+1.15E+01 
+4 
+9.41E+02 
+1.69E+01 
+6 
+2.93E+03 
+1.05E+03 
+5 
+6.71E+08 
+5.83E+08 
+7 
+2.19E+03 
+5.33E+01 
+4 
+2.59E+03 
+5.36E+02 
+7 
+2.96E+03 
+1.64E+02 
+7 
+5.33E+03 
+1.10E+03 
+7 
+2.04E+04 
+6.62E+03 
+7 
+3.85E+03 
+2.16E+02 
+7 
+6.17 
+12 
+
+BA 
+3.10E+07 
+1.68E+08 
+8 
+5.06E+03 
+1.65E+03 
+8 
+6.98E+02 
+1.18E+01 
+8 
+1.03E+03 
+3.00E+01 
+8 
+5.08E+03 
+1.27E+03 
+8 
+4.30E+09 
+1.80E+09 
+8 
+2.39E+03 
+1.09E+02 
+8 
+3.77E+03 
+2.50E+03 
+8 
+3.83E+03 
+5.63E+02 
+8 
+7.39E+03 
+9.46E+02 
+8 
+1.14E+05 
+3.34E+04 
+8 
+4.30E+03 
+3.93E+02 
+8 
+8 
+12 
+
+GSA 
+8.29E+09 
+4.37E+10 
+10 
+9.27E+03 
+3.52E+03 
+9 
+7.29E+02 
+1.68E+01 
+9 
+1.12E+03 
+2.90E+01 
+9 
+1.47E+04 
+3.56E+03 
+9 
+9.21E+09 
+2.49E+09 
+9 
+2.62E+03 
+1.27E+02 
+10 
+2.21E+04 
+2.26E+04 
+9 
+4.28E+03 
+6.81E+02 
+9 
+8.42E+03 
+7.67E+02 
+10 
+2.27E+05 
+3.87E+04 
+9 
+4.56E+03 
+4.23E+02 
+9 
+9.25 
+12 
+
+HHO 
+2.43E+04 
+6.21E+03 
+3 
+5.54E+02 
+4.72E+01 
+3 
+6.62E+02 
+8.81E+00 
+5 
+8.86E+02 
+1.41E+01 
+3 
+2.97E+03 
+3.35E+02 
+6 
+2.29E+05 
+1.40E+05 
+3 
+2.20E+03 
+6.68E+01 
+5 
+2.31E+03 
+9.40E+01 
+4 
+2.55E+03 
+3.68E+01 
+3 
+4.30E+03 
+8.91E+02 
+3 
+3.54E+03 
+4.79E+02 
+3 
+3.27E+03 
+2.21E+02 
+5 
+3.83 
+12 
+
+MFO 
+7.80E+08 
+1.59E+09 
+9 
+9.50E+03 
+3.37E+03 
+10 
+7.37E+02 
+1.79E+01 
+10 
+1.13E+03 
+3.41E+01 
+10 
+1.55E+04 
+3.63E+03 
+10 
+9.23E+09 
+3.78E+09 
+10 
+2.61E+03 
+1.41E+02 
+9 
+2.26E+04 
+4.65E+04 
+10 
+4.65E+03 
+8.24E+02 
+10 
+8.26E+03 
+1.02E+03 
+9 
+2.27E+05 
+6.03E+04 
+10 
+4.50E+03 
+3.91E+02 
+10 
+9.75 
+12 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+

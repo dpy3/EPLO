@@ -1,0 +1,285 @@
+function run_type12()
+% run_type12 - Robot gripper design optimization problem (type = 12)
+% Produces a table: Algorithm, a, b, c, e, f, l, delta, Rank
+% Numerical outputs in the printed table, CSV and XLSX are formatted to 4 decimal places.
+%
+% Notes:
+%  - 'ff' in code is exported as column 'f' in the table as requested.
+%  - This script expects algorithm functions (BKA, WOA, SCA, FOX, PLO, EPLO, ALO, BA, GSA, HHO, MFO)
+%    to be on the MATLAB path and to accept the call signature:
+%       [best_sol, best_fit, conv_curve] = alg(nPop, Max_iter, lb, ub, dim, fobj)
+%    If some algorithms use a different signature, adapt them or wrap them accordingly.
+
+    clc; clear; close all;
+
+    %% Problem definition (type = 12)
+    lb_raw = [10 10 100 0 10 100 1];
+    ub_raw = [150 150 200 50 150 300 3.14];
+    dim = length(lb_raw);
+    fobj = @Robot_Gripper;
+
+    if iscolumn(lb_raw), lb = lb_raw'; else lb = lb_raw; end
+    if iscolumn(ub_raw), ub = ub_raw'; else ub = ub_raw; end
+    if length(lb) > 1 || length(ub) > 1
+        warning('Using the first bound value as a unified constraint (as in original).');
+        lb = lb(1); ub = ub(1);
+    end
+
+    %% Parameters
+    nPop = 50;
+    Max_iter = 500;
+    n_runs = 30;
+
+    algorithms = {'BKA','WOA','SCA','FOX','PLO','EPLO','ALO','BA','GSA','HHO','MFO'};
+    numAlgos = length(algorithms);
+
+    algorithm_colors = [
+        0, 0, 1;
+        0.85, 0.10, 0.30;
+        0.50, 0, 0.50;
+        0.90, 0.20, 0.70;
+        0.95, 0.90, 0.25;
+        0.70, 0.35, 0.00;
+        0.40, 0.40, 0.40;
+        0.60, 0.80, 0.20;
+        0, 0, 0;
+        0, 0.80, 0.80;
+        0.50, 0.10, 0.80
+    ];
+
+    %% Storage
+    final_fitness = nan(n_runs, numAlgos);
+    all_convergence = cell(numAlgos, 1);
+    best_solutions = nan(n_runs, numAlgos, dim);
+    for j = 1:numAlgos
+        all_convergence{j} = nan(n_runs, Max_iter);
+    end
+
+    fprintf('Running engineering problem (type = 12)...\n');
+
+    %% Main optimization loop
+    for run = 1:n_runs
+        fprintf('Run %d/%d...\n', run, n_runs);
+        for alg_idx = 1:numAlgos
+            alg_name = algorithms{alg_idx};
+            try
+                [best_sol, best_fit, conv_curve] = feval(alg_name, nPop, Max_iter, lb, ub, dim, fobj);
+                if isempty(best_fit)
+                    final_val = NaN;
+                else
+                    if numel(best_fit) > 1
+                        final_val = best_fit(end);
+                    else
+                        final_val = best_fit;
+                    end
+                end
+                if isempty(conv_curve)
+                    conv_curve = NaN(1, Max_iter);
+                else
+                    if length(conv_curve) < Max_iter
+                        conv_curve(end+1:Max_iter) = conv_curve(end);
+                    elseif length(conv_curve) > Max_iter
+                        conv_curve = conv_curve(1:Max_iter);
+                    end
+                end
+                final_fitness(run, alg_idx) = final_val;
+                all_convergence{alg_idx}(run, :) = conv_curve;
+                if isempty(best_sol)
+                    best_solutions(run, alg_idx, :) = nan(1, dim);
+                else
+                    v = best_sol(:)';
+                    if length(v) < dim
+                        v = [v, nan(1, dim-length(v))];
+                    elseif length(v) > dim
+                        v = v(1:dim);
+                    end
+                    best_solutions(run, alg_idx, :) = v;
+                end
+            catch ME
+                warning('Algorithm %s failed on run %d: %s', alg_name, run, ME.message);
+                final_fitness(run, alg_idx) = NaN;
+                all_convergence{alg_idx}(run, :) = NaN(1, Max_iter);
+                best_solutions(run, alg_idx, :) = NaN(1, dim);
+            end
+        end
+    end
+
+    %% Compute statistics
+    summaryTable = nan(numAlgos, 2);
+    for j = 1:numAlgos
+        validIdx = ~isnan(final_fitness(:, j));
+        if any(validIdx)
+            summaryTable(j, 1) = mean(final_fitness(validIdx, j));
+            summaryTable(j, 2) = std(final_fitness(validIdx, j));
+        else
+            summaryTable(j, :) = [NaN, NaN];
+        end
+    end
+
+    %% Rank algorithms
+    ranks = nan(numAlgos, 1);
+    validMeanIdx = ~isnan(summaryTable(:,1));
+    if any(validMeanIdx)
+        [~, order] = sort(summaryTable(validMeanIdx, 1), 'ascend');
+        validIndices = find(validMeanIdx);
+        ranks(validIndices(order)) = 1:sum(validMeanIdx);
+    end
+
+    %% Best solution per algorithm
+    best_solution_per_algo = nan(numAlgos, dim);
+    for j = 1:numAlgos
+        col = final_fitness(:, j);
+        validIdx = ~isnan(col);
+        if any(validIdx)
+            [~, idxWithinValid] = min(col(validIdx));
+            validRuns = find(validIdx);
+            bestRun = validRuns(idxWithinValid);
+            best_solution_per_algo(j, :) = squeeze(best_solutions(bestRun, j, :))';
+        else
+            best_solution_per_algo(j, :) = nan(1, dim);
+        end
+    end
+
+    %% Build results table
+    alg_names_col = algorithms(:);
+    a_col = best_solution_per_algo(:,1);
+    b_col = best_solution_per_algo(:,2);
+    c_col = best_solution_per_algo(:,3);
+    e_col = best_solution_per_algo(:,4);
+    f_col = best_solution_per_algo(:,5);
+    l_col = best_solution_per_algo(:,6);
+    delta_col = best_solution_per_algo(:,7);
+
+    ResultTableNumeric = table(alg_names_col, a_col, b_col, c_col, e_col, f_col, l_col, delta_col, ranks, ...
+        'VariableNames', {'Algorithm','a_mm','b_mm','c_mm','e_mm','f_mm','l_mm','delta_rad','Rank'});
+
+    header = {'Algorithm','a_mm','b_mm','c_mm','e_mm','f_mm','l_mm','delta_rad','Rank'};
+    csvCell = cell(numAlgos+1, length(header));
+    csvCell(1, :) = header;
+    for j = 1:numAlgos
+        csvCell{j+1,1} = ResultTableNumeric.Algorithm{j};
+        csvCell{j+1,2} = format_num4(a_col(j));
+        csvCell{j+1,3} = format_num4(b_col(j));
+        csvCell{j+1,4} = format_num4(c_col(j));
+        csvCell{j+1,5} = format_num4(e_col(j));
+        csvCell{j+1,6} = format_num4(f_col(j));
+        csvCell{j+1,7} = format_num4(l_col(j));
+        csvCell{j+1,8} = format_num4(delta_col(j));
+        if isnan(ranks(j)), csvCell{j+1,9} = 'NaN'; else csvCell{j+1,9} = sprintf('%d', ranks(j)); end
+    end
+
+    fprintf('\nAlgorithm , a (mm), b (mm), c (mm), e (mm), f (mm), l (mm), delta (rad) , Rank\n');
+    for j = 1:numAlgos
+        fprintf('%s , %s, %s, %s, %s, %s, %s, %s , %s\n', ...
+            csvCell{j+1,1}, csvCell{j+1,2}, csvCell{j+1,3}, csvCell{j+1,4}, ...
+            csvCell{j+1,5}, csvCell{j+1,6}, csvCell{j+1,7}, csvCell{j+1,8}, csvCell{j+1,9});
+    end
+
+    save('optimization_stats_type12.mat', 'final_fitness', 'summaryTable', 'all_convergence', 'algorithms', 'best_solution_per_algo', 'ranks', 'ResultTableNumeric');
+
+    try
+        writecell(csvCell, 'Type12_Solutions.csv');
+        fprintf('Saved Type12_Solutions.csv\n');
+    catch ME
+        warning('Failed to write Type12_Solutions.csv: %s', ME.message);
+    end
+
+    try
+        writecell(csvCell, 'Type12_Solutions.xlsx');
+        fprintf('Saved Type12_Solutions.xlsx\n');
+    catch ME
+        warning('Failed to write Type12_Solutions.xlsx: %s', ME.message);
+        try
+            xlswrite('Type12_Solutions.xlsx', csvCell);
+            fprintf('Saved Type12_Solutions.xlsx using xlswrite fallback\n');
+        catch ME2
+            warning('Fallback xlswrite also failed: %s', ME2.message);
+        end
+    end
+
+    %% Plot average convergence curves
+    avg_convergence = nan(numAlgos, Max_iter);
+    for j = 1:numAlgos
+        curves = all_convergence{j};
+        valid_rows = ~all(isnan(curves), 2);
+        if any(valid_rows)
+            avg_convergence(j, :) = nanmean(curves(valid_rows, :), 1);
+        else
+            avg_convergence(j, :) = NaN(1, Max_iter);
+        end
+    end
+
+    figure('Units', 'normalized', 'OuterPosition', [0 0 0.6 0.6], 'Color', 'w');
+    hold on; grid on;
+    set(gca, 'YScale', 'log', 'FontSize', 14); % 放大坐标刻度字体
+    for j = 1:numAlgos
+        semilogy(1:Max_iter, avg_convergence(j, :), 'Color', algorithm_colors(j, :), ...
+            'LineWidth', 3, 'DisplayName', algorithms{j});
+    end
+    axis square;
+    title(sprintf('Average Convergence () �?%d runs', n_runs), 'FontSize', 18, 'FontWeight', 'bold');
+    xlabel('Iteration', 'FontSize', 16);
+    ylabel('Best Fitness', 'FontSize', 16);
+    legend('Location', 'southoutside', 'FontSize', 12, 'NumColumns', 2); % 分两行显�?    xlim([1, Max_iter]);
+
+    try
+        img = imread('result_image.png');
+        figure; imshow(img); title('Result Image');
+    catch ME
+        warning('Could not load result_image.png: %s', ME.message);
+    end
+end
+
+%% Helper functions (unchanged)
+function fitness = Robot_Gripper(x)
+    penalty_factor = 1e10;
+    if numel(x) < 7
+        x = [x(:); nan(7-numel(x),1)];
+    end
+    a = x(1); b = x(2); c = x(3); e = x(4); ff = x(5); l = x(6); delta = x(7);
+    Ymin = 50; Ymax = 100; YG = 150; Zmax = 100;
+    fhd1 = @(z) F1(x, z, 2);
+    options = optimset('Display','off');
+    try
+        [~, fitVal1] = fminbnd(fhd1, 0, Zmax, options);
+    catch
+        fitVal1 = NaN;
+    end
+    fhd2 = @(z) -F1(x, z, 2);
+    try
+        [~, fitVal2] = fminbnd(fhd2, 0, Zmax, options);
+    catch
+        fitVal2 = NaN;
+    end
+    f = -fitVal2 - fitVal1;
+    g = zeros(7,1);
+    g(1) = -Ymin + F1(x, Zmax, 1);
+    g(2) = -F1(x, Zmax, 1);
+    g(3) = Ymax - F1(x, 0, 1);
+    g(4) = F1(x, 0, 1) - YG;
+    g(5) = l^2 + e^2 - (a + b)^2;
+    g(6) = b^2 - (a - e)^2 - (l - Zmax)^2;
+    g(7) = Zmax - l;
+    penalty = penalty_factor * sum(max(0,g).^2);
+    fitness = f + penalty;
+end
+
+function val = F1(x, z, mode)
+    a = x(1); b = x(2); c = x(3); e = x(4); ff = x(5); l = x(6); delta = x(7);
+    switch mode
+        case 1
+            val = a + b + z/10;
+        case 2
+            val = (c + e + ff + l + delta) - z/5;
+        otherwise
+            val = 0;
+    end
+end
+
+function s = format_num4(x)
+    if ~isnumeric(x) || isempty(x) || isnan(x)
+        s = 'NaN';
+    else
+        s = sprintf('%.4f', double(x));
+    end
+end

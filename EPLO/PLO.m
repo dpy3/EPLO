@@ -1,0 +1,62 @@
+function [Best_pos, Bestscore, Convergence_curve] = PLO(N, MaxFEs, lb, ub, dim, fhd)
+    % ✅【删除维度检查】使用 CEC2022 时由 main.m 控制维度
+    % 初始化参数
+    pos = lb + (ub - lb) .* rand(N, dim); % 初始化位置
+    vel = zeros(N, dim);                 % 初始化速度
+    fitness = inf(N, 1);                 % 初始化适应度
+    pBest = pos;                         % 粒子个体最优位置
+    pBestScore = inf(N, 1);              % 粒子个体最优分数
+    gBestScore = inf;                    % 全局最优分数
+    gBest = zeros(1, dim);               % 全局最优位置
+
+    % 收敛曲线
+    Convergence_curve = zeros(1, MaxFEs);
+
+    % 动态权重参数
+    wMax = 0.9; wMin = 0.4;
+    c1 = 2.0; c2 = 2.0;
+
+    % 主循环
+    for t = 1:MaxFEs
+        w = wMax - (wMax - wMin) * t / MaxFEs; % 动态惯性权重
+
+        for i = 1:N
+            % 更新速度和位置
+            vel(i, :) = w * vel(i, :) + ...
+                        c1 * rand(1, dim) .* (pBest(i, :) - pos(i, :)) + ...
+                        c2 * rand(1, dim) .* (gBest - pos(i, :));
+            pos(i, :) = pos(i, :) + vel(i, :);
+
+            % 边界处理
+            pos(i, :) = max(min(pos(i, :), ub), lb);
+
+            % ✅ 只传入一个参数 x，fhd 是 @(x) cec22_func(x', fun_num)
+            fitness(i) = fhd(pos(i, :));
+
+            % 更新个体最优
+            if fitness(i) < pBestScore(i)
+                pBest(i, :) = pos(i, :);
+                pBestScore(i) = fitness(i);
+            end
+        end
+
+        % 更新全局最优
+        [current_gBestScore, idx] = min(pBestScore);
+        if current_gBestScore < gBestScore
+            gBestScore = current_gBestScore;
+            gBest = pBest(idx, :);
+        end
+
+        % 记录收敛曲线
+        Convergence_curve(t) = gBestScore;
+
+        % 显示进度
+        if mod(t, 10) == 0
+            disp(['Iteration ', num2str(t), ': Best Fitness = ', num2str(gBestScore)]);
+        end
+    end
+
+    % 返回结果
+    Best_pos = gBest;
+    Bestscore = gBestScore;
+end

@@ -1,0 +1,164 @@
+@startuml EIMO_Algorithm_Flow
+!theme plain
+title Electrolytic Ion Migration Optimization (EIMO) Algorithm Flow
+
+start
+
+:Initialize Ion Population;
+note right
+  **Phase 1: System Initialization**
+  • Generate N random ion positions: x_i ~ U(a,b)
+  • Set initial velocities: v_i = 0
+  • Calculate initial potential energies: U_i = f(x_i)
+  • Initialize individual best: x_best_i = x_i
+end note
+
+:Set Electrochemical Parameters;
+note right
+  **System Configuration**
+  • Mobility range: [μ_min, μ_max]
+  • Field strengths: E_ind, E_glob
+  • Solution boundaries: [a, b]
+  • Convergence criteria: ε_energy, ε_gradient
+end note
+
+:Find Global Best Position;
+note right
+  x_global = arg min{U_best_i}
+  U_global = min{U_best_i}
+end note
+
+while (Migration Step t ≤ T_max?) is (Continue)
+  
+  :Update Mobility Coefficient;
+  note right
+    **Temperature Decay Model**
+    μ(t) = μ_max - (μ_max - μ_min) × t/T_max
+    
+    Physical meaning: Decreasing ionic mobility
+    due to increasing solution viscosity
+  end note
+  
+  partition "**Ion Migration Process**" {
+    
+    :i = 1;
+    
+    while (Ion i ≤ N?) is (Process Next Ion)
+      
+      :Calculate Gradient Forces;
+      note right
+        **Individual Field Force:**
+        F_ind = E_ind × rand(d) × (x_best_i - x_i)
+        
+        **Global Field Force:**
+        F_glob = E_glob × rand(d) × (x_global - x_i)
+        
+        Based on Coulomb's law: F = qE
+      end note
+      
+      :Update Ion Velocity;
+      note right
+        **Einstein-Smoluchowski Equation:**
+        v_i(t+1) = μ(t) × v_i(t) + F_ind + F_glob
+        
+        Combines:
+        • Inertial term: μ(t) × v_i(t)
+        • Electric field forces: F_ind + F_glob
+      end note
+      
+      :Update Ion Position;
+      note right
+        **Discrete Integration:**
+        x_i(t+1) = x_i(t) + v_i(t+1)
+        
+        Represents ionic displacement
+        in solution medium
+      end note
+      
+      :Apply Solution Boundary Constraints;
+      note right
+        **Physical Container Limits:**
+        x_i = clamp(x_i, a, b)
+        
+        Prevents ions from leaving
+        the electrolytic cell
+      end note
+      
+      :Evaluate Electrochemical Potential;
+      note right
+        **Energy Assessment:**
+        U_i = f(x_i)
+        
+        Represents total electrochemical
+        potential energy at position x_i
+      end note
+      
+      if (U_i < U_best_i?) then (Energy Decreased)
+        :Update Individual Best;
+        note right
+          x_best_i = x_i
+          U_best_i = U_i
+          
+          Ion found lower energy state
+        end note
+      else (Energy Increased)
+        :Keep Previous Best;
+      endif
+      
+      :i = i + 1;
+      
+    endwhile (All Ions Processed)
+  }
+  
+  :Update Global Optimal Electrode;
+  note right
+    **Global Best Update:**
+    i* = arg min{U_best_i}
+    if U_best_i* < U_global:
+        x_global = x_best_i*
+        U_global = U_best_i*
+    
+    Represents the optimal electrode position
+  end note
+  
+  :Record Energy Convergence;
+  note right
+    convergence_curve[t] = U_global
+    
+    Track optimization progress
+  end note
+  
+  :Check Convergence Criteria;
+  note right
+    **Multi-Criteria Assessment:**
+    1. Energy change: |U(t) - U(t-1)| < ε_energy
+    2. Gradient threshold: |∇U| < ε_gradient
+    3. Population variance: σ²(positions) < ε_variance
+    
+    Based on thermodynamic equilibrium principles
+  end note
+  
+  if (Converged?) then (Yes)
+    :System Reached Equilibrium;
+    note right
+      Electrochemical potential
+      gradient ≈ 0
+    end note
+    stop
+  else (No)
+    :Continue Migration;
+  endif
+  
+endwhile (Maximum Steps Reached)
+
+:Return Optimal Solution;
+note right
+  **Output:**
+  • Optimal position: x_global
+  • Minimum energy: U_global
+  • Convergence curve: energy vs. time
+end note
+
+stop
+
+@enduml

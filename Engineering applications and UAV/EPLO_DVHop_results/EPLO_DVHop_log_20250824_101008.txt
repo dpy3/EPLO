@@ -1,0 +1,4 @@
+EPLO-DVHop joint experiment log
+Seed=20250824
+Completed at 24-Aug-2025 10:14:03
+Mean ALE=17.368459, Std ALE=1.538646

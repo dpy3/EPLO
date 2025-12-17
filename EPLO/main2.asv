@@ -1,0 +1,168 @@
+% Developed in MATLAB R2022b
+% Source codes 
+% _____________________________________________________
+clear;
+clc;
+close all;
+
+%% Parameters
+pop = 30;      % Number of search agents
+T = 500;       % Maximum number of iterations
+n_runs = 30;   % Number of independent runs
+F_name = 'F26';% Name of the test function
+
+%% Initialize result storage
+% Cell arrays to store all convergence curves
+Convergence_curves_BKA  = cell(n_runs, 1);
+Convergence_curves_WOA  = cell(n_runs, 1);
+Convergence_curves_SCA  = cell(n_runs, 1);
+Convergence_curves_FOX  = cell(n_runs, 1);
+Convergence_curves_PLO  = cell(n_runs, 1);
+Convergence_curves_EPLO = cell(n_runs, 1);
+Convergence_curves_ALO  = cell(n_runs, 1);
+Convergence_curves_BA   = cell(n_runs, 1);
+Convergence_curves_GSA  = cell(n_runs, 1);
+Convergence_curves_HHO  = cell(n_runs, 1);
+Convergence_curves_MFO  = cell(n_runs, 1);
+
+% Arrays to store best fitness values
+Best_Fitness_all_BKA  = zeros(n_runs, 1);
+Best_Fitness_all_WOA  = zeros(n_runs, 1);
+Best_Fitness_all_SCA  = zeros(n_runs, 1);
+Best_Fitness_all_FOX  = zeros(n_runs, 1);
+Best_Fitness_all_PLO  = zeros(n_runs, 1);
+Best_Fitness_all_EPLO = zeros(n_runs, 1);
+Best_Fitness_all_ALO  = zeros(n_runs, 1);
+Best_Fitness_all_BA   = zeros(n_runs, 1);
+Best_Fitness_all_GSA  = zeros(n_runs, 1);
+Best_Fitness_all_HHO  = zeros(n_runs, 1);
+Best_Fitness_all_MFO  = zeros(n_runs, 1);
+
+%% Main optimization loop
+for run = 1:n_runs
+    fprintf('Run %d/%d...\n', run, n_runs);
+    
+    % Load benchmark function details
+    [lb, ub, dim, fobj] = CEC2017(F_name);
+    
+    % Run all optimization algorithms
+    [Best_Fitness_BKA,  ~, Convergence_curve_BKA]  = BKA(pop, T, lb, ub, dim, fobj);
+    [Best_Fitness_WOA,  ~, Convergence_curve_WOA]  = WOA(pop, T, lb, ub, dim, fobj);
+    [Best_Fitness_SCA,  ~, Convergence_curve_SCA]  = SCA(pop, T, lb, ub, dim, fobj);
+    [Best_Fitness_FOX,  ~, Convergence_curve_FOX]  = FOX(pop, T, lb, ub, dim, fobj);
+    [Best_Fitness_PLO,  ~, Convergence_curve_PLO]  = PLO(pop, T, lb, ub, dim, fobj);
+    [Best_Fitness_EPLO, ~, Convergence_curve_EPLO] = EPLO(pop, T, lb, ub, dim, fobj);
+    [Best_Fitness_ALO,  ~, Convergence_curve_ALO]  = ALO(pop, T, lb, ub, dim, fobj);
+    [Best_Fitness_BA,   ~, Convergence_curve_BA]   = BA(pop, T, lb, ub, dim, fobj);
+    [Best_Fitness_GSA,  ~, Convergence_curve_GSA]  = GSA(pop, T, lb, ub, dim, fobj);
+    [Best_Fitness_HHO,  ~, Convergence_curve_HHO]  = HHO(pop, T, lb, ub, dim, fobj);
+    [Best_Fitness_MFO,  ~, Convergence_curve_MFO]  = MFO(pop, T, lb, ub, dim, fobj);
+    
+    % Store results
+    Best_Fitness_all_BKA(run)  = Best_Fitness_BKA;
+    Best_Fitness_all_WOA(run)  = Best_Fitness_WOA;
+    Best_Fitness_all_SCA(run)  = Best_Fitness_SCA;
+    Best_Fitness_all_FOX(run)  = Best_Fitness_FOX;
+    Best_Fitness_all_PLO(run)  = Best_Fitness_PLO;
+    Best_Fitness_all_EPLO(run) = Best_Fitness_EPLO;
+    Best_Fitness_all_ALO(run)  = Best_Fitness_ALO;
+    Best_Fitness_all_BA(run)   = Best_Fitness_BA;
+    Best_Fitness_all_GSA(run)  = Best_Fitness_GSA;
+    Best_Fitness_all_HHO(run)  = Best_Fitness_HHO;
+    Best_Fitness_all_MFO(run)  = Best_Fitness_MFO;
+    
+    Convergence_curves_BKA{run}  = Convergence_curve_BKA;
+    Convergence_curves_WOA{run}  = Convergence_curve_WOA;
+    Convergence_curves_SCA{run}  = Convergence_curve_SCA;
+    Convergence_curves_FOX{run}  = Convergence_curve_FOX;
+    Convergence_curves_PLO{run}  = Convergence_curve_PLO;
+    Convergence_curves_EPLO{run} = Convergence_curve_EPLO;
+    Convergence_curves_ALO{run}  = Convergence_curve_ALO;
+    Convergence_curves_BA{run}   = Convergence_curve_BA;
+    Convergence_curves_GSA{run}  = Convergence_curve_GSA;
+    Convergence_curves_HHO{run}  = Convergence_curve_HHO;
+    Convergence_curves_MFO{run}  = Convergence_curve_MFO;
+end
+
+%% Calculate statistics
+% Function to calculate statistics: [mean, std, best, worst]
+calculate_stats = @(x) [mean(x), std(x), min(x), max(x)];
+
+% Calculate for each algorithm
+BKA_stats  = calculate_stats(Best_Fitness_all_BKA);
+WOA_stats  = calculate_stats(Best_Fitness_all_WOA);
+SCA_stats  = calculate_stats(Best_Fitness_all_SCA);
+FOX_stats  = calculate_stats(Best_Fitness_all_FOX);
+PLO_stats  = calculate_stats(Best_Fitness_all_PLO);
+EPLO_stats = calculate_stats(Best_Fitness_all_EPLO);
+ALO_stats  = calculate_stats(Best_Fitness_all_ALO);
+BA_stats   = calculate_stats(Best_Fitness_all_BA);
+GSA_stats  = calculate_stats(Best_Fitness_all_GSA);
+HHO_stats  = calculate_stats(Best_Fitness_all_HHO);
+MFO_stats  = calculate_stats(Best_Fitness_all_MFO);
+
+%% Display results
+fprintf('\n=== Statistical Results for %s  and dim = %s===\n', F_name, num2str(dim));
+fprintf('Algorithm\tMean\t\tStd\t\tBest\t\tWorst\n');
+fprintf('BKA \t\t%.4e\t%.4e\t%.4e\t%.4e\n',  BKA_stats(1),  BKA_stats(2),  BKA_stats(3),  BKA_stats(4));
+fprintf('WOA \t\t%.4e\t%.4e\t%.4e\t%.4e\n',  WOA_stats(1),  WOA_stats(2),  WOA_stats(3),  WOA_stats(4));
+fprintf('SCA \t\t%.4e\t%.4e\t%.4e\t%.4e\n',  SCA_stats(1),  SCA_stats(2),  SCA_stats(3),  SCA_stats(4));
+fprintf('FOX \t\t%.4e\t%.4e\t%.4e\t%.4e\n',  FOX_stats(1),  FOX_stats(2),  FOX_stats(3),  FOX_stats(4));
+fprintf('PLO \t\t%.4e\t%.4e\t%.4e\t%.4e\n',  PLO_stats(1),  PLO_stats(2),  PLO_stats(3),  PLO_stats(4));
+fprintf('EPLO\t\t%.4e\t%.4e\t%.4e\t%.4e\n', EPLO_stats(1), EPLO_stats(2), EPLO_stats(3), EPLO_stats(4));
+fprintf('ALO \t\t%.4e\t%.4e\t%.4e\t%.4e\n',  ALO_stats(1),  ALO_stats(2),  ALO_stats(3),  ALO_stats(4));
+fprintf('BA  \t\t%.4e\t%.4e\t%.4e\t%.4e\n',   BA_stats(1),   BA_stats(2),   BA_stats(3),   BA_stats(4));
+fprintf('GSA \t\t%.4e\t%.4e\t%.4e\t%.4e\n',  GSA_stats(1),  GSA_stats(2),  GSA_stats(3),  GSA_stats(4));
+fprintf('HHO \t\t%.4e\t%.4e\t%.4e\t%.4e\n',  HHO_stats(1),  HHO_stats(2),  HHO_stats(3),  HHO_stats(4));
+fprintf('MFO \t\t%.4e\t%.4e\t%.4e\t%.4e\n',  MFO_stats(1),  MFO_stats(2),  MFO_stats(3),  MFO_stats(4));
+
+%% Plot average convergence curves
+% Calculate mean convergence curves for each algorithm
+mean_convergence_BKA  = mean(cell2mat(Convergence_curves_BKA), 1);
+mean_convergence_WOA  = mean(cell2mat(Convergence_curves_WOA), 1);
+mean_convergence_SCA  = mean(cell2mat(Convergence_curves_SCA), 1);
+mean_convergence_FOX  = mean(cell2mat(Convergence_curves_FOX), 1);
+mean_convergence_PLO  = mean(cell2mat(Convergence_curves_PLO), 1);
+mean_convergence_EPLO = mean(cell2mat(Convergence_curves_EPLO), 1);
+mean_convergence_ALO  = mean(cell2mat(Convergence_curves_ALO), 1);
+mean_convergence_BA   = mean(cell2mat(Convergence_curves_BA), 1);
+mean_convergence_GSA  = mean(cell2mat(Convergence_curves_GSA), 1);
+mean_convergence_HHO  = mean(cell2mat(Convergence_curves_HHO), 1);
+mean_convergence_MFO  = mean(cell2mat(Convergence_curves_MFO), 1);
+
+% Plot convergence curves
+figure;
+semilogy(1:T, mean_convergence_BKA,  'color', 'r',      'linewidth', 1.5); 
+hold on;
+semilogy(1:T, mean_convergence_WOA,  'color', 'c',      'linewidth', 1.5);
+semilogy(1:T, mean_convergence_SCA,  'color', 'y',      'linewidth', 1.5);
+semilogy(1:T, mean_convergence_FOX,  'color', [0.5 0 0.5],'linewidth', 1.5);
+semilogy(1:T, mean_convergence_PLO,  'color', 'b',      'linewidth', 1.5);
+semilogy(1:T, mean_convergence_EPLO, 'color', 'g',      'linewidth', 1.5);
+semilogy(1:T, mean_convergence_ALO,  'color', [0.5 0.5 0.5],'linewidth', 1.5);
+semilogy(1:T, mean_convergence_BA,   'color', [0.3 0.7 0.2],'linewidth', 1.5);
+semilogy(1:T, mean_convergence_GSA,  'color', [0 0.5 0.5],'linewidth', 1.5);
+semilogy(1:T, mean_convergence_HHO,  'color', [1 0.5 0], 'linewidth', 1.5);
+semilogy(1:T, mean_convergence_MFO,  'color', [1 0 0],   'linewidth', 1.5);
+
+title(['Average Convergence Curves for ', F_name, ' and dim = ', num2str(dim) ,' (', num2str(n_runs), ' runs)'], 'FontSize', 14, 'FontWeight', 'bold');
+xlabel('Iteration');
+ylabel('Best score obtained so far');
+legend({'BKA','WOA','SCA','FOX','PLO','EPLO','ALO','BA','GSA','HHO','MFO'}, 'Location', 'best');
+grid on;
+
+%% Save results to file
+results = struct();
+results.BKA  = BKA_stats;
+results.WOA  = WOA_stats;
+results.SCA  = SCA_stats;
+results.FOX  = FOX_stats;
+results.PLO  = PLO_stats;
+results.EPLO = EPLO_stats;
+results.ALO  = ALO_stats;
+results.BA   = BA_stats;
+results.GSA  = GSA_stats;
+results.HHO  = HHO_stats;
+results.MFO  = MFO_stats;
+
+save('optimization_results.mat', 'results');
