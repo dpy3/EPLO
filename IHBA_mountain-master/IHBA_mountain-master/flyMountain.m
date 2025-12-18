@@ -1142,7 +1142,7 @@ function labels = dbscan(X, epsilon, MinPts)
     n = size(X, 1);
     labels = zeros(n, 1);
     clusterCount = 0;
-    % 用原�?MATLAB 代码计算欧氏距离矩阵，替�?pdist2
+    % 用原�?MATLAB 代码计算欧氏距离矩阵，替�?pdist2
     D = sqrt(sum((X - permute(X, [3 2 1])).^2, 2));
     D = squeeze(D);
     for i = 1:n
